@@ -1,0 +1,1283 @@
+package com.oanda.v20.order;
+
+import java.util.List;
+import java.util.Collection;
+import java.util.ArrayList;
+import java.math.BigDecimal;
+
+import com.google.gson.annotations.SerializedName;
+
+import com.oanda.v20.pricing.PriceValue;
+import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.DecimalNumber;
+import com.oanda.v20.primitives.InstrumentName;
+import com.oanda.v20.trade.TradeID;
+import com.oanda.v20.transaction.ClientExtensions;
+import com.oanda.v20.transaction.StopLossDetails;
+import com.oanda.v20.transaction.TakeProfitDetails;
+import com.oanda.v20.transaction.TrailingStopLossDetails;
+import com.oanda.v20.transaction.TransactionID;
+
+/**
+ * A MarketIfTouchedOrder is an order that is created with a price threshold,
+ * and will only be filled by a market price that is touches or crosses the
+ * threshold.
+ * <p>
+ * {units} units of {instrument} @ {price}
+ */
+public class MarketIfTouchedOrder implements Order {
+
+    /**
+     * Default constructor.
+     */
+    public MarketIfTouchedOrder() {
+    }
+
+    /**
+     * Copy constructor
+     * <p>
+     * @param other the MarketIfTouchedOrder to copy
+     */
+    public MarketIfTouchedOrder(MarketIfTouchedOrder other) {
+        this.id = other.id;
+        this.createTime = other.createTime;
+        this.state = other.state;
+        if (other.clientExtensions != null)
+        {
+            this.clientExtensions = new ClientExtensions(other.clientExtensions);
+        }
+        this.type = other.type;
+        this.instrument = other.instrument;
+        this.units = other.units;
+        this.price = other.price;
+        this.priceBound = other.priceBound;
+        this.timeInForce = other.timeInForce;
+        this.gtdTime = other.gtdTime;
+        this.positionFill = other.positionFill;
+        this.triggerCondition = other.triggerCondition;
+        this.initialMarketPrice = other.initialMarketPrice;
+        if (other.takeProfitOnFill != null)
+        {
+            this.takeProfitOnFill = new TakeProfitDetails(other.takeProfitOnFill);
+        }
+        if (other.stopLossOnFill != null)
+        {
+            this.stopLossOnFill = new StopLossDetails(other.stopLossOnFill);
+        }
+        if (other.trailingStopLossOnFill != null)
+        {
+            this.trailingStopLossOnFill = new TrailingStopLossDetails(other.trailingStopLossOnFill);
+        }
+        if (other.tradeClientExtensions != null)
+        {
+            this.tradeClientExtensions = new ClientExtensions(other.tradeClientExtensions);
+        }
+        this.fillingTransactionID = other.fillingTransactionID;
+        this.filledTime = other.filledTime;
+        this.tradeOpenedID = other.tradeOpenedID;
+        this.tradeReducedID = other.tradeReducedID;
+        if (other.tradeClosedIDs != null)
+        {
+            this.tradeClosedIDs = new ArrayList<TradeID>(other.tradeClosedIDs);
+        }
+        this.cancellingTransactionID = other.cancellingTransactionID;
+        this.cancelledTime = other.cancelledTime;
+        this.replacesOrderID = other.replacesOrderID;
+        this.replacedByOrderID = other.replacedByOrderID;
+    }
+
+    @SerializedName("id") private OrderID id;
+
+    /**
+     * Get the Order ID
+     * <p>
+     * The Order's identifier, unique within the Order's Account.
+     * <p>
+     * @return the Order ID
+     * @see OrderID
+     */
+    public OrderID getId() {
+        return this.id;
+    }
+
+    /**
+     * Set the Order ID
+     * <p>
+     * The Order's identifier, unique within the Order's Account.
+     * <p>
+     * @param id the Order ID as an OrderID
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderID
+     */
+    public MarketIfTouchedOrder setId(OrderID id) {
+        this.id = id;
+        return this;
+    }
+    /**
+     * Set the Order ID
+     * <p>
+     * The Order's identifier, unique within the Order's Account.
+     * <p>
+     * @param id the Order ID as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderID
+     */
+    public MarketIfTouchedOrder setId(String id) {
+        this.id = new OrderID(id);
+        return this;
+    }
+
+    @SerializedName("createTime") private DateTime createTime;
+
+    /**
+     * Get the Create Time
+     * <p>
+     * The time when the Order was created.
+     * <p>
+     * @return the Create Time
+     * @see DateTime
+     */
+    public DateTime getCreateTime() {
+        return this.createTime;
+    }
+
+    /**
+     * Set the Create Time
+     * <p>
+     * The time when the Order was created.
+     * <p>
+     * @param createTime the Create Time as a DateTime
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DateTime
+     */
+    public MarketIfTouchedOrder setCreateTime(DateTime createTime) {
+        this.createTime = createTime;
+        return this;
+    }
+    /**
+     * Set the Create Time
+     * <p>
+     * The time when the Order was created.
+     * <p>
+     * @param createTime the Create Time as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DateTime
+     */
+    public MarketIfTouchedOrder setCreateTime(String createTime) {
+        this.createTime = new DateTime(createTime);
+        return this;
+    }
+
+    @SerializedName("state") private OrderState state;
+
+    /**
+     * Get the State
+     * <p>
+     * The current state of the Order.
+     * <p>
+     * @return the State
+     * @see OrderState
+     */
+    public OrderState getState() {
+        return this.state;
+    }
+
+    /**
+     * Set the State
+     * <p>
+     * The current state of the Order.
+     * <p>
+     * @param state the State as an OrderState
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderState
+     */
+    public MarketIfTouchedOrder setState(OrderState state) {
+        this.state = state;
+        return this;
+    }
+
+    @SerializedName("clientExtensions") private ClientExtensions clientExtensions;
+
+    /**
+     * Get the Client Extensions
+     * <p>
+     * The client extensions of the Order. Do not set, modify, or delete
+     * clientExtensions if your account is associated with MT4.
+     * <p>
+     * @return the Client Extensions
+     * @see ClientExtensions
+     */
+    public ClientExtensions getClientExtensions() {
+        return this.clientExtensions;
+    }
+
+    /**
+     * Set the Client Extensions
+     * <p>
+     * The client extensions of the Order. Do not set, modify, or delete
+     * clientExtensions if your account is associated with MT4.
+     * <p>
+     * @param clientExtensions the Client Extensions as a ClientExtensions
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see ClientExtensions
+     */
+    public MarketIfTouchedOrder setClientExtensions(ClientExtensions clientExtensions) {
+        this.clientExtensions = clientExtensions;
+        return this;
+    }
+
+    @SerializedName("type") private OrderType type = OrderType.MARKET_IF_TOUCHED;
+
+    /**
+     * Get the Type
+     * <p>
+     * The type of the Order. Always set to "MARKET_IF_TOUCHED" for Market If
+     * Touched Orders.
+     * <p>
+     * @return the Type
+     * @see OrderType
+     */
+    public OrderType getType() {
+        return this.type;
+    }
+
+    /**
+     * Set the Type
+     * <p>
+     * The type of the Order. Always set to "MARKET_IF_TOUCHED" for Market If
+     * Touched Orders.
+     * <p>
+     * @param type the Type as an OrderType
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderType
+     */
+    public MarketIfTouchedOrder setType(OrderType type) {
+        this.type = type;
+        return this;
+    }
+
+    @SerializedName("instrument") private InstrumentName instrument;
+
+    /**
+     * Get the Instrument
+     * <p>
+     * The MarketIfTouched Order's Instrument.
+     * <p>
+     * @return the Instrument
+     * @see InstrumentName
+     */
+    public InstrumentName getInstrument() {
+        return this.instrument;
+    }
+
+    /**
+     * Set the Instrument
+     * <p>
+     * The MarketIfTouched Order's Instrument.
+     * <p>
+     * @param instrument the Instrument as an InstrumentName
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see InstrumentName
+     */
+    public MarketIfTouchedOrder setInstrument(InstrumentName instrument) {
+        this.instrument = instrument;
+        return this;
+    }
+    /**
+     * Set the Instrument
+     * <p>
+     * The MarketIfTouched Order's Instrument.
+     * <p>
+     * @param instrument the Instrument as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see InstrumentName
+     */
+    public MarketIfTouchedOrder setInstrument(String instrument) {
+        this.instrument = new InstrumentName(instrument);
+        return this;
+    }
+
+    @SerializedName("units") private DecimalNumber units;
+
+    /**
+     * Get the Amount
+     * <p>
+     * The quantity requested to be filled by the MarketIfTouched Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
+     * <p>
+     * @return the Amount
+     * @see DecimalNumber
+     */
+    public DecimalNumber getUnits() {
+        return this.units;
+    }
+
+    /**
+     * Set the Amount
+     * <p>
+     * The quantity requested to be filled by the MarketIfTouched Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
+     * <p>
+     * @param units the Amount as a DecimalNumber
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DecimalNumber
+     */
+    public MarketIfTouchedOrder setUnits(DecimalNumber units) {
+        this.units = units;
+        return this;
+    }
+    /**
+     * Set the Amount
+     * <p>
+     * The quantity requested to be filled by the MarketIfTouched Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
+     * <p>
+     * @param units the Amount as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DecimalNumber
+     */
+    public MarketIfTouchedOrder setUnits(String units) {
+        this.units = new DecimalNumber(units);
+        return this;
+    }
+    /**
+     * Set the Amount
+     * <p>
+     * The quantity requested to be filled by the MarketIfTouched Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
+     * <p>
+     * @param units the Amount as a double
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DecimalNumber
+     */
+    public MarketIfTouchedOrder setUnits(double units) {
+        this.units = new DecimalNumber(units);
+        return this;
+    }
+    /**
+     * Set the Amount
+     * <p>
+     * The quantity requested to be filled by the MarketIfTouched Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
+     * <p>
+     * @param units the Amount as a BigDecimal
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DecimalNumber
+     */
+    public MarketIfTouchedOrder setUnits(BigDecimal units) {
+        this.units = new DecimalNumber(units);
+        return this;
+    }
+
+    @SerializedName("price") private PriceValue price;
+
+    /**
+     * Get the Price
+     * <p>
+     * The price threshold specified for the MarketIfTouched Order. The
+     * MarketIfTouched Order will only be filled by a market price that crosses
+     * this price from the direction of the market price at the time when the
+     * Order was created (the initialMarketPrice). Depending on the value of
+     * the Order's price and initialMarketPrice, the MarketIfTouchedOrder will
+     * behave like a Limit or a Stop Order.
+     * <p>
+     * @return the Price
+     * @see PriceValue
+     */
+    public PriceValue getPrice() {
+        return this.price;
+    }
+
+    /**
+     * Set the Price
+     * <p>
+     * The price threshold specified for the MarketIfTouched Order. The
+     * MarketIfTouched Order will only be filled by a market price that crosses
+     * this price from the direction of the market price at the time when the
+     * Order was created (the initialMarketPrice). Depending on the value of
+     * the Order's price and initialMarketPrice, the MarketIfTouchedOrder will
+     * behave like a Limit or a Stop Order.
+     * <p>
+     * @param price the Price as a PriceValue
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setPrice(PriceValue price) {
+        this.price = price;
+        return this;
+    }
+    /**
+     * Set the Price
+     * <p>
+     * The price threshold specified for the MarketIfTouched Order. The
+     * MarketIfTouched Order will only be filled by a market price that crosses
+     * this price from the direction of the market price at the time when the
+     * Order was created (the initialMarketPrice). Depending on the value of
+     * the Order's price and initialMarketPrice, the MarketIfTouchedOrder will
+     * behave like a Limit or a Stop Order.
+     * <p>
+     * @param price the Price as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setPrice(String price) {
+        this.price = new PriceValue(price);
+        return this;
+    }
+    /**
+     * Set the Price
+     * <p>
+     * The price threshold specified for the MarketIfTouched Order. The
+     * MarketIfTouched Order will only be filled by a market price that crosses
+     * this price from the direction of the market price at the time when the
+     * Order was created (the initialMarketPrice). Depending on the value of
+     * the Order's price and initialMarketPrice, the MarketIfTouchedOrder will
+     * behave like a Limit or a Stop Order.
+     * <p>
+     * @param price the Price as a double
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setPrice(double price) {
+        this.price = new PriceValue(price);
+        return this;
+    }
+    /**
+     * Set the Price
+     * <p>
+     * The price threshold specified for the MarketIfTouched Order. The
+     * MarketIfTouched Order will only be filled by a market price that crosses
+     * this price from the direction of the market price at the time when the
+     * Order was created (the initialMarketPrice). Depending on the value of
+     * the Order's price and initialMarketPrice, the MarketIfTouchedOrder will
+     * behave like a Limit or a Stop Order.
+     * <p>
+     * @param price the Price as a BigDecimal
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setPrice(BigDecimal price) {
+        this.price = new PriceValue(price);
+        return this;
+    }
+
+    @SerializedName("priceBound") private PriceValue priceBound;
+
+    /**
+     * Get the Price Value
+     * <p>
+     * The worst market price that may be used to fill this MarketIfTouched
+     * Order.
+     * <p>
+     * @return the Price Value
+     * @see PriceValue
+     */
+    public PriceValue getPriceBound() {
+        return this.priceBound;
+    }
+
+    /**
+     * Set the Price Value
+     * <p>
+     * The worst market price that may be used to fill this MarketIfTouched
+     * Order.
+     * <p>
+     * @param priceBound the Price Value as a PriceValue
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setPriceBound(PriceValue priceBound) {
+        this.priceBound = priceBound;
+        return this;
+    }
+    /**
+     * Set the Price Value
+     * <p>
+     * The worst market price that may be used to fill this MarketIfTouched
+     * Order.
+     * <p>
+     * @param priceBound the Price Value as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setPriceBound(String priceBound) {
+        this.priceBound = new PriceValue(priceBound);
+        return this;
+    }
+    /**
+     * Set the Price Value
+     * <p>
+     * The worst market price that may be used to fill this MarketIfTouched
+     * Order.
+     * <p>
+     * @param priceBound the Price Value as a double
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setPriceBound(double priceBound) {
+        this.priceBound = new PriceValue(priceBound);
+        return this;
+    }
+    /**
+     * Set the Price Value
+     * <p>
+     * The worst market price that may be used to fill this MarketIfTouched
+     * Order.
+     * <p>
+     * @param priceBound the Price Value as a BigDecimal
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setPriceBound(BigDecimal priceBound) {
+        this.priceBound = new PriceValue(priceBound);
+        return this;
+    }
+
+    @SerializedName("timeInForce") private TimeInForce timeInForce = TimeInForce.GTC;
+
+    /**
+     * Get the Time In Force
+     * <p>
+     * The time-in-force requested for the MarketIfTouched Order. Restricted to
+     * "GTC", "GFD" and "GTD" for MarketIfTouched Orders.
+     * <p>
+     * @return the Time In Force
+     * @see TimeInForce
+     */
+    public TimeInForce getTimeInForce() {
+        return this.timeInForce;
+    }
+
+    /**
+     * Set the Time In Force
+     * <p>
+     * The time-in-force requested for the MarketIfTouched Order. Restricted to
+     * "GTC", "GFD" and "GTD" for MarketIfTouched Orders.
+     * <p>
+     * @param timeInForce the Time In Force as a TimeInForce
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TimeInForce
+     */
+    public MarketIfTouchedOrder setTimeInForce(TimeInForce timeInForce) {
+        this.timeInForce = timeInForce;
+        return this;
+    }
+
+    @SerializedName("gtdTime") private DateTime gtdTime;
+
+    /**
+     * Get the GTD Time
+     * <p>
+     * The date/time when the MarketIfTouched Order will be cancelled if its
+     * timeInForce is "GTD".
+     * <p>
+     * @return the GTD Time
+     * @see DateTime
+     */
+    public DateTime getGtdTime() {
+        return this.gtdTime;
+    }
+
+    /**
+     * Set the GTD Time
+     * <p>
+     * The date/time when the MarketIfTouched Order will be cancelled if its
+     * timeInForce is "GTD".
+     * <p>
+     * @param gtdTime the GTD Time as a DateTime
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DateTime
+     */
+    public MarketIfTouchedOrder setGtdTime(DateTime gtdTime) {
+        this.gtdTime = gtdTime;
+        return this;
+    }
+    /**
+     * Set the GTD Time
+     * <p>
+     * The date/time when the MarketIfTouched Order will be cancelled if its
+     * timeInForce is "GTD".
+     * <p>
+     * @param gtdTime the GTD Time as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DateTime
+     */
+    public MarketIfTouchedOrder setGtdTime(String gtdTime) {
+        this.gtdTime = new DateTime(gtdTime);
+        return this;
+    }
+
+    @SerializedName("positionFill") private OrderPositionFill positionFill = OrderPositionFill.DEFAULT;
+
+    /**
+     * Get the Position Fill
+     * <p>
+     * Specification of how Positions in the Account are modified when the
+     * Order is filled.
+     * <p>
+     * @return the Position Fill
+     * @see OrderPositionFill
+     */
+    public OrderPositionFill getPositionFill() {
+        return this.positionFill;
+    }
+
+    /**
+     * Set the Position Fill
+     * <p>
+     * Specification of how Positions in the Account are modified when the
+     * Order is filled.
+     * <p>
+     * @param positionFill the Position Fill as an OrderPositionFill
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderPositionFill
+     */
+    public MarketIfTouchedOrder setPositionFill(OrderPositionFill positionFill) {
+        this.positionFill = positionFill;
+        return this;
+    }
+
+    @SerializedName("triggerCondition") private OrderTriggerCondition triggerCondition = OrderTriggerCondition.DEFAULT;
+
+    /**
+     * Get the Trigger Condition
+     * <p>
+     * Specification of what component of a price should be used for comparison
+     * when determining if the Order should be filled.
+     * <p>
+     * @return the Trigger Condition
+     * @see OrderTriggerCondition
+     */
+    public OrderTriggerCondition getTriggerCondition() {
+        return this.triggerCondition;
+    }
+
+    /**
+     * Set the Trigger Condition
+     * <p>
+     * Specification of what component of a price should be used for comparison
+     * when determining if the Order should be filled.
+     * <p>
+     * @param triggerCondition the Trigger Condition as an
+     * OrderTriggerCondition
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderTriggerCondition
+     */
+    public MarketIfTouchedOrder setTriggerCondition(OrderTriggerCondition triggerCondition) {
+        this.triggerCondition = triggerCondition;
+        return this;
+    }
+
+    @SerializedName("initialMarketPrice") private PriceValue initialMarketPrice;
+
+    /**
+     * Get the Initial Market Price
+     * <p>
+     * The Market price at the time when the MarketIfTouched Order was created.
+     * <p>
+     * @return the Initial Market Price
+     * @see PriceValue
+     */
+    public PriceValue getInitialMarketPrice() {
+        return this.initialMarketPrice;
+    }
+
+    /**
+     * Set the Initial Market Price
+     * <p>
+     * The Market price at the time when the MarketIfTouched Order was created.
+     * <p>
+     * @param initialMarketPrice the Initial Market Price as a PriceValue
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setInitialMarketPrice(PriceValue initialMarketPrice) {
+        this.initialMarketPrice = initialMarketPrice;
+        return this;
+    }
+    /**
+     * Set the Initial Market Price
+     * <p>
+     * The Market price at the time when the MarketIfTouched Order was created.
+     * <p>
+     * @param initialMarketPrice the Initial Market Price as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setInitialMarketPrice(String initialMarketPrice) {
+        this.initialMarketPrice = new PriceValue(initialMarketPrice);
+        return this;
+    }
+    /**
+     * Set the Initial Market Price
+     * <p>
+     * The Market price at the time when the MarketIfTouched Order was created.
+     * <p>
+     * @param initialMarketPrice the Initial Market Price as a double
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setInitialMarketPrice(double initialMarketPrice) {
+        this.initialMarketPrice = new PriceValue(initialMarketPrice);
+        return this;
+    }
+    /**
+     * Set the Initial Market Price
+     * <p>
+     * The Market price at the time when the MarketIfTouched Order was created.
+     * <p>
+     * @param initialMarketPrice the Initial Market Price as a BigDecimal
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see PriceValue
+     */
+    public MarketIfTouchedOrder setInitialMarketPrice(BigDecimal initialMarketPrice) {
+        this.initialMarketPrice = new PriceValue(initialMarketPrice);
+        return this;
+    }
+
+    @SerializedName("takeProfitOnFill") private TakeProfitDetails takeProfitOnFill;
+
+    /**
+     * Get the Take Profit On Fill
+     * <p>
+     * TakeProfitDetails specifies the details of a Take Profit Order to be
+     * created on behalf of a client. This may happen when an Order is filled
+     * that opens a Trade requiring a Take Profit, or when a Trade's dependent
+     * Take Profit Order is modified directly through the Trade.
+     * <p>
+     * @return the Take Profit On Fill
+     * @see TakeProfitDetails
+     */
+    public TakeProfitDetails getTakeProfitOnFill() {
+        return this.takeProfitOnFill;
+    }
+
+    /**
+     * Set the Take Profit On Fill
+     * <p>
+     * TakeProfitDetails specifies the details of a Take Profit Order to be
+     * created on behalf of a client. This may happen when an Order is filled
+     * that opens a Trade requiring a Take Profit, or when a Trade's dependent
+     * Take Profit Order is modified directly through the Trade.
+     * <p>
+     * @param takeProfitOnFill the Take Profit On Fill as a TakeProfitDetails
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TakeProfitDetails
+     */
+    public MarketIfTouchedOrder setTakeProfitOnFill(TakeProfitDetails takeProfitOnFill) {
+        this.takeProfitOnFill = takeProfitOnFill;
+        return this;
+    }
+
+    @SerializedName("stopLossOnFill") private StopLossDetails stopLossOnFill;
+
+    /**
+     * Get the Stop Loss On Fill
+     * <p>
+     * StopLossDetails specifies the details of a Stop Loss Order to be created
+     * on behalf of a client. This may happen when an Order is filled that
+     * opens a Trade requiring a Stop Loss, or when a Trade's dependent Stop
+     * Loss Order is modified directly through the Trade.
+     * <p>
+     * @return the Stop Loss On Fill
+     * @see StopLossDetails
+     */
+    public StopLossDetails getStopLossOnFill() {
+        return this.stopLossOnFill;
+    }
+
+    /**
+     * Set the Stop Loss On Fill
+     * <p>
+     * StopLossDetails specifies the details of a Stop Loss Order to be created
+     * on behalf of a client. This may happen when an Order is filled that
+     * opens a Trade requiring a Stop Loss, or when a Trade's dependent Stop
+     * Loss Order is modified directly through the Trade.
+     * <p>
+     * @param stopLossOnFill the Stop Loss On Fill as a StopLossDetails
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see StopLossDetails
+     */
+    public MarketIfTouchedOrder setStopLossOnFill(StopLossDetails stopLossOnFill) {
+        this.stopLossOnFill = stopLossOnFill;
+        return this;
+    }
+
+    @SerializedName("trailingStopLossOnFill") private TrailingStopLossDetails trailingStopLossOnFill;
+
+    /**
+     * Get the Trailing Stop Loss On Fill
+     * <p>
+     * TrailingStopLossDetails specifies the details of a Trailing Stop Loss
+     * Order to be created on behalf of a client. This may happen when an Order
+     * is filled that opens a Trade requiring a Trailing Stop Loss, or when a
+     * Trade's dependent Trailing Stop Loss Order is modified directly through
+     * the Trade.
+     * <p>
+     * @return the Trailing Stop Loss On Fill
+     * @see TrailingStopLossDetails
+     */
+    public TrailingStopLossDetails getTrailingStopLossOnFill() {
+        return this.trailingStopLossOnFill;
+    }
+
+    /**
+     * Set the Trailing Stop Loss On Fill
+     * <p>
+     * TrailingStopLossDetails specifies the details of a Trailing Stop Loss
+     * Order to be created on behalf of a client. This may happen when an Order
+     * is filled that opens a Trade requiring a Trailing Stop Loss, or when a
+     * Trade's dependent Trailing Stop Loss Order is modified directly through
+     * the Trade.
+     * <p>
+     * @param trailingStopLossOnFill the Trailing Stop Loss On Fill as a
+     * TrailingStopLossDetails
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TrailingStopLossDetails
+     */
+    public MarketIfTouchedOrder setTrailingStopLossOnFill(TrailingStopLossDetails trailingStopLossOnFill) {
+        this.trailingStopLossOnFill = trailingStopLossOnFill;
+        return this;
+    }
+
+    @SerializedName("tradeClientExtensions") private ClientExtensions tradeClientExtensions;
+
+    /**
+     * Get the Trade Client Extensions
+     * <p>
+     * Client Extensions to add to the Trade created when the Order is filled
+     * (if such a Trade is created). Do not set, modify, or delete
+     * tradeClientExtensions if your account is associated with MT4.
+     * <p>
+     * @return the Trade Client Extensions
+     * @see ClientExtensions
+     */
+    public ClientExtensions getTradeClientExtensions() {
+        return this.tradeClientExtensions;
+    }
+
+    /**
+     * Set the Trade Client Extensions
+     * <p>
+     * Client Extensions to add to the Trade created when the Order is filled
+     * (if such a Trade is created). Do not set, modify, or delete
+     * tradeClientExtensions if your account is associated with MT4.
+     * <p>
+     * @param tradeClientExtensions the Trade Client Extensions as a
+     * ClientExtensions
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see ClientExtensions
+     */
+    public MarketIfTouchedOrder setTradeClientExtensions(ClientExtensions tradeClientExtensions) {
+        this.tradeClientExtensions = tradeClientExtensions;
+        return this;
+    }
+
+    @SerializedName("fillingTransactionID") private TransactionID fillingTransactionID;
+
+    /**
+     * Get the Filling Transaction ID
+     * <p>
+     * ID of the Transaction that filled this Order (only provided when the
+     * Order's state is FILLED)
+     * <p>
+     * @return the Filling Transaction ID
+     * @see TransactionID
+     */
+    public TransactionID getFillingTransactionID() {
+        return this.fillingTransactionID;
+    }
+
+    /**
+     * Set the Filling Transaction ID
+     * <p>
+     * ID of the Transaction that filled this Order (only provided when the
+     * Order's state is FILLED)
+     * <p>
+     * @param fillingTransactionID the Filling Transaction ID as a
+     * TransactionID
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TransactionID
+     */
+    public MarketIfTouchedOrder setFillingTransactionID(TransactionID fillingTransactionID) {
+        this.fillingTransactionID = fillingTransactionID;
+        return this;
+    }
+    /**
+     * Set the Filling Transaction ID
+     * <p>
+     * ID of the Transaction that filled this Order (only provided when the
+     * Order's state is FILLED)
+     * <p>
+     * @param fillingTransactionID the Filling Transaction ID as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TransactionID
+     */
+    public MarketIfTouchedOrder setFillingTransactionID(String fillingTransactionID) {
+        this.fillingTransactionID = new TransactionID(fillingTransactionID);
+        return this;
+    }
+
+    @SerializedName("filledTime") private DateTime filledTime;
+
+    /**
+     * Get the Filled Time
+     * <p>
+     * Date/time when the Order was filled (only provided when the Order's
+     * state is FILLED)
+     * <p>
+     * @return the Filled Time
+     * @see DateTime
+     */
+    public DateTime getFilledTime() {
+        return this.filledTime;
+    }
+
+    /**
+     * Set the Filled Time
+     * <p>
+     * Date/time when the Order was filled (only provided when the Order's
+     * state is FILLED)
+     * <p>
+     * @param filledTime the Filled Time as a DateTime
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DateTime
+     */
+    public MarketIfTouchedOrder setFilledTime(DateTime filledTime) {
+        this.filledTime = filledTime;
+        return this;
+    }
+    /**
+     * Set the Filled Time
+     * <p>
+     * Date/time when the Order was filled (only provided when the Order's
+     * state is FILLED)
+     * <p>
+     * @param filledTime the Filled Time as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DateTime
+     */
+    public MarketIfTouchedOrder setFilledTime(String filledTime) {
+        this.filledTime = new DateTime(filledTime);
+        return this;
+    }
+
+    @SerializedName("tradeOpenedID") private TradeID tradeOpenedID;
+
+    /**
+     * Get the Trade Opened ID
+     * <p>
+     * Trade ID of Trade opened when the Order was filled (only provided when
+     * the Order's state is FILLED and a Trade was opened as a result of the
+     * fill)
+     * <p>
+     * @return the Trade Opened ID
+     * @see TradeID
+     */
+    public TradeID getTradeOpenedID() {
+        return this.tradeOpenedID;
+    }
+
+    /**
+     * Set the Trade Opened ID
+     * <p>
+     * Trade ID of Trade opened when the Order was filled (only provided when
+     * the Order's state is FILLED and a Trade was opened as a result of the
+     * fill)
+     * <p>
+     * @param tradeOpenedID the Trade Opened ID as a TradeID
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TradeID
+     */
+    public MarketIfTouchedOrder setTradeOpenedID(TradeID tradeOpenedID) {
+        this.tradeOpenedID = tradeOpenedID;
+        return this;
+    }
+    /**
+     * Set the Trade Opened ID
+     * <p>
+     * Trade ID of Trade opened when the Order was filled (only provided when
+     * the Order's state is FILLED and a Trade was opened as a result of the
+     * fill)
+     * <p>
+     * @param tradeOpenedID the Trade Opened ID as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TradeID
+     */
+    public MarketIfTouchedOrder setTradeOpenedID(String tradeOpenedID) {
+        this.tradeOpenedID = new TradeID(tradeOpenedID);
+        return this;
+    }
+
+    @SerializedName("tradeReducedID") private TradeID tradeReducedID;
+
+    /**
+     * Get the Trade Reduced ID
+     * <p>
+     * Trade ID of Trade reduced when the Order was filled (only provided when
+     * the Order's state is FILLED and a Trade was reduced as a result of the
+     * fill)
+     * <p>
+     * @return the Trade Reduced ID
+     * @see TradeID
+     */
+    public TradeID getTradeReducedID() {
+        return this.tradeReducedID;
+    }
+
+    /**
+     * Set the Trade Reduced ID
+     * <p>
+     * Trade ID of Trade reduced when the Order was filled (only provided when
+     * the Order's state is FILLED and a Trade was reduced as a result of the
+     * fill)
+     * <p>
+     * @param tradeReducedID the Trade Reduced ID as a TradeID
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TradeID
+     */
+    public MarketIfTouchedOrder setTradeReducedID(TradeID tradeReducedID) {
+        this.tradeReducedID = tradeReducedID;
+        return this;
+    }
+    /**
+     * Set the Trade Reduced ID
+     * <p>
+     * Trade ID of Trade reduced when the Order was filled (only provided when
+     * the Order's state is FILLED and a Trade was reduced as a result of the
+     * fill)
+     * <p>
+     * @param tradeReducedID the Trade Reduced ID as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TradeID
+     */
+    public MarketIfTouchedOrder setTradeReducedID(String tradeReducedID) {
+        this.tradeReducedID = new TradeID(tradeReducedID);
+        return this;
+    }
+
+    @SerializedName("tradeClosedIDs") private ArrayList<TradeID> tradeClosedIDs;
+
+    /**
+     * Get the Trade Closed IDs
+     * <p>
+     * Trade IDs of Trades closed when the Order was filled (only provided when
+     * the Order's state is FILLED and one or more Trades were closed as a
+     * result of the fill)
+     * <p>
+     * @return the Trade Closed IDs
+     * @see TradeID
+     */
+    public List<TradeID> getTradeClosedIDs() {
+        return this.tradeClosedIDs;
+    }
+
+    /**
+     * Set the Trade Closed IDs
+     * <p>
+     * Trade IDs of Trades closed when the Order was filled (only provided when
+     * the Order's state is FILLED and one or more Trades were closed as a
+     * result of the fill)
+     * <p>
+     * @param tradeClosedIDs the Trade Closed IDs
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TradeID
+     */
+    public MarketIfTouchedOrder setTradeClosedIDs(Collection<?> tradeClosedIDs) {
+        ArrayList<TradeID> newTradeClosedIDs = new ArrayList<TradeID>(tradeClosedIDs.size());
+        tradeClosedIDs.forEach((item) -> {
+            if (TradeID.class == item.getClass())
+            {
+                newTradeClosedIDs.add((TradeID) item);
+            }
+            else if (String.class == item.getClass())
+            {
+                newTradeClosedIDs.add(new TradeID((String) item));
+            }
+        });
+        this.tradeClosedIDs = newTradeClosedIDs;
+        return this;
+    }
+
+    @SerializedName("cancellingTransactionID") private TransactionID cancellingTransactionID;
+
+    /**
+     * Get the Cancelling Transction ID
+     * <p>
+     * ID of the Transaction that cancelled the Order (only provided when the
+     * Order's state is CANCELLED)
+     * <p>
+     * @return the Cancelling Transction ID
+     * @see TransactionID
+     */
+    public TransactionID getCancellingTransactionID() {
+        return this.cancellingTransactionID;
+    }
+
+    /**
+     * Set the Cancelling Transction ID
+     * <p>
+     * ID of the Transaction that cancelled the Order (only provided when the
+     * Order's state is CANCELLED)
+     * <p>
+     * @param cancellingTransactionID the Cancelling Transction ID as a
+     * TransactionID
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TransactionID
+     */
+    public MarketIfTouchedOrder setCancellingTransactionID(TransactionID cancellingTransactionID) {
+        this.cancellingTransactionID = cancellingTransactionID;
+        return this;
+    }
+    /**
+     * Set the Cancelling Transction ID
+     * <p>
+     * ID of the Transaction that cancelled the Order (only provided when the
+     * Order's state is CANCELLED)
+     * <p>
+     * @param cancellingTransactionID the Cancelling Transction ID as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see TransactionID
+     */
+    public MarketIfTouchedOrder setCancellingTransactionID(String cancellingTransactionID) {
+        this.cancellingTransactionID = new TransactionID(cancellingTransactionID);
+        return this;
+    }
+
+    @SerializedName("cancelledTime") private DateTime cancelledTime;
+
+    /**
+     * Get the Cancelled Time
+     * <p>
+     * Date/time when the Order was cancelled (only provided when the state of
+     * the Order is CANCELLED)
+     * <p>
+     * @return the Cancelled Time
+     * @see DateTime
+     */
+    public DateTime getCancelledTime() {
+        return this.cancelledTime;
+    }
+
+    /**
+     * Set the Cancelled Time
+     * <p>
+     * Date/time when the Order was cancelled (only provided when the state of
+     * the Order is CANCELLED)
+     * <p>
+     * @param cancelledTime the Cancelled Time as a DateTime
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DateTime
+     */
+    public MarketIfTouchedOrder setCancelledTime(DateTime cancelledTime) {
+        this.cancelledTime = cancelledTime;
+        return this;
+    }
+    /**
+     * Set the Cancelled Time
+     * <p>
+     * Date/time when the Order was cancelled (only provided when the state of
+     * the Order is CANCELLED)
+     * <p>
+     * @param cancelledTime the Cancelled Time as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see DateTime
+     */
+    public MarketIfTouchedOrder setCancelledTime(String cancelledTime) {
+        this.cancelledTime = new DateTime(cancelledTime);
+        return this;
+    }
+
+    @SerializedName("replacesOrderID") private OrderID replacesOrderID;
+
+    /**
+     * Get the Replaces Order ID
+     * <p>
+     * The ID of the Order that was replaced by this Order (only provided if
+     * this Order was created as part of a cancel/replace).
+     * <p>
+     * @return the Replaces Order ID
+     * @see OrderID
+     */
+    public OrderID getReplacesOrderID() {
+        return this.replacesOrderID;
+    }
+
+    /**
+     * Set the Replaces Order ID
+     * <p>
+     * The ID of the Order that was replaced by this Order (only provided if
+     * this Order was created as part of a cancel/replace).
+     * <p>
+     * @param replacesOrderID the Replaces Order ID as an OrderID
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderID
+     */
+    public MarketIfTouchedOrder setReplacesOrderID(OrderID replacesOrderID) {
+        this.replacesOrderID = replacesOrderID;
+        return this;
+    }
+    /**
+     * Set the Replaces Order ID
+     * <p>
+     * The ID of the Order that was replaced by this Order (only provided if
+     * this Order was created as part of a cancel/replace).
+     * <p>
+     * @param replacesOrderID the Replaces Order ID as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderID
+     */
+    public MarketIfTouchedOrder setReplacesOrderID(String replacesOrderID) {
+        this.replacesOrderID = new OrderID(replacesOrderID);
+        return this;
+    }
+
+    @SerializedName("replacedByOrderID") private OrderID replacedByOrderID;
+
+    /**
+     * Get the Replaced by Order ID
+     * <p>
+     * The ID of the Order that replaced this Order (only provided if this
+     * Order was cancelled as part of a cancel/replace).
+     * <p>
+     * @return the Replaced by Order ID
+     * @see OrderID
+     */
+    public OrderID getReplacedByOrderID() {
+        return this.replacedByOrderID;
+    }
+
+    /**
+     * Set the Replaced by Order ID
+     * <p>
+     * The ID of the Order that replaced this Order (only provided if this
+     * Order was cancelled as part of a cancel/replace).
+     * <p>
+     * @param replacedByOrderID the Replaced by Order ID as an OrderID
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderID
+     */
+    public MarketIfTouchedOrder setReplacedByOrderID(OrderID replacedByOrderID) {
+        this.replacedByOrderID = replacedByOrderID;
+        return this;
+    }
+    /**
+     * Set the Replaced by Order ID
+     * <p>
+     * The ID of the Order that replaced this Order (only provided if this
+     * Order was cancelled as part of a cancel/replace).
+     * <p>
+     * @param replacedByOrderID the Replaced by Order ID as a String
+     * @return {@link MarketIfTouchedOrder MarketIfTouchedOrder}
+     * @see OrderID
+     */
+    public MarketIfTouchedOrder setReplacedByOrderID(String replacedByOrderID) {
+        this.replacedByOrderID = new OrderID(replacedByOrderID);
+        return this;
+    }
+}
