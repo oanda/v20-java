@@ -1010,9 +1010,15 @@ public class AccountChangesState {
     public AccountChangesState setOrders(Collection<?> orders) {
         ArrayList<DynamicOrderState> newOrders = new ArrayList<DynamicOrderState>(orders.size());
         orders.forEach((item) -> {
-            if (DynamicOrderState.class == item.getClass())
+            if (item instanceof DynamicOrderState)
             {
                 newOrders.add((DynamicOrderState) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a DynamicOrderState"
+                );
             }
         });
         this.orders = newOrders;
@@ -1045,9 +1051,15 @@ public class AccountChangesState {
     public AccountChangesState setTrades(Collection<?> trades) {
         ArrayList<CalculatedTradeState> newTrades = new ArrayList<CalculatedTradeState>(trades.size());
         trades.forEach((item) -> {
-            if (CalculatedTradeState.class == item.getClass())
+            if (item instanceof CalculatedTradeState)
             {
                 newTrades.add((CalculatedTradeState) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a CalculatedTradeState"
+                );
             }
         });
         this.trades = newTrades;
@@ -1080,9 +1092,15 @@ public class AccountChangesState {
     public AccountChangesState setPositions(Collection<?> positions) {
         ArrayList<CalculatedPositionState> newPositions = new ArrayList<CalculatedPositionState>(positions.size());
         positions.forEach((item) -> {
-            if (CalculatedPositionState.class == item.getClass())
+            if (item instanceof CalculatedPositionState)
             {
                 newPositions.add((CalculatedPositionState) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a CalculatedPositionState"
+                );
             }
         });
         this.positions = newPositions;

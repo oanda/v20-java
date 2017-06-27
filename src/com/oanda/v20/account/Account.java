@@ -48,6 +48,7 @@ public class Account {
         this.pl = other.pl;
         this.resettablePL = other.resettablePL;
         this.resettabledPLTime = other.resettabledPLTime;
+        this.commission = other.commission;
         this.marginRate = other.marginRate;
         this.marginCallEnterTime = other.marginCallEnterTime;
         if (other.marginCallExtensionCount != null)
@@ -530,6 +531,78 @@ public class Account {
      */
     public Account setResettabledPLTime(String resettabledPLTime) {
         this.resettabledPLTime = new DateTime(resettabledPLTime);
+        return this;
+    }
+
+    @SerializedName("commission") private AccountUnits commission;
+
+    /**
+     * Get the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @return the Commission
+     * @see AccountUnits
+     */
+    public AccountUnits getCommission() {
+        return this.commission;
+    }
+
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as an AccountUnits
+     * @return {@link Account Account}
+     * @see AccountUnits
+     */
+    public Account setCommission(AccountUnits commission) {
+        this.commission = commission;
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a String
+     * @return {@link Account Account}
+     * @see AccountUnits
+     */
+    public Account setCommission(String commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a double
+     * @return {@link Account Account}
+     * @see AccountUnits
+     */
+    public Account setCommission(double commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a BigDecimal
+     * @return {@link Account Account}
+     * @see AccountUnits
+     */
+    public Account setCommission(BigDecimal commission) {
+        this.commission = new AccountUnits(commission);
         return this;
     }
 
@@ -1824,9 +1897,15 @@ public class Account {
     public Account setTrades(Collection<?> trades) {
         ArrayList<TradeSummary> newTrades = new ArrayList<TradeSummary>(trades.size());
         trades.forEach((item) -> {
-            if (TradeSummary.class == item.getClass())
+            if (item instanceof TradeSummary)
             {
                 newTrades.add((TradeSummary) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TradeSummary"
+                );
             }
         });
         this.trades = newTrades;
@@ -1859,9 +1938,15 @@ public class Account {
     public Account setPositions(Collection<?> positions) {
         ArrayList<Position> newPositions = new ArrayList<Position>(positions.size());
         positions.forEach((item) -> {
-            if (Position.class == item.getClass())
+            if (item instanceof Position)
             {
                 newPositions.add((Position) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a Position"
+                );
             }
         });
         this.positions = newPositions;
@@ -1894,9 +1979,15 @@ public class Account {
     public Account setOrders(Collection<?> orders) {
         ArrayList<Order> newOrders = new ArrayList<Order>(orders.size());
         orders.forEach((item) -> {
-            if (Order.class == item.getClass())
+            if (item instanceof Order)
             {
                 newOrders.add((Order) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to an Order"
+                );
             }
         });
         this.orders = newOrders;

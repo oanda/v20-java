@@ -504,9 +504,15 @@ public class DailyFinancingTransaction implements Transaction {
     public DailyFinancingTransaction setPositionFinancings(Collection<?> positionFinancings) {
         ArrayList<PositionFinancing> newPositionFinancings = new ArrayList<PositionFinancing>(positionFinancings.size());
         positionFinancings.forEach((item) -> {
-            if (PositionFinancing.class == item.getClass())
+            if (item instanceof PositionFinancing)
             {
                 newPositionFinancings.add((PositionFinancing) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a PositionFinancing"
+                );
             }
         });
         this.positionFinancings = newPositionFinancings;

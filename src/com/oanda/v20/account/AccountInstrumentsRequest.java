@@ -35,13 +35,19 @@ public class AccountInstrumentsRequest extends Request {
     public AccountInstrumentsRequest setInstruments(Collection<?> instruments) {
         ArrayList<InstrumentName> newInstruments = new ArrayList<InstrumentName>(instruments.size());
         instruments.forEach((item) -> {
-            if (InstrumentName.class == item.getClass())
+            if (item instanceof InstrumentName)
             {
                 newInstruments.add((InstrumentName) item);
             }
-            else if (String.class == item.getClass())
+            else if (item instanceof String)
             {
                 newInstruments.add(new InstrumentName((String) item));
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to an InstrumentName"
+                );
             }
         });
         this.queryParams.put("instruments", newInstruments);

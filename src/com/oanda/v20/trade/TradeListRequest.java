@@ -36,13 +36,19 @@ public class TradeListRequest extends Request {
     public TradeListRequest setIds(Collection<?> ids) {
         ArrayList<TradeID> newIds = new ArrayList<TradeID>(ids.size());
         ids.forEach((item) -> {
-            if (TradeID.class == item.getClass())
+            if (item instanceof TradeID)
             {
                 newIds.add((TradeID) item);
             }
-            else if (String.class == item.getClass())
+            else if (item instanceof String)
             {
                 newIds.add(new TradeID((String) item));
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TradeID"
+                );
             }
         });
         this.queryParams.put("ids", newIds);

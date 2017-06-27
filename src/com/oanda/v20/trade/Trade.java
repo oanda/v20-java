@@ -667,13 +667,19 @@ public class Trade {
     public Trade setClosingTransactionIDs(Collection<?> closingTransactionIDs) {
         ArrayList<TransactionID> newClosingTransactionIDs = new ArrayList<TransactionID>(closingTransactionIDs.size());
         closingTransactionIDs.forEach((item) -> {
-            if (TransactionID.class == item.getClass())
+            if (item instanceof TransactionID)
             {
                 newClosingTransactionIDs.add((TransactionID) item);
             }
-            else if (String.class == item.getClass())
+            else if (item instanceof String)
             {
                 newClosingTransactionIDs.add(new TransactionID((String) item));
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TransactionID"
+                );
             }
         });
         this.closingTransactionIDs = newClosingTransactionIDs;

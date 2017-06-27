@@ -42,6 +42,10 @@ public class Instrument {
         this.maximumPositionSize = other.maximumPositionSize;
         this.maximumOrderUnits = other.maximumOrderUnits;
         this.marginRate = other.marginRate;
+        if (other.commission != null)
+        {
+            this.commission = new InstrumentCommission(other.commission);
+        }
     }
 
     @SerializedName("name") private InstrumentName name;
@@ -656,6 +660,34 @@ public class Instrument {
      */
     public Instrument setMarginRate(BigDecimal marginRate) {
         this.marginRate = new DecimalNumber(marginRate);
+        return this;
+    }
+
+    @SerializedName("commission") private InstrumentCommission commission;
+
+    /**
+     * Get the commission
+     * <p>
+     * The commission structure for this instrument.
+     * <p>
+     * @return the commission
+     * @see InstrumentCommission
+     */
+    public InstrumentCommission getCommission() {
+        return this.commission;
+    }
+
+    /**
+     * Set the commission
+     * <p>
+     * The commission structure for this instrument.
+     * <p>
+     * @param commission the commission as an InstrumentCommission
+     * @return {@link Instrument Instrument}
+     * @see InstrumentCommission
+     */
+    public Instrument setCommission(InstrumentCommission commission) {
+        this.commission = commission;
         return this;
     }
 }

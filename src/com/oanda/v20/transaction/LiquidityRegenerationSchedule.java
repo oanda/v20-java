@@ -60,9 +60,15 @@ public class LiquidityRegenerationSchedule {
     public LiquidityRegenerationSchedule setSteps(Collection<?> steps) {
         ArrayList<LiquidityRegenerationScheduleStep> newSteps = new ArrayList<LiquidityRegenerationScheduleStep>(steps.size());
         steps.forEach((item) -> {
-            if (LiquidityRegenerationScheduleStep.class == item.getClass())
+            if (item instanceof LiquidityRegenerationScheduleStep)
             {
                 newSteps.add((LiquidityRegenerationScheduleStep) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a LiquidityRegenerationScheduleStep"
+                );
             }
         });
         this.steps = newSteps;

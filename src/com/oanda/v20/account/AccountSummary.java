@@ -40,6 +40,7 @@ public class AccountSummary {
         this.pl = other.pl;
         this.resettablePL = other.resettablePL;
         this.resettabledPLTime = other.resettabledPLTime;
+        this.commission = other.commission;
         this.marginRate = other.marginRate;
         this.marginCallEnterTime = other.marginCallEnterTime;
         if (other.marginCallExtensionCount != null)
@@ -510,6 +511,78 @@ public class AccountSummary {
      */
     public AccountSummary setResettabledPLTime(String resettabledPLTime) {
         this.resettabledPLTime = new DateTime(resettabledPLTime);
+        return this;
+    }
+
+    @SerializedName("commission") private AccountUnits commission;
+
+    /**
+     * Get the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @return the Commission
+     * @see AccountUnits
+     */
+    public AccountUnits getCommission() {
+        return this.commission;
+    }
+
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as an AccountUnits
+     * @return {@link AccountSummary AccountSummary}
+     * @see AccountUnits
+     */
+    public AccountSummary setCommission(AccountUnits commission) {
+        this.commission = commission;
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a String
+     * @return {@link AccountSummary AccountSummary}
+     * @see AccountUnits
+     */
+    public AccountSummary setCommission(String commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a double
+     * @return {@link AccountSummary AccountSummary}
+     * @see AccountUnits
+     */
+    public AccountSummary setCommission(double commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid over the lifetime of the Account.
+     * Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a BigDecimal
+     * @return {@link AccountSummary AccountSummary}
+     * @see AccountUnits
+     */
+    public AccountSummary setCommission(BigDecimal commission) {
+        this.commission = new AccountUnits(commission);
         return this;
     }
 

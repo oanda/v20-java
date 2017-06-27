@@ -212,13 +212,19 @@ public class PositionSide {
     public PositionSide setTradeIDs(Collection<?> tradeIDs) {
         ArrayList<TradeID> newTradeIDs = new ArrayList<TradeID>(tradeIDs.size());
         tradeIDs.forEach((item) -> {
-            if (TradeID.class == item.getClass())
+            if (item instanceof TradeID)
             {
                 newTradeIDs.add((TradeID) item);
             }
-            else if (String.class == item.getClass())
+            else if (item instanceof String)
             {
                 newTradeIDs.add(new TradeID((String) item));
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TradeID"
+                );
             }
         });
         this.tradeIDs = newTradeIDs;

@@ -114,9 +114,15 @@ public class TransactionListRequest extends Request {
     public TransactionListRequest setType(Collection<?> type) {
         ArrayList<TransactionFilter> newType = new ArrayList<TransactionFilter>(type.size());
         type.forEach((item) -> {
-            if (TransactionFilter.class == item.getClass())
+            if (item instanceof TransactionFilter)
             {
                 newType.add((TransactionFilter) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TransactionFilter"
+                );
             }
         });
         this.queryParams.put("type", newType);

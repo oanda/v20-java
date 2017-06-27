@@ -7,35 +7,25 @@ import java.math.BigDecimal;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.oanda.v20.order.UnitsAvailable;
 import com.oanda.v20.primitives.DateTime;
-import com.oanda.v20.primitives.InstrumentName;
 
 /**
- * The specification of an Account-specific Price.
+ * Client price for an Account.
  */
-public class Price {
+public class ClientPrice {
 
     /**
      * Default constructor.
      */
-    public Price() {
+    public ClientPrice() {
     }
 
     /**
      * Copy constructor
      * <p>
-     * @param other the Price to copy
+     * @param other the ClientPrice to copy
      */
-    public Price(Price other) {
-        this.type = other.type;
-        this.instrument = other.instrument;
-        this.time = other.time;
-        this.status = other.status;
-        if (other.tradeable != null)
-        {
-            this.tradeable = new Boolean(other.tradeable);
-        }
+    public ClientPrice(ClientPrice other) {
         if (other.bids != null)
         {
             this.bids = new ArrayList<PriceBucket>(other.bids);
@@ -46,178 +36,7 @@ public class Price {
         }
         this.closeoutBid = other.closeoutBid;
         this.closeoutAsk = other.closeoutAsk;
-        if (other.quoteHomeConversionFactors != null)
-        {
-            this.quoteHomeConversionFactors = new QuoteHomeConversionFactors(other.quoteHomeConversionFactors);
-        }
-        if (other.unitsAvailable != null)
-        {
-            this.unitsAvailable = new UnitsAvailable(other.unitsAvailable);
-        }
-    }
-
-    @SerializedName("type") private String type = "PRICE";
-
-    /**
-     * Get the Type
-     * <p>
-     * The string "PRICE". Used to identify the a Price object when found in a
-     * stream.
-     * <p>
-     * @return the Type
-     */
-    public String getType() {
-        return this.type;
-    }
-
-    /**
-     * Set the Type
-     * <p>
-     * The string "PRICE". Used to identify the a Price object when found in a
-     * stream.
-     * <p>
-     * @param type the Type as a String
-     * @return {@link Price Price}
-     */
-    public Price setType(String type) {
-        this.type = type;
-        return this;
-    }
-
-    @SerializedName("instrument") private InstrumentName instrument;
-
-    /**
-     * Get the Instrument
-     * <p>
-     * The Price's Instrument.
-     * <p>
-     * @return the Instrument
-     * @see InstrumentName
-     */
-    public InstrumentName getInstrument() {
-        return this.instrument;
-    }
-
-    /**
-     * Set the Instrument
-     * <p>
-     * The Price's Instrument.
-     * <p>
-     * @param instrument the Instrument as an InstrumentName
-     * @return {@link Price Price}
-     * @see InstrumentName
-     */
-    public Price setInstrument(InstrumentName instrument) {
-        this.instrument = instrument;
-        return this;
-    }
-    /**
-     * Set the Instrument
-     * <p>
-     * The Price's Instrument.
-     * <p>
-     * @param instrument the Instrument as a String
-     * @return {@link Price Price}
-     * @see InstrumentName
-     */
-    public Price setInstrument(String instrument) {
-        this.instrument = new InstrumentName(instrument);
-        return this;
-    }
-
-    @SerializedName("time") private DateTime time;
-
-    /**
-     * Get the Time
-     * <p>
-     * The date/time when the Price was created
-     * <p>
-     * @return the Time
-     * @see DateTime
-     */
-    public DateTime getTime() {
-        return this.time;
-    }
-
-    /**
-     * Set the Time
-     * <p>
-     * The date/time when the Price was created
-     * <p>
-     * @param time the Time as a DateTime
-     * @return {@link Price Price}
-     * @see DateTime
-     */
-    public Price setTime(DateTime time) {
-        this.time = time;
-        return this;
-    }
-    /**
-     * Set the Time
-     * <p>
-     * The date/time when the Price was created
-     * <p>
-     * @param time the Time as a String
-     * @return {@link Price Price}
-     * @see DateTime
-     */
-    public Price setTime(String time) {
-        this.time = new DateTime(time);
-        return this;
-    }
-
-    @SerializedName("status") private PriceStatus status;
-
-    /**
-     * Get the Status
-     * <p>
-     * The status of the Price.
-     * <p>
-     * @return the Status
-     * @see PriceStatus
-     */
-    public PriceStatus getStatus() {
-        return this.status;
-    }
-
-    /**
-     * Set the Status
-     * <p>
-     * The status of the Price.
-     * <p>
-     * @param status the Status as a PriceStatus
-     * @return {@link Price Price}
-     * @see PriceStatus
-     */
-    public Price setStatus(PriceStatus status) {
-        this.status = status;
-        return this;
-    }
-
-    @SerializedName("tradeable") private Boolean tradeable;
-
-    /**
-     * Get the Is Tradeable
-     * <p>
-     * Flag indicating if the Price is tradeable or not
-     * <p>
-     * @return the Is Tradeable
-     */
-    public Boolean getTradeable() {
-        return this.tradeable;
-    }
-
-    /**
-     * Set the Is Tradeable
-     * <p>
-     * Flag indicating if the Price is tradeable or not
-     * <p>
-     * @param tradeable the Is Tradeable as a Boolean
-     * @return {@link Price Price}
-     */
-    public Price setTradeable(Boolean tradeable) {
-        this.tradeable = tradeable;
-        return this;
+        this.timestamp = other.timestamp;
     }
 
     @SerializedName("bids") private ArrayList<PriceBucket> bids;
@@ -244,10 +63,10 @@ public class Price {
      * currently available for the Instrument in the Account.
      * <p>
      * @param bids the Bids
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceBucket
      */
-    public Price setBids(Collection<?> bids) {
+    public ClientPrice setBids(Collection<?> bids) {
         ArrayList<PriceBucket> newBids = new ArrayList<PriceBucket>(bids.size());
         bids.forEach((item) -> {
             if (item instanceof PriceBucket)
@@ -289,10 +108,10 @@ public class Price {
      * currently available for the Instrument in the Account.
      * <p>
      * @param asks the Asks
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceBucket
      */
-    public Price setAsks(Collection<?> asks) {
+    public ClientPrice setAsks(Collection<?> asks) {
         ArrayList<PriceBucket> newAsks = new ArrayList<PriceBucket>(asks.size());
         asks.forEach((item) -> {
             if (item instanceof PriceBucket)
@@ -334,10 +153,10 @@ public class Price {
      * liquidity. The closeout bid is never used to open a new position.
      * <p>
      * @param closeoutBid the Closeout Bid as a PriceValue
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceValue
      */
-    public Price setCloseoutBid(PriceValue closeoutBid) {
+    public ClientPrice setCloseoutBid(PriceValue closeoutBid) {
         this.closeoutBid = closeoutBid;
         return this;
     }
@@ -349,10 +168,10 @@ public class Price {
      * liquidity. The closeout bid is never used to open a new position.
      * <p>
      * @param closeoutBid the Closeout Bid as a String
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceValue
      */
-    public Price setCloseoutBid(String closeoutBid) {
+    public ClientPrice setCloseoutBid(String closeoutBid) {
         this.closeoutBid = new PriceValue(closeoutBid);
         return this;
     }
@@ -364,10 +183,10 @@ public class Price {
      * liquidity. The closeout bid is never used to open a new position.
      * <p>
      * @param closeoutBid the Closeout Bid as a double
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceValue
      */
-    public Price setCloseoutBid(double closeoutBid) {
+    public ClientPrice setCloseoutBid(double closeoutBid) {
         this.closeoutBid = new PriceValue(closeoutBid);
         return this;
     }
@@ -379,10 +198,10 @@ public class Price {
      * liquidity. The closeout bid is never used to open a new position.
      * <p>
      * @param closeoutBid the Closeout Bid as a BigDecimal
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceValue
      */
-    public Price setCloseoutBid(BigDecimal closeoutBid) {
+    public ClientPrice setCloseoutBid(BigDecimal closeoutBid) {
         this.closeoutBid = new PriceValue(closeoutBid);
         return this;
     }
@@ -411,10 +230,10 @@ public class Price {
      * liquidity. The closeout ask is never used to open a new position.
      * <p>
      * @param closeoutAsk the Closeout Ask as a PriceValue
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceValue
      */
-    public Price setCloseoutAsk(PriceValue closeoutAsk) {
+    public ClientPrice setCloseoutAsk(PriceValue closeoutAsk) {
         this.closeoutAsk = closeoutAsk;
         return this;
     }
@@ -426,10 +245,10 @@ public class Price {
      * liquidity. The closeout ask is never used to open a new position.
      * <p>
      * @param closeoutAsk the Closeout Ask as a String
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceValue
      */
-    public Price setCloseoutAsk(String closeoutAsk) {
+    public ClientPrice setCloseoutAsk(String closeoutAsk) {
         this.closeoutAsk = new PriceValue(closeoutAsk);
         return this;
     }
@@ -441,10 +260,10 @@ public class Price {
      * liquidity. The closeout ask is never used to open a new position.
      * <p>
      * @param closeoutAsk the Closeout Ask as a double
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceValue
      */
-    public Price setCloseoutAsk(double closeoutAsk) {
+    public ClientPrice setCloseoutAsk(double closeoutAsk) {
         this.closeoutAsk = new PriceValue(closeoutAsk);
         return this;
     }
@@ -456,72 +275,52 @@ public class Price {
      * liquidity. The closeout ask is never used to open a new position.
      * <p>
      * @param closeoutAsk the Closeout Ask as a BigDecimal
-     * @return {@link Price Price}
+     * @return {@link ClientPrice ClientPrice}
      * @see PriceValue
      */
-    public Price setCloseoutAsk(BigDecimal closeoutAsk) {
+    public ClientPrice setCloseoutAsk(BigDecimal closeoutAsk) {
         this.closeoutAsk = new PriceValue(closeoutAsk);
         return this;
     }
 
-    @SerializedName("quoteHomeConversionFactors") private QuoteHomeConversionFactors quoteHomeConversionFactors;
+    @SerializedName("timestamp") private DateTime timestamp;
 
     /**
-     * Get the Quote Home Conversions
+     * Get the Timestamp
      * <p>
-     * The factors used to convert quantities of this price's Instrument's
-     * quote currency into a quantity of the Account's home currency.
+     * The date/time when the Price was created.
      * <p>
-     * @return the Quote Home Conversions
-     * @see QuoteHomeConversionFactors
+     * @return the Timestamp
+     * @see DateTime
      */
-    public QuoteHomeConversionFactors getQuoteHomeConversionFactors() {
-        return this.quoteHomeConversionFactors;
+    public DateTime getTimestamp() {
+        return this.timestamp;
     }
 
     /**
-     * Set the Quote Home Conversions
+     * Set the Timestamp
      * <p>
-     * The factors used to convert quantities of this price's Instrument's
-     * quote currency into a quantity of the Account's home currency.
+     * The date/time when the Price was created.
      * <p>
-     * @param quoteHomeConversionFactors the Quote Home Conversions as a
-     * QuoteHomeConversionFactors
-     * @return {@link Price Price}
-     * @see QuoteHomeConversionFactors
+     * @param timestamp the Timestamp as a DateTime
+     * @return {@link ClientPrice ClientPrice}
+     * @see DateTime
      */
-    public Price setQuoteHomeConversionFactors(QuoteHomeConversionFactors quoteHomeConversionFactors) {
-        this.quoteHomeConversionFactors = quoteHomeConversionFactors;
+    public ClientPrice setTimestamp(DateTime timestamp) {
+        this.timestamp = timestamp;
         return this;
     }
-
-    @SerializedName("unitsAvailable") private UnitsAvailable unitsAvailable;
-
     /**
-     * Get the Units Available
+     * Set the Timestamp
      * <p>
-     * Representation of how many units of an Instrument are available to be
-     * traded by an Order depending on its postionFill option.
+     * The date/time when the Price was created.
      * <p>
-     * @return the Units Available
-     * @see UnitsAvailable
+     * @param timestamp the Timestamp as a String
+     * @return {@link ClientPrice ClientPrice}
+     * @see DateTime
      */
-    public UnitsAvailable getUnitsAvailable() {
-        return this.unitsAvailable;
-    }
-
-    /**
-     * Set the Units Available
-     * <p>
-     * Representation of how many units of an Instrument are available to be
-     * traded by an Order depending on its postionFill option.
-     * <p>
-     * @param unitsAvailable the Units Available as an UnitsAvailable
-     * @return {@link Price Price}
-     * @see UnitsAvailable
-     */
-    public Price setUnitsAvailable(UnitsAvailable unitsAvailable) {
-        this.unitsAvailable = unitsAvailable;
+    public ClientPrice setTimestamp(String timestamp) {
+        this.timestamp = new DateTime(timestamp);
         return this;
     }
 }

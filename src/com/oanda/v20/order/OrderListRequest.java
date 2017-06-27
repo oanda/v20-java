@@ -36,13 +36,19 @@ public class OrderListRequest extends Request {
     public OrderListRequest setIds(Collection<?> ids) {
         ArrayList<OrderID> newIds = new ArrayList<OrderID>(ids.size());
         ids.forEach((item) -> {
-            if (OrderID.class == item.getClass())
+            if (item instanceof OrderID)
             {
                 newIds.add((OrderID) item);
             }
-            else if (String.class == item.getClass())
+            else if (item instanceof String)
             {
                 newIds.add(new OrderID((String) item));
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to an OrderID"
+                );
             }
         });
         this.queryParams.put("ids", newIds);

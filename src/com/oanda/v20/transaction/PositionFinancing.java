@@ -28,7 +28,7 @@ public class PositionFinancing {
      * @param other the PositionFinancing to copy
      */
     public PositionFinancing(PositionFinancing other) {
-        this.instrumentID = other.instrumentID;
+        this.instrument = other.instrument;
         this.financing = other.financing;
         if (other.openTradeFinancings != null)
         {
@@ -36,7 +36,7 @@ public class PositionFinancing {
         }
     }
 
-    @SerializedName("instrumentID") private InstrumentName instrumentID;
+    @SerializedName("instrument") private InstrumentName instrument;
 
     /**
      * Get the Instrument
@@ -47,8 +47,8 @@ public class PositionFinancing {
      * @return the Instrument
      * @see InstrumentName
      */
-    public InstrumentName getInstrumentID() {
-        return this.instrumentID;
+    public InstrumentName getInstrument() {
+        return this.instrument;
     }
 
     /**
@@ -57,12 +57,12 @@ public class PositionFinancing {
      * The instrument of the Position that financing is being paid/collected
      * for.
      * <p>
-     * @param instrumentID the Instrument as an InstrumentName
+     * @param instrument the Instrument as an InstrumentName
      * @return {@link PositionFinancing PositionFinancing}
      * @see InstrumentName
      */
-    public PositionFinancing setInstrumentID(InstrumentName instrumentID) {
-        this.instrumentID = instrumentID;
+    public PositionFinancing setInstrument(InstrumentName instrument) {
+        this.instrument = instrument;
         return this;
     }
     /**
@@ -71,12 +71,12 @@ public class PositionFinancing {
      * The instrument of the Position that financing is being paid/collected
      * for.
      * <p>
-     * @param instrumentID the Instrument as a String
+     * @param instrument the Instrument as a String
      * @return {@link PositionFinancing PositionFinancing}
      * @see InstrumentName
      */
-    public PositionFinancing setInstrumentID(String instrumentID) {
-        this.instrumentID = new InstrumentName(instrumentID);
+    public PositionFinancing setInstrument(String instrument) {
+        this.instrument = new InstrumentName(instrument);
         return this;
     }
 
@@ -173,9 +173,15 @@ public class PositionFinancing {
     public PositionFinancing setOpenTradeFinancings(Collection<?> openTradeFinancings) {
         ArrayList<OpenTradeFinancing> newOpenTradeFinancings = new ArrayList<OpenTradeFinancing>(openTradeFinancings.size());
         openTradeFinancings.forEach((item) -> {
-            if (OpenTradeFinancing.class == item.getClass())
+            if (item instanceof OpenTradeFinancing)
             {
                 newOpenTradeFinancings.add((OpenTradeFinancing) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to an OpenTradeFinancing"
+                );
             }
         });
         this.openTradeFinancings = newOpenTradeFinancings;

@@ -127,9 +127,15 @@ public class AccountProperties {
     public AccountProperties setTags(Collection<?> tags) {
         ArrayList<String> newTags = new ArrayList<String>(tags.size());
         tags.forEach((item) -> {
-            if (String.class == item.getClass())
+            if (item instanceof String)
             {
                 newTags.add((String) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a String"
+                );
             }
         });
         this.tags = newTags;

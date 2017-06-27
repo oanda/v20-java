@@ -30,6 +30,7 @@ public class Position {
         this.pl = other.pl;
         this.unrealizedPL = other.unrealizedPL;
         this.resettablePL = other.resettablePL;
+        this.commission = other.commission;
         if (other.longValue != null)
         {
             this.longValue = new PositionSide(other.longValue);
@@ -289,6 +290,78 @@ public class Position {
      */
     public Position setResettablePL(BigDecimal resettablePL) {
         this.resettablePL = new AccountUnits(resettablePL);
+        return this;
+    }
+
+    @SerializedName("commission") private AccountUnits commission;
+
+    /**
+     * Get the Commission
+     * <p>
+     * The total amount of commission paid for this instrument over the
+     * lifetime of the Account. Represented in the Account's home currency.
+     * <p>
+     * @return the Commission
+     * @see AccountUnits
+     */
+    public AccountUnits getCommission() {
+        return this.commission;
+    }
+
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid for this instrument over the
+     * lifetime of the Account. Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as an AccountUnits
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setCommission(AccountUnits commission) {
+        this.commission = commission;
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid for this instrument over the
+     * lifetime of the Account. Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a String
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setCommission(String commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid for this instrument over the
+     * lifetime of the Account. Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a double
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setCommission(double commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The total amount of commission paid for this instrument over the
+     * lifetime of the Account. Represented in the Account's home currency.
+     * <p>
+     * @param commission the Commission as a BigDecimal
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setCommission(BigDecimal commission) {
+        this.commission = new AccountUnits(commission);
         return this;
     }
 

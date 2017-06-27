@@ -1,4 +1,4 @@
-package com.oanda.v20.pricing;
+package com.oanda.v20.order;
 
 import com.google.gson.annotations.SerializedName;
 

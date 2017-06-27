@@ -1,14 +1,15 @@
 package com.oanda.v20.transaction;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Collection;
 import java.math.BigDecimal;
 
 import com.google.gson.annotations.SerializedName;
 
 import com.oanda.v20.account.AccountID;
 import com.oanda.v20.order.OrderID;
+import com.oanda.v20.pricing.ClientPrice;
 import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.AccountUnits;
 import com.oanda.v20.primitives.DateTime;
@@ -50,9 +51,14 @@ public class OrderFillTransaction implements Transaction {
         this.instrument = other.instrument;
         this.units = other.units;
         this.price = other.price;
+        if (other.fullPrice != null)
+        {
+            this.fullPrice = new ClientPrice(other.fullPrice);
+        }
         this.reason = other.reason;
         this.pl = other.pl;
         this.financing = other.financing;
+        this.commission = other.commission;
         this.accountBalance = other.accountBalance;
         if (other.tradeOpened != null)
         {
@@ -592,6 +598,34 @@ public class OrderFillTransaction implements Transaction {
         return this;
     }
 
+    @SerializedName("fullPrice") private ClientPrice fullPrice;
+
+    /**
+     * Get the Price
+     * <p>
+     * The price in effect for the account at the time of the Order fill.
+     * <p>
+     * @return the Price
+     * @see ClientPrice
+     */
+    public ClientPrice getFullPrice() {
+        return this.fullPrice;
+    }
+
+    /**
+     * Set the Price
+     * <p>
+     * The price in effect for the account at the time of the Order fill.
+     * <p>
+     * @param fullPrice the Price as a ClientPrice
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see ClientPrice
+     */
+    public OrderFillTransaction setFullPrice(ClientPrice fullPrice) {
+        this.fullPrice = fullPrice;
+        return this;
+    }
+
     @SerializedName("reason") private OrderFillReason reason;
 
     /**
@@ -754,6 +788,88 @@ public class OrderFillTransaction implements Transaction {
         return this;
     }
 
+    @SerializedName("commission") private AccountUnits commission;
+
+    /**
+     * Get the Commission
+     * <p>
+     * The commission charged in the Account's home currency as a result of
+     * filling the Order. The commission is always represented as a positive
+     * quantity of the Account's home currency, however it reduces the balance
+     * in the Account.
+     * <p>
+     * @return the Commission
+     * @see AccountUnits
+     */
+    public AccountUnits getCommission() {
+        return this.commission;
+    }
+
+    /**
+     * Set the Commission
+     * <p>
+     * The commission charged in the Account's home currency as a result of
+     * filling the Order. The commission is always represented as a positive
+     * quantity of the Account's home currency, however it reduces the balance
+     * in the Account.
+     * <p>
+     * @param commission the Commission as an AccountUnits
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setCommission(AccountUnits commission) {
+        this.commission = commission;
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The commission charged in the Account's home currency as a result of
+     * filling the Order. The commission is always represented as a positive
+     * quantity of the Account's home currency, however it reduces the balance
+     * in the Account.
+     * <p>
+     * @param commission the Commission as a String
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setCommission(String commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The commission charged in the Account's home currency as a result of
+     * filling the Order. The commission is always represented as a positive
+     * quantity of the Account's home currency, however it reduces the balance
+     * in the Account.
+     * <p>
+     * @param commission the Commission as a double
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setCommission(double commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+    /**
+     * Set the Commission
+     * <p>
+     * The commission charged in the Account's home currency as a result of
+     * filling the Order. The commission is always represented as a positive
+     * quantity of the Account's home currency, however it reduces the balance
+     * in the Account.
+     * <p>
+     * @param commission the Commission as a BigDecimal
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setCommission(BigDecimal commission) {
+        this.commission = new AccountUnits(commission);
+        return this;
+    }
+
     @SerializedName("accountBalance") private AccountUnits accountBalance;
 
     /**
@@ -879,9 +995,15 @@ public class OrderFillTransaction implements Transaction {
     public OrderFillTransaction setTradesClosed(Collection<?> tradesClosed) {
         ArrayList<TradeReduce> newTradesClosed = new ArrayList<TradeReduce>(tradesClosed.size());
         tradesClosed.forEach((item) -> {
-            if (TradeReduce.class == item.getClass())
+            if (item instanceof TradeReduce)
             {
                 newTradesClosed.add((TradeReduce) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TradeReduce"
+                );
             }
         });
         this.tradesClosed = newTradesClosed;

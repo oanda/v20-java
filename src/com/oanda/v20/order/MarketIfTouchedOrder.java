@@ -1091,13 +1091,19 @@ public class MarketIfTouchedOrder implements Order {
     public MarketIfTouchedOrder setTradeClosedIDs(Collection<?> tradeClosedIDs) {
         ArrayList<TradeID> newTradeClosedIDs = new ArrayList<TradeID>(tradeClosedIDs.size());
         tradeClosedIDs.forEach((item) -> {
-            if (TradeID.class == item.getClass())
+            if (item instanceof TradeID)
             {
                 newTradeClosedIDs.add((TradeID) item);
             }
-            else if (String.class == item.getClass())
+            else if (item instanceof String)
             {
                 newTradeClosedIDs.add(new TradeID((String) item));
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TradeID"
+                );
             }
         });
         this.tradeClosedIDs = newTradeClosedIDs;

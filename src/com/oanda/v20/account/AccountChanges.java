@@ -96,9 +96,15 @@ public class AccountChanges {
     public AccountChanges setOrdersCreated(Collection<?> ordersCreated) {
         ArrayList<Order> newOrdersCreated = new ArrayList<Order>(ordersCreated.size());
         ordersCreated.forEach((item) -> {
-            if (Order.class == item.getClass())
+            if (item instanceof Order)
             {
                 newOrdersCreated.add((Order) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to an Order"
+                );
             }
         });
         this.ordersCreated = newOrdersCreated;
@@ -131,9 +137,15 @@ public class AccountChanges {
     public AccountChanges setOrdersCancelled(Collection<?> ordersCancelled) {
         ArrayList<Order> newOrdersCancelled = new ArrayList<Order>(ordersCancelled.size());
         ordersCancelled.forEach((item) -> {
-            if (Order.class == item.getClass())
+            if (item instanceof Order)
             {
                 newOrdersCancelled.add((Order) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to an Order"
+                );
             }
         });
         this.ordersCancelled = newOrdersCancelled;
@@ -166,9 +178,15 @@ public class AccountChanges {
     public AccountChanges setOrdersFilled(Collection<?> ordersFilled) {
         ArrayList<Order> newOrdersFilled = new ArrayList<Order>(ordersFilled.size());
         ordersFilled.forEach((item) -> {
-            if (Order.class == item.getClass())
+            if (item instanceof Order)
             {
                 newOrdersFilled.add((Order) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to an Order"
+                );
             }
         });
         this.ordersFilled = newOrdersFilled;
@@ -201,9 +219,15 @@ public class AccountChanges {
     public AccountChanges setOrdersTriggered(Collection<?> ordersTriggered) {
         ArrayList<Order> newOrdersTriggered = new ArrayList<Order>(ordersTriggered.size());
         ordersTriggered.forEach((item) -> {
-            if (Order.class == item.getClass())
+            if (item instanceof Order)
             {
                 newOrdersTriggered.add((Order) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to an Order"
+                );
             }
         });
         this.ordersTriggered = newOrdersTriggered;
@@ -236,9 +260,15 @@ public class AccountChanges {
     public AccountChanges setTradesOpened(Collection<?> tradesOpened) {
         ArrayList<TradeSummary> newTradesOpened = new ArrayList<TradeSummary>(tradesOpened.size());
         tradesOpened.forEach((item) -> {
-            if (TradeSummary.class == item.getClass())
+            if (item instanceof TradeSummary)
             {
                 newTradesOpened.add((TradeSummary) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TradeSummary"
+                );
             }
         });
         this.tradesOpened = newTradesOpened;
@@ -271,9 +301,15 @@ public class AccountChanges {
     public AccountChanges setTradesReduced(Collection<?> tradesReduced) {
         ArrayList<TradeSummary> newTradesReduced = new ArrayList<TradeSummary>(tradesReduced.size());
         tradesReduced.forEach((item) -> {
-            if (TradeSummary.class == item.getClass())
+            if (item instanceof TradeSummary)
             {
                 newTradesReduced.add((TradeSummary) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TradeSummary"
+                );
             }
         });
         this.tradesReduced = newTradesReduced;
@@ -306,9 +342,15 @@ public class AccountChanges {
     public AccountChanges setTradesClosed(Collection<?> tradesClosed) {
         ArrayList<TradeSummary> newTradesClosed = new ArrayList<TradeSummary>(tradesClosed.size());
         tradesClosed.forEach((item) -> {
-            if (TradeSummary.class == item.getClass())
+            if (item instanceof TradeSummary)
             {
                 newTradesClosed.add((TradeSummary) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a TradeSummary"
+                );
             }
         });
         this.tradesClosed = newTradesClosed;
@@ -341,9 +383,15 @@ public class AccountChanges {
     public AccountChanges setPositions(Collection<?> positions) {
         ArrayList<Position> newPositions = new ArrayList<Position>(positions.size());
         positions.forEach((item) -> {
-            if (Position.class == item.getClass())
+            if (item instanceof Position)
             {
                 newPositions.add((Position) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a Position"
+                );
             }
         });
         this.positions = newPositions;
@@ -376,9 +424,15 @@ public class AccountChanges {
     public AccountChanges setTransactions(Collection<?> transactions) {
         ArrayList<Transaction> newTransactions = new ArrayList<Transaction>(transactions.size());
         transactions.forEach((item) -> {
-            if (Transaction.class == item.getClass())
+            if (item instanceof Transaction)
             {
                 newTransactions.add((Transaction) item);
+            }
+            else
+            {
+                throw new IllegalArgumentException(
+                    item.getClass().getName() + " cannot be converted to a Transaction"
+                );
             }
         });
         this.transactions = newTransactions;
