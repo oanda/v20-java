@@ -49,7 +49,7 @@ public class TradeID extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing TradeIDs
+     * JSON adapter for reading and writing TradeID0
      */
     public static class JsonAdapter extends TypeAdapter<TradeID> {
 

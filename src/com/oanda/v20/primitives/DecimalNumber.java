@@ -79,7 +79,7 @@ public class DecimalNumber extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing DecimalNumbers
+     * JSON adapter for reading and writing DecimalNumber0
      */
     public static class JsonAdapter extends TypeAdapter<DecimalNumber> {
 

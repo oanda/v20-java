@@ -57,7 +57,7 @@ public class OrderSpecifier extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing OrderSpecifiers
+     * JSON adapter for reading and writing OrderSpecifier0
      */
     public static class JsonAdapter extends TypeAdapter<OrderSpecifier> {
 

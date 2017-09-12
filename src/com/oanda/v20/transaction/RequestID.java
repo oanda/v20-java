@@ -35,7 +35,7 @@ public class RequestID extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing RequestIDs
+     * JSON adapter for reading and writing RequestID0
      */
     public static class JsonAdapter extends TypeAdapter<RequestID> {
 

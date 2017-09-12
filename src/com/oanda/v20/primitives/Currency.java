@@ -36,7 +36,7 @@ public class Currency extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing Currencys
+     * JSON adapter for reading and writing Currency0
      */
     public static class JsonAdapter extends TypeAdapter<Currency> {
 

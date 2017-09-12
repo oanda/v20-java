@@ -49,7 +49,7 @@ public class OrderID extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing OrderIDs
+     * JSON adapter for reading and writing OrderID0
      */
     public static class JsonAdapter extends TypeAdapter<OrderID> {
 

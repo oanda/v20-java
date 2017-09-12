@@ -41,7 +41,7 @@ public class UserSpecifier extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing UserSpecifiers
+     * JSON adapter for reading and writing UserSpecifier0
      */
     public static class JsonAdapter extends TypeAdapter<UserSpecifier> {
 

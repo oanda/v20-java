@@ -39,7 +39,7 @@ public class DateTime extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing DateTimes
+     * JSON adapter for reading and writing DateTime0
      */
     public static class JsonAdapter extends TypeAdapter<DateTime> {
 

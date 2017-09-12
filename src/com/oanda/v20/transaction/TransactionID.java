@@ -37,7 +37,7 @@ public class TransactionID extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing TransactionIDs
+     * JSON adapter for reading and writing TransactionID0
      */
     public static class JsonAdapter extends TypeAdapter<TransactionID> {
 

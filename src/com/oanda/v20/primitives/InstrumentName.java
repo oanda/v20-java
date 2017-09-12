@@ -35,7 +35,7 @@ public class InstrumentName extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing InstrumentNames
+     * JSON adapter for reading and writing InstrumentName0
      */
     public static class JsonAdapter extends TypeAdapter<InstrumentName> {
 

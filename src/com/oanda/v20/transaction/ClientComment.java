@@ -37,7 +37,7 @@ public class ClientComment extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing ClientComments
+     * JSON adapter for reading and writing ClientComment0
      */
     public static class JsonAdapter extends TypeAdapter<ClientComment> {
 

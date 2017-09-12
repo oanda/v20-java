@@ -38,7 +38,6 @@ public class OrderCancelRejectTransaction implements Transaction {
         this.type = other.type;
         this.orderID = other.orderID;
         this.clientOrderID = other.clientOrderID;
-        this.reason = other.reason;
         this.rejectReason = other.rejectReason;
     }
 
@@ -404,35 +403,6 @@ public class OrderCancelRejectTransaction implements Transaction {
      */
     public OrderCancelRejectTransaction setClientOrderID(String clientOrderID) {
         this.clientOrderID = new OrderID(clientOrderID);
-        return this;
-    }
-
-    @SerializedName("reason") private OrderCancelReason reason;
-
-    /**
-     * Get the Cancel Reason
-     * <p>
-     * The reason that the Order was to be cancelled.
-     * <p>
-     * @return the Cancel Reason
-     * @see OrderCancelReason
-     */
-    public OrderCancelReason getReason() {
-        return this.reason;
-    }
-
-    /**
-     * Set the Cancel Reason
-     * <p>
-     * The reason that the Order was to be cancelled.
-     * <p>
-     * @param reason the Cancel Reason as an OrderCancelReason
-     * @return {@link OrderCancelRejectTransaction
-     * OrderCancelRejectTransaction}
-     * @see OrderCancelReason
-     */
-    public OrderCancelRejectTransaction setReason(OrderCancelReason reason) {
-        this.reason = reason;
         return this;
     }
 

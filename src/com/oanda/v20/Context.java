@@ -5,6 +5,8 @@ import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Array;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.http.HttpEntity;
@@ -106,15 +108,15 @@ public class Context {
         // Query Parameters
         request.getQueryParams().forEach( (key, value) -> {
             // Handle arrays
-            if (value.getClass().isArray()) {
-                String array = "";
-                int length = Array.getLength(value);
-                for (int i = 0; i < length; ++i) {
-                    if (i != 0)
-                        array += ",";
-                    array += Array.get(value, i).toString();
+            if (value instanceof Collection<?>) {
+                Iterator<?> iter = ((Collection<?>) value).iterator();
+                String csv = "";
+                if (iter.hasNext ()) {
+                    csv = iter.next().toString();
+                    while (iter.hasNext())
+                        csv += "," + iter.next().toString();
                 }
-                uriBuilder.addParameter(key, array);
+                uriBuilder.addParameter(key, csv);
             }
             else {
                 uriBuilder.addParameter(key, value.toString());

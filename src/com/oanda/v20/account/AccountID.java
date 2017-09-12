@@ -38,7 +38,7 @@ public class AccountID extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing AccountIDs
+     * JSON adapter for reading and writing AccountID0
      */
     public static class JsonAdapter extends TypeAdapter<AccountID> {
 

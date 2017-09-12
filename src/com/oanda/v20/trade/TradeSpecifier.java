@@ -57,7 +57,7 @@ public class TradeSpecifier extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing TradeSpecifiers
+     * JSON adapter for reading and writing TradeSpecifier0
      */
     public static class JsonAdapter extends TypeAdapter<TradeSpecifier> {
 

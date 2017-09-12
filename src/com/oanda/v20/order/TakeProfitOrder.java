@@ -475,8 +475,19 @@ public class TakeProfitOrder implements Order {
     /**
      * Get the Trigger Condition
      * <p>
-     * Specification of what component of a price should be used for comparison
-     * when determining if the Order should be filled.
+     * Specification of which price component should be used when determining
+     * if an Order should be triggered and filled. This allows Orders to be
+     * triggered based on the bid, ask, mid, default (ask for buy, bid for
+     * sell) or inverse (ask for sell, bid for buy) price depending on the
+     * desired behaviour. Orders are always filled using their default price
+     * component. This feature is only provided through the REST API. Clients
+     * who choose to specify a non-default trigger condition will not see it
+     * reflected in any of OANDA's proprietary or partner trading platforms,
+     * their transaction history or their account statements. OANDA platforms
+     * always assume that an Order's trigger condition is set to the default
+     * value when indicating the distance from an Order's trigger price, and
+     * will always provide the default trigger condition when creating or
+     * modifying an Order.
      * <p>
      * @return the Trigger Condition
      * @see OrderTriggerCondition
@@ -488,8 +499,19 @@ public class TakeProfitOrder implements Order {
     /**
      * Set the Trigger Condition
      * <p>
-     * Specification of what component of a price should be used for comparison
-     * when determining if the Order should be filled.
+     * Specification of which price component should be used when determining
+     * if an Order should be triggered and filled. This allows Orders to be
+     * triggered based on the bid, ask, mid, default (ask for buy, bid for
+     * sell) or inverse (ask for sell, bid for buy) price depending on the
+     * desired behaviour. Orders are always filled using their default price
+     * component. This feature is only provided through the REST API. Clients
+     * who choose to specify a non-default trigger condition will not see it
+     * reflected in any of OANDA's proprietary or partner trading platforms,
+     * their transaction history or their account statements. OANDA platforms
+     * always assume that an Order's trigger condition is set to the default
+     * value when indicating the distance from an Order's trigger price, and
+     * will always provide the default trigger condition when creating or
+     * modifying an Order.
      * <p>
      * @param triggerCondition the Trigger Condition as an
      * OrderTriggerCondition

@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
+import com.oanda.v20.primitives.DateTime;
+
 /**
  * PricingGetResponse
  */
@@ -30,5 +32,20 @@ public class PricingGetResponse {
      */
     public List<Price> getPrices() {
         return this.prices;
+    }
+
+    @SerializedName("time") private DateTime time;
+
+    /**
+     * Get the Time
+     * <p>
+     * The DateTime value to use for the "since" parameter in the next poll
+     * request.
+     * <p>
+     * @return the Time
+     * @see DateTime
+     */
+    public DateTime getTime() {
+        return this.time;
     }
 }

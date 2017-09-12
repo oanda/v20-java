@@ -37,7 +37,7 @@ public class ClientTag extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing ClientTags
+     * JSON adapter for reading and writing ClientTag0
      */
     public static class JsonAdapter extends TypeAdapter<ClientTag> {
 

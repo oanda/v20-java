@@ -81,7 +81,7 @@ public class PriceValue extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing PriceValues
+     * JSON adapter for reading and writing PriceValue0
      */
     public static class JsonAdapter extends TypeAdapter<PriceValue> {
 

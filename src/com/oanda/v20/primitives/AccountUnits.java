@@ -79,7 +79,7 @@ public class AccountUnits extends StringPrimitive {
     }
 
     /**
-     * JSON adapter for reading and writing AccountUnitss
+     * JSON adapter for reading and writing AccountUnits0
      */
     public static class JsonAdapter extends TypeAdapter<AccountUnits> {
 
