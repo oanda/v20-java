@@ -518,4 +518,32 @@ public class DailyFinancingTransaction implements Transaction {
         this.positionFinancings = newPositionFinancings;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "DailyFinancingTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) + ", " +
+            "accountBalance=" +
+                (accountBalance == null ? "null" : accountBalance.toString()) + ", " +
+            "accountFinancingMode=" +
+                (accountFinancingMode == null ? "null" : accountFinancingMode.toString()) + ", " +
+            "positionFinancings=" +
+                (positionFinancings == null ? "null" : positionFinancings.toString()) +
+            ")";
+    }
 }

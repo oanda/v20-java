@@ -446,4 +446,22 @@ public class PositionSide {
         this.resettablePL = new AccountUnits(resettablePL);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "PositionSide(" +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "averagePrice=" +
+                (averagePrice == null ? "null" : averagePrice.toString()) + ", " +
+            "tradeIDs=" +
+                (tradeIDs == null ? "null" : tradeIDs.toString()) + ", " +
+            "pl=" +
+                (pl == null ? "null" : pl.toString()) + ", " +
+            "unrealizedPL=" +
+                (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
+            "resettablePL=" +
+                (resettablePL == null ? "null" : resettablePL.toString()) +
+            ")";
+    }
 }

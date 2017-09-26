@@ -252,4 +252,18 @@ public class DynamicOrderState {
         this.isTriggerDistanceExact = isTriggerDistanceExact;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "DynamicOrderState(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "trailingStopValue=" +
+                (trailingStopValue == null ? "null" : trailingStopValue.toString()) + ", " +
+            "triggerDistance=" +
+                (triggerDistance == null ? "null" : triggerDistance.toString()) + ", " +
+            "isTriggerDistanceExact=" +
+                (isTriggerDistanceExact == null ? "null" : isTriggerDistanceExact.toString()) +
+            ")";
+    }
 }

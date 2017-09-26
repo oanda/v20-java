@@ -94,4 +94,14 @@ public class PricingHeartbeat {
         this.time = new DateTime(time);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "PricingHeartbeat(" +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) +
+            ")";
+    }
 }

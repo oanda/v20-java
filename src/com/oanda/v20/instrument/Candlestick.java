@@ -230,4 +230,22 @@ public class Candlestick {
         this.complete = complete;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Candlestick(" +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "bid=" +
+                (bid == null ? "null" : bid.toString()) + ", " +
+            "ask=" +
+                (ask == null ? "null" : ask.toString()) + ", " +
+            "mid=" +
+                (mid == null ? "null" : mid.toString()) + ", " +
+            "volume=" +
+                (volume == null ? "null" : volume.toString()) + ", " +
+            "complete=" +
+                (complete == null ? "null" : complete.toString()) +
+            ")";
+    }
 }

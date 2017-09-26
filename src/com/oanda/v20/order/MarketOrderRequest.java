@@ -507,4 +507,32 @@ public class MarketOrderRequest implements OrderRequest {
         this.tradeClientExtensions = tradeClientExtensions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "MarketOrderRequest(" +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "priceBound=" +
+                (priceBound == null ? "null" : priceBound.toString()) + ", " +
+            "positionFill=" +
+                (positionFill == null ? "null" : positionFill.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "takeProfitOnFill=" +
+                (takeProfitOnFill == null ? "null" : takeProfitOnFill.toString()) + ", " +
+            "stopLossOnFill=" +
+                (stopLossOnFill == null ? "null" : stopLossOnFill.toString()) + ", " +
+            "trailingStopLossOnFill=" +
+                (trailingStopLossOnFill == null ? "null" : trailingStopLossOnFill.toString()) + ", " +
+            "tradeClientExtensions=" +
+                (tradeClientExtensions == null ? "null" : tradeClientExtensions.toString()) +
+            ")";
+    }
 }

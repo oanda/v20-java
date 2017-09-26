@@ -107,4 +107,14 @@ public class OrderIdentifier {
         this.clientOrderID = new ClientID(clientOrderID);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "OrderIdentifier(" +
+            "orderID=" +
+                (orderID == null ? "null" : orderID.toString()) + ", " +
+            "clientOrderID=" +
+                (clientOrderID == null ? "null" : clientOrderID.toString()) +
+            ")";
+    }
 }

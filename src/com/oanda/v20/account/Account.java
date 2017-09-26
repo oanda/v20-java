@@ -1993,4 +1993,80 @@ public class Account {
         this.orders = newOrders;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Account(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "alias=" +
+                (alias == null ? "null" : alias.toString()) + ", " +
+            "currency=" +
+                (currency == null ? "null" : currency.toString()) + ", " +
+            "balance=" +
+                (balance == null ? "null" : balance.toString()) + ", " +
+            "createdByUserID=" +
+                (createdByUserID == null ? "null" : createdByUserID.toString()) + ", " +
+            "createdTime=" +
+                (createdTime == null ? "null" : createdTime.toString()) + ", " +
+            "pl=" +
+                (pl == null ? "null" : pl.toString()) + ", " +
+            "resettablePL=" +
+                (resettablePL == null ? "null" : resettablePL.toString()) + ", " +
+            "resettabledPLTime=" +
+                (resettabledPLTime == null ? "null" : resettabledPLTime.toString()) + ", " +
+            "commission=" +
+                (commission == null ? "null" : commission.toString()) + ", " +
+            "marginRate=" +
+                (marginRate == null ? "null" : marginRate.toString()) + ", " +
+            "marginCallEnterTime=" +
+                (marginCallEnterTime == null ? "null" : marginCallEnterTime.toString()) + ", " +
+            "marginCallExtensionCount=" +
+                (marginCallExtensionCount == null ? "null" : marginCallExtensionCount.toString()) + ", " +
+            "lastMarginCallExtensionTime=" +
+                (lastMarginCallExtensionTime == null ? "null" : lastMarginCallExtensionTime.toString()) + ", " +
+            "openTradeCount=" +
+                (openTradeCount == null ? "null" : openTradeCount.toString()) + ", " +
+            "openPositionCount=" +
+                (openPositionCount == null ? "null" : openPositionCount.toString()) + ", " +
+            "pendingOrderCount=" +
+                (pendingOrderCount == null ? "null" : pendingOrderCount.toString()) + ", " +
+            "hedgingEnabled=" +
+                (hedgingEnabled == null ? "null" : hedgingEnabled.toString()) + ", " +
+            "unrealizedPL=" +
+                (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
+            "NAV=" +
+                (nAV == null ? "null" : nAV.toString()) + ", " +
+            "marginUsed=" +
+                (marginUsed == null ? "null" : marginUsed.toString()) + ", " +
+            "marginAvailable=" +
+                (marginAvailable == null ? "null" : marginAvailable.toString()) + ", " +
+            "positionValue=" +
+                (positionValue == null ? "null" : positionValue.toString()) + ", " +
+            "marginCloseoutUnrealizedPL=" +
+                (marginCloseoutUnrealizedPL == null ? "null" : marginCloseoutUnrealizedPL.toString()) + ", " +
+            "marginCloseoutNAV=" +
+                (marginCloseoutNAV == null ? "null" : marginCloseoutNAV.toString()) + ", " +
+            "marginCloseoutMarginUsed=" +
+                (marginCloseoutMarginUsed == null ? "null" : marginCloseoutMarginUsed.toString()) + ", " +
+            "marginCloseoutPercent=" +
+                (marginCloseoutPercent == null ? "null" : marginCloseoutPercent.toString()) + ", " +
+            "marginCloseoutPositionValue=" +
+                (marginCloseoutPositionValue == null ? "null" : marginCloseoutPositionValue.toString()) + ", " +
+            "withdrawalLimit=" +
+                (withdrawalLimit == null ? "null" : withdrawalLimit.toString()) + ", " +
+            "marginCallMarginUsed=" +
+                (marginCallMarginUsed == null ? "null" : marginCallMarginUsed.toString()) + ", " +
+            "marginCallPercent=" +
+                (marginCallPercent == null ? "null" : marginCallPercent.toString()) + ", " +
+            "lastTransactionID=" +
+                (lastTransactionID == null ? "null" : lastTransactionID.toString()) + ", " +
+            "trades=" +
+                (trades == null ? "null" : trades.toString()) + ", " +
+            "positions=" +
+                (positions == null ? "null" : positions.toString()) + ", " +
+            "orders=" +
+                (orders == null ? "null" : orders.toString()) +
+            ")";
+    }
 }

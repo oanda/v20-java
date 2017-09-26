@@ -610,4 +610,36 @@ public class LimitOrderRequest implements OrderRequest {
         this.tradeClientExtensions = tradeClientExtensions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "LimitOrderRequest(" +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "positionFill=" +
+                (positionFill == null ? "null" : positionFill.toString()) + ", " +
+            "triggerCondition=" +
+                (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "takeProfitOnFill=" +
+                (takeProfitOnFill == null ? "null" : takeProfitOnFill.toString()) + ", " +
+            "stopLossOnFill=" +
+                (stopLossOnFill == null ? "null" : stopLossOnFill.toString()) + ", " +
+            "trailingStopLossOnFill=" +
+                (trailingStopLossOnFill == null ? "null" : trailingStopLossOnFill.toString()) + ", " +
+            "tradeClientExtensions=" +
+                (tradeClientExtensions == null ? "null" : tradeClientExtensions.toString()) +
+            ")";
+    }
 }

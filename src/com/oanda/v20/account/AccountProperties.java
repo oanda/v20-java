@@ -141,4 +141,16 @@ public class AccountProperties {
         this.tags = newTags;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "AccountProperties(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "mt4AccountID=" +
+                (mt4AccountID == null ? "null" : mt4AccountID.toString()) + ", " +
+            "tags=" +
+                (tags == null ? "null" : tags.toString()) +
+            ")";
+    }
 }

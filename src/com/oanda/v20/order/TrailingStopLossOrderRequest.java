@@ -395,4 +395,26 @@ public class TrailingStopLossOrderRequest implements OrderRequest {
         this.clientExtensions = clientExtensions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TrailingStopLossOrderRequest(" +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "clientTradeID=" +
+                (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
+            "distance=" +
+                (distance == null ? "null" : distance.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "triggerCondition=" +
+                (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) +
+            ")";
+    }
 }

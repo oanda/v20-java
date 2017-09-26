@@ -391,4 +391,26 @@ public class TakeProfitOrderRequest implements OrderRequest {
         this.clientExtensions = clientExtensions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TakeProfitOrderRequest(" +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "clientTradeID=" +
+                (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "triggerCondition=" +
+                (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) +
+            ")";
+    }
 }

@@ -301,4 +301,18 @@ public class CandlestickData {
         this.c = new PriceValue(c);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "CandlestickData(" +
+            "o=" +
+                (o == null ? "null" : o.toString()) + ", " +
+            "h=" +
+                (h == null ? "null" : h.toString()) + ", " +
+            "l=" +
+                (l == null ? "null" : l.toString()) + ", " +
+            "c=" +
+                (c == null ? "null" : c.toString()) +
+            ")";
+    }
 }

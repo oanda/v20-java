@@ -334,4 +334,26 @@ public class MarginCallExtendTransaction implements Transaction {
         this.extensionNumber = extensionNumber;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "MarginCallExtendTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "extensionNumber=" +
+                (extensionNumber == null ? "null" : extensionNumber.toString()) +
+            ")";
+    }
 }

@@ -136,4 +136,16 @@ public class TransactionHeartbeat {
         this.time = new DateTime(time);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TransactionHeartbeat(" +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "lastTransactionID=" +
+                (lastTransactionID == null ? "null" : lastTransactionID.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) +
+            ")";
+    }
 }

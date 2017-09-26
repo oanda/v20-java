@@ -244,4 +244,16 @@ public class OrderBookBucket {
         this.shortCountPercent = new DecimalNumber(shortCountPercent);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "OrderBookBucket(" +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "longCountPercent=" +
+                (longCountPercent == null ? "null" : longCountPercent.toString()) + ", " +
+            "shortCountPercent=" +
+                (shortCountPercent == null ? "null" : shortCountPercent.toString()) +
+            ")";
+    }
 }

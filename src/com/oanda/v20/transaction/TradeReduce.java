@@ -275,4 +275,18 @@ public class TradeReduce {
         this.financing = new AccountUnits(financing);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TradeReduce(" +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "realizedPL=" +
+                (realizedPL == null ? "null" : realizedPL.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) +
+            ")";
+    }
 }

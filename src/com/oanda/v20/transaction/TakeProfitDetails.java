@@ -205,4 +205,18 @@ public class TakeProfitDetails {
         this.clientExtensions = clientExtensions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TakeProfitDetails(" +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) +
+            ")";
+    }
 }

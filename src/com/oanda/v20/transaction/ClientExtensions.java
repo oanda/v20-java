@@ -148,4 +148,16 @@ public class ClientExtensions {
         this.comment = new ClientComment(comment);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "ClientExtensions(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "tag=" +
+                (tag == null ? "null" : tag.toString()) + ", " +
+            "comment=" +
+                (comment == null ? "null" : comment.toString()) +
+            ")";
+    }
 }

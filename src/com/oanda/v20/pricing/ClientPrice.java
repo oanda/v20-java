@@ -323,4 +323,20 @@ public class ClientPrice {
         this.timestamp = new DateTime(timestamp);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "ClientPrice(" +
+            "bids=" +
+                (bids == null ? "null" : bids.toString()) + ", " +
+            "asks=" +
+                (asks == null ? "null" : asks.toString()) + ", " +
+            "closeoutBid=" +
+                (closeoutBid == null ? "null" : closeoutBid.toString()) + ", " +
+            "closeoutAsk=" +
+                (closeoutAsk == null ? "null" : closeoutAsk.toString()) + ", " +
+            "timestamp=" +
+                (timestamp == null ? "null" : timestamp.toString()) +
+            ")";
+    }
 }

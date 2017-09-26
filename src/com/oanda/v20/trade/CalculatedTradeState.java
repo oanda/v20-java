@@ -134,4 +134,14 @@ public class CalculatedTradeState {
         this.unrealizedPL = new AccountUnits(unrealizedPL);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "CalculatedTradeState(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "unrealizedPL=" +
+                (unrealizedPL == null ? "null" : unrealizedPL.toString()) +
+            ")";
+    }
 }

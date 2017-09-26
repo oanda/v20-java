@@ -1042,4 +1042,56 @@ public class StopOrderTransaction implements Transaction {
         this.cancellingTransactionID = new TransactionID(cancellingTransactionID);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "StopOrderTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "priceBound=" +
+                (priceBound == null ? "null" : priceBound.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "positionFill=" +
+                (positionFill == null ? "null" : positionFill.toString()) + ", " +
+            "triggerCondition=" +
+                (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "reason=" +
+                (reason == null ? "null" : reason.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "takeProfitOnFill=" +
+                (takeProfitOnFill == null ? "null" : takeProfitOnFill.toString()) + ", " +
+            "stopLossOnFill=" +
+                (stopLossOnFill == null ? "null" : stopLossOnFill.toString()) + ", " +
+            "trailingStopLossOnFill=" +
+                (trailingStopLossOnFill == null ? "null" : trailingStopLossOnFill.toString()) + ", " +
+            "tradeClientExtensions=" +
+                (tradeClientExtensions == null ? "null" : tradeClientExtensions.toString()) + ", " +
+            "replacesOrderID=" +
+                (replacesOrderID == null ? "null" : replacesOrderID.toString()) + ", " +
+            "cancellingTransactionID=" +
+                (cancellingTransactionID == null ? "null" : cancellingTransactionID.toString()) +
+            ")";
+    }
 }

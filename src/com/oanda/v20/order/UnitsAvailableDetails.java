@@ -161,4 +161,14 @@ public class UnitsAvailableDetails {
         this.shortValue = new DecimalNumber(shortValue);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UnitsAvailableDetails(" +
+            "long=" +
+                (longValue == null ? "null" : longValue.toString()) + ", " +
+            "short=" +
+                (shortValue == null ? "null" : shortValue.toString()) +
+            ")";
+    }
 }

@@ -159,4 +159,16 @@ public class MarketOrderDelayedTradeClose {
         this.sourceTransactionID = new TransactionID(sourceTransactionID);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "MarketOrderDelayedTradeClose(" +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "clientTradeID=" +
+                (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
+            "sourceTransactionID=" +
+                (sourceTransactionID == null ? "null" : sourceTransactionID.toString()) +
+            ")";
+    }
 }

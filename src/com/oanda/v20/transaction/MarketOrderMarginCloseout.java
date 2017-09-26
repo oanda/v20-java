@@ -50,4 +50,12 @@ public class MarketOrderMarginCloseout {
         this.reason = reason;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "MarketOrderMarginCloseout(" +
+            "reason=" +
+                (reason == null ? "null" : reason.toString()) +
+            ")";
+    }
 }

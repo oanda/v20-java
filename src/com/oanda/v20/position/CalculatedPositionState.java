@@ -274,4 +274,18 @@ public class CalculatedPositionState {
         this.shortUnrealizedPL = new AccountUnits(shortUnrealizedPL);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "CalculatedPositionState(" +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "netUnrealizedPL=" +
+                (netUnrealizedPL == null ? "null" : netUnrealizedPL.toString()) + ", " +
+            "longUnrealizedPL=" +
+                (longUnrealizedPL == null ? "null" : longUnrealizedPL.toString()) + ", " +
+            "shortUnrealizedPL=" +
+                (shortUnrealizedPL == null ? "null" : shortUnrealizedPL.toString()) +
+            ")";
+    }
 }

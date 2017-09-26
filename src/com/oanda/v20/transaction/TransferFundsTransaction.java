@@ -507,4 +507,32 @@ public class TransferFundsTransaction implements Transaction {
         this.accountBalance = new AccountUnits(accountBalance);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TransferFundsTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "amount=" +
+                (amount == null ? "null" : amount.toString()) + ", " +
+            "fundingReason=" +
+                (fundingReason == null ? "null" : fundingReason.toString()) + ", " +
+            "comment=" +
+                (comment == null ? "null" : comment.toString()) + ", " +
+            "accountBalance=" +
+                (accountBalance == null ? "null" : accountBalance.toString()) +
+            ")";
+    }
 }

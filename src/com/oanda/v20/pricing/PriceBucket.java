@@ -120,4 +120,14 @@ public class PriceBucket {
         this.liquidity = liquidity;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "PriceBucket(" +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "liquidity=" +
+                (liquidity == null ? "null" : liquidity.toString()) +
+            ")";
+    }
 }

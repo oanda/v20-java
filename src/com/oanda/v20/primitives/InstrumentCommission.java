@@ -278,4 +278,18 @@ public class InstrumentCommission {
         this.minimumCommission = new DecimalNumber(minimumCommission);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "InstrumentCommission(" +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "commission=" +
+                (commission == null ? "null" : commission.toString()) + ", " +
+            "unitsTraded=" +
+                (unitsTraded == null ? "null" : unitsTraded.toString()) + ", " +
+            "minimumCommission=" +
+                (minimumCommission == null ? "null" : minimumCommission.toString()) +
+            ")";
+    }
 }

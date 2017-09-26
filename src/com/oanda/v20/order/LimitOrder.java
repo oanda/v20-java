@@ -1147,4 +1147,60 @@ public class LimitOrder implements Order {
         this.replacedByOrderID = new OrderID(replacedByOrderID);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "LimitOrder(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "createTime=" +
+                (createTime == null ? "null" : createTime.toString()) + ", " +
+            "state=" +
+                (state == null ? "null" : state.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "positionFill=" +
+                (positionFill == null ? "null" : positionFill.toString()) + ", " +
+            "triggerCondition=" +
+                (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "takeProfitOnFill=" +
+                (takeProfitOnFill == null ? "null" : takeProfitOnFill.toString()) + ", " +
+            "stopLossOnFill=" +
+                (stopLossOnFill == null ? "null" : stopLossOnFill.toString()) + ", " +
+            "trailingStopLossOnFill=" +
+                (trailingStopLossOnFill == null ? "null" : trailingStopLossOnFill.toString()) + ", " +
+            "tradeClientExtensions=" +
+                (tradeClientExtensions == null ? "null" : tradeClientExtensions.toString()) + ", " +
+            "fillingTransactionID=" +
+                (fillingTransactionID == null ? "null" : fillingTransactionID.toString()) + ", " +
+            "filledTime=" +
+                (filledTime == null ? "null" : filledTime.toString()) + ", " +
+            "tradeOpenedID=" +
+                (tradeOpenedID == null ? "null" : tradeOpenedID.toString()) + ", " +
+            "tradeReducedID=" +
+                (tradeReducedID == null ? "null" : tradeReducedID.toString()) + ", " +
+            "tradeClosedIDs=" +
+                (tradeClosedIDs == null ? "null" : tradeClosedIDs.toString()) + ", " +
+            "cancellingTransactionID=" +
+                (cancellingTransactionID == null ? "null" : cancellingTransactionID.toString()) + ", " +
+            "cancelledTime=" +
+                (cancelledTime == null ? "null" : cancelledTime.toString()) + ", " +
+            "replacesOrderID=" +
+                (replacesOrderID == null ? "null" : replacesOrderID.toString()) + ", " +
+            "replacedByOrderID=" +
+                (replacedByOrderID == null ? "null" : replacedByOrderID.toString()) +
+            ")";
+    }
 }

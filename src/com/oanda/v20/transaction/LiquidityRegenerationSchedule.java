@@ -74,4 +74,12 @@ public class LiquidityRegenerationSchedule {
         this.steps = newSteps;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "LiquidityRegenerationSchedule(" +
+            "steps=" +
+                (steps == null ? "null" : steps.toString()) +
+            ")";
+    }
 }

@@ -439,4 +439,30 @@ public class TradeClientExtensionsModifyTransaction implements Transaction {
         this.tradeClientExtensionsModify = tradeClientExtensionsModify;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TradeClientExtensionsModifyTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "clientTradeID=" +
+                (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
+            "tradeClientExtensionsModify=" +
+                (tradeClientExtensionsModify == null ? "null" : tradeClientExtensionsModify.toString()) +
+            ")";
+    }
 }

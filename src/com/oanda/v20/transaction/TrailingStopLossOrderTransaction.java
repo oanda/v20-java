@@ -829,4 +829,46 @@ public class TrailingStopLossOrderTransaction implements Transaction {
         this.cancellingTransactionID = new TransactionID(cancellingTransactionID);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TrailingStopLossOrderTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "clientTradeID=" +
+                (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
+            "distance=" +
+                (distance == null ? "null" : distance.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "triggerCondition=" +
+                (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "reason=" +
+                (reason == null ? "null" : reason.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "orderFillTransactionID=" +
+                (orderFillTransactionID == null ? "null" : orderFillTransactionID.toString()) + ", " +
+            "replacesOrderID=" +
+                (replacesOrderID == null ? "null" : replacesOrderID.toString()) + ", " +
+            "cancellingTransactionID=" +
+                (cancellingTransactionID == null ? "null" : cancellingTransactionID.toString()) +
+            ")";
+    }
 }

@@ -1039,4 +1039,52 @@ public class OrderFillTransaction implements Transaction {
         this.tradeReduced = tradeReduced;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "OrderFillTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "orderID=" +
+                (orderID == null ? "null" : orderID.toString()) + ", " +
+            "clientOrderID=" +
+                (clientOrderID == null ? "null" : clientOrderID.toString()) + ", " +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "fullPrice=" +
+                (fullPrice == null ? "null" : fullPrice.toString()) + ", " +
+            "reason=" +
+                (reason == null ? "null" : reason.toString()) + ", " +
+            "pl=" +
+                (pl == null ? "null" : pl.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) + ", " +
+            "commission=" +
+                (commission == null ? "null" : commission.toString()) + ", " +
+            "accountBalance=" +
+                (accountBalance == null ? "null" : accountBalance.toString()) + ", " +
+            "tradeOpened=" +
+                (tradeOpened == null ? "null" : tradeOpened.toString()) + ", " +
+            "tradesClosed=" +
+                (tradesClosed == null ? "null" : tradesClosed.toString()) + ", " +
+            "tradeReduced=" +
+                (tradeReduced == null ? "null" : tradeReduced.toString()) +
+            ")";
+    }
 }

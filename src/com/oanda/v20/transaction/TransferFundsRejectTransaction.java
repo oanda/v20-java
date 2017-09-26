@@ -487,4 +487,32 @@ public class TransferFundsRejectTransaction implements Transaction {
         this.rejectReason = rejectReason;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TransferFundsRejectTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "amount=" +
+                (amount == null ? "null" : amount.toString()) + ", " +
+            "fundingReason=" +
+                (fundingReason == null ? "null" : fundingReason.toString()) + ", " +
+            "comment=" +
+                (comment == null ? "null" : comment.toString()) + ", " +
+            "rejectReason=" +
+                (rejectReason == null ? "null" : rejectReason.toString()) +
+            ")";
+    }
 }

@@ -110,4 +110,16 @@ public class UserInfoExternal {
         this.fIFO = fIFO;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfoExternal(" +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "country=" +
+                (country == null ? "null" : country.toString()) + ", " +
+            "FIFO=" +
+                (fIFO == null ? "null" : fIFO.toString()) +
+            ")";
+    }
 }

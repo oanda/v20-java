@@ -192,4 +192,14 @@ public class QuoteHomeConversionFactors {
         this.negativeUnits = new DecimalNumber(negativeUnits);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "QuoteHomeConversionFactors(" +
+            "positiveUnits=" +
+                (positiveUnits == null ? "null" : positiveUnits.toString()) + ", " +
+            "negativeUnits=" +
+                (negativeUnits == null ? "null" : negativeUnits.toString()) +
+            ")";
+    }
 }

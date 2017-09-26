@@ -121,4 +121,16 @@ public class MarketOrderTradeClose {
         this.units = units;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "MarketOrderTradeClose(" +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "clientTradeID=" +
+                (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) +
+            ")";
+    }
 }

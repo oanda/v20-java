@@ -163,4 +163,18 @@ public class UnitsAvailable {
         this.openOnly = openOnly;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UnitsAvailable(" +
+            "default=" +
+                (defaultValue == null ? "null" : defaultValue.toString()) + ", " +
+            "reduceFirst=" +
+                (reduceFirst == null ? "null" : reduceFirst.toString()) + ", " +
+            "reduceOnly=" +
+                (reduceOnly == null ? "null" : reduceOnly.toString()) + ", " +
+            "openOnly=" +
+                (openOnly == null ? "null" : openOnly.toString()) +
+            ")";
+    }
 }

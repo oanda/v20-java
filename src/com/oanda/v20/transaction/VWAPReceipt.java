@@ -163,4 +163,14 @@ public class VWAPReceipt {
         this.price = new PriceValue(price);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "VWAPReceipt(" +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) +
+            ")";
+    }
 }

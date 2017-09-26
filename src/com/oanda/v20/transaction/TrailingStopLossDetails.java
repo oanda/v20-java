@@ -212,4 +212,18 @@ public class TrailingStopLossDetails {
         this.clientExtensions = clientExtensions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TrailingStopLossDetails(" +
+            "distance=" +
+                (distance == null ? "null" : distance.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) +
+            ")";
+    }
 }

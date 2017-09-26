@@ -462,4 +462,34 @@ public class CreateTransaction implements Transaction {
         this.homeCurrency = new Currency(homeCurrency);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "CreateTransaction(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "accountID=" +
+                (accountID == null ? "null" : accountID.toString()) + ", " +
+            "batchID=" +
+                (batchID == null ? "null" : batchID.toString()) + ", " +
+            "requestID=" +
+                (requestID == null ? "null" : requestID.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "divisionID=" +
+                (divisionID == null ? "null" : divisionID.toString()) + ", " +
+            "siteID=" +
+                (siteID == null ? "null" : siteID.toString()) + ", " +
+            "accountUserID=" +
+                (accountUserID == null ? "null" : accountUserID.toString()) + ", " +
+            "accountNumber=" +
+                (accountNumber == null ? "null" : accountNumber.toString()) + ", " +
+            "homeCurrency=" +
+                (homeCurrency == null ? "null" : homeCurrency.toString()) +
+            ")";
+    }
 }

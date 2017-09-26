@@ -420,4 +420,24 @@ public class Position {
         this.shortValue = shortValue;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Position(" +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "pl=" +
+                (pl == null ? "null" : pl.toString()) + ", " +
+            "unrealizedPL=" +
+                (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
+            "resettablePL=" +
+                (resettablePL == null ? "null" : resettablePL.toString()) + ", " +
+            "commission=" +
+                (commission == null ? "null" : commission.toString()) + ", " +
+            "long=" +
+                (longValue == null ? "null" : longValue.toString()) + ", " +
+            "short=" +
+                (shortValue == null ? "null" : shortValue.toString()) +
+            ")";
+    }
 }

@@ -946,4 +946,44 @@ public class TradeSummary {
         this.trailingStopLossOrderID = new OrderID(trailingStopLossOrderID);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TradeSummary(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "openTime=" +
+                (openTime == null ? "null" : openTime.toString()) + ", " +
+            "state=" +
+                (state == null ? "null" : state.toString()) + ", " +
+            "initialUnits=" +
+                (initialUnits == null ? "null" : initialUnits.toString()) + ", " +
+            "currentUnits=" +
+                (currentUnits == null ? "null" : currentUnits.toString()) + ", " +
+            "realizedPL=" +
+                (realizedPL == null ? "null" : realizedPL.toString()) + ", " +
+            "unrealizedPL=" +
+                (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
+            "averageClosePrice=" +
+                (averageClosePrice == null ? "null" : averageClosePrice.toString()) + ", " +
+            "closingTransactionIDs=" +
+                (closingTransactionIDs == null ? "null" : closingTransactionIDs.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) + ", " +
+            "closeTime=" +
+                (closeTime == null ? "null" : closeTime.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "takeProfitOrderID=" +
+                (takeProfitOrderID == null ? "null" : takeProfitOrderID.toString()) + ", " +
+            "stopLossOrderID=" +
+                (stopLossOrderID == null ? "null" : stopLossOrderID.toString()) + ", " +
+            "trailingStopLossOrderID=" +
+                (trailingStopLossOrderID == null ? "null" : trailingStopLossOrderID.toString()) +
+            ")";
+    }
 }

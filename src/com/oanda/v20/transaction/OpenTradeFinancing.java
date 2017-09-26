@@ -136,4 +136,14 @@ public class OpenTradeFinancing {
         this.financing = new AccountUnits(financing);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "OpenTradeFinancing(" +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) +
+            ")";
+    }
 }

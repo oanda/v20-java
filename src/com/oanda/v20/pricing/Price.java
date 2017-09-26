@@ -524,4 +524,32 @@ public class Price {
         this.unitsAvailable = unitsAvailable;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Price(" +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "status=" +
+                (status == null ? "null" : status.toString()) + ", " +
+            "tradeable=" +
+                (tradeable == null ? "null" : tradeable.toString()) + ", " +
+            "bids=" +
+                (bids == null ? "null" : bids.toString()) + ", " +
+            "asks=" +
+                (asks == null ? "null" : asks.toString()) + ", " +
+            "closeoutBid=" +
+                (closeoutBid == null ? "null" : closeoutBid.toString()) + ", " +
+            "closeoutAsk=" +
+                (closeoutAsk == null ? "null" : closeoutAsk.toString()) + ", " +
+            "quoteHomeConversionFactors=" +
+                (quoteHomeConversionFactors == null ? "null" : quoteHomeConversionFactors.toString()) + ", " +
+            "unitsAvailable=" +
+                (unitsAvailable == null ? "null" : unitsAvailable.toString()) +
+            ")";
+    }
 }

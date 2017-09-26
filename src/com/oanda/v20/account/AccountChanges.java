@@ -438,4 +438,28 @@ public class AccountChanges {
         this.transactions = newTransactions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "AccountChanges(" +
+            "ordersCreated=" +
+                (ordersCreated == null ? "null" : ordersCreated.toString()) + ", " +
+            "ordersCancelled=" +
+                (ordersCancelled == null ? "null" : ordersCancelled.toString()) + ", " +
+            "ordersFilled=" +
+                (ordersFilled == null ? "null" : ordersFilled.toString()) + ", " +
+            "ordersTriggered=" +
+                (ordersTriggered == null ? "null" : ordersTriggered.toString()) + ", " +
+            "tradesOpened=" +
+                (tradesOpened == null ? "null" : tradesOpened.toString()) + ", " +
+            "tradesReduced=" +
+                (tradesReduced == null ? "null" : tradesReduced.toString()) + ", " +
+            "tradesClosed=" +
+                (tradesClosed == null ? "null" : tradesClosed.toString()) + ", " +
+            "positions=" +
+                (positions == null ? "null" : positions.toString()) + ", " +
+            "transactions=" +
+                (transactions == null ? "null" : transactions.toString()) +
+            ")";
+    }
 }

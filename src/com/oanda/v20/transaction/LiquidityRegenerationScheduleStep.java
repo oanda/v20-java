@@ -215,4 +215,16 @@ public class LiquidityRegenerationScheduleStep {
         this.askLiquidityUsed = new DecimalNumber(askLiquidityUsed);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "LiquidityRegenerationScheduleStep(" +
+            "timestamp=" +
+                (timestamp == null ? "null" : timestamp.toString()) + ", " +
+            "bidLiquidityUsed=" +
+                (bidLiquidityUsed == null ? "null" : bidLiquidityUsed.toString()) + ", " +
+            "askLiquidityUsed=" +
+                (askLiquidityUsed == null ? "null" : askLiquidityUsed.toString()) +
+            ")";
+    }
 }

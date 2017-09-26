@@ -169,4 +169,16 @@ public class TradeOpen {
         this.clientExtensions = clientExtensions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TradeOpen(" +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) +
+            ")";
+    }
 }

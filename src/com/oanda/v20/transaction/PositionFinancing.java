@@ -187,4 +187,16 @@ public class PositionFinancing {
         this.openTradeFinancings = newOpenTradeFinancings;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "PositionFinancing(" +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) + ", " +
+            "openTradeFinancings=" +
+                (openTradeFinancings == null ? "null" : openTradeFinancings.toString()) +
+            ")";
+    }
 }

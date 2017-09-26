@@ -690,4 +690,36 @@ public class Instrument {
         this.commission = commission;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "Instrument(" +
+            "name=" +
+                (name == null ? "null" : name.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "displayName=" +
+                (displayName == null ? "null" : displayName.toString()) + ", " +
+            "pipLocation=" +
+                (pipLocation == null ? "null" : pipLocation.toString()) + ", " +
+            "displayPrecision=" +
+                (displayPrecision == null ? "null" : displayPrecision.toString()) + ", " +
+            "tradeUnitsPrecision=" +
+                (tradeUnitsPrecision == null ? "null" : tradeUnitsPrecision.toString()) + ", " +
+            "minimumTradeSize=" +
+                (minimumTradeSize == null ? "null" : minimumTradeSize.toString()) + ", " +
+            "maximumTrailingStopDistance=" +
+                (maximumTrailingStopDistance == null ? "null" : maximumTrailingStopDistance.toString()) + ", " +
+            "minimumTrailingStopDistance=" +
+                (minimumTrailingStopDistance == null ? "null" : minimumTrailingStopDistance.toString()) + ", " +
+            "maximumPositionSize=" +
+                (maximumPositionSize == null ? "null" : maximumPositionSize.toString()) + ", " +
+            "maximumOrderUnits=" +
+                (maximumOrderUnits == null ? "null" : maximumOrderUnits.toString()) + ", " +
+            "marginRate=" +
+                (marginRate == null ? "null" : marginRate.toString()) + ", " +
+            "commission=" +
+                (commission == null ? "null" : commission.toString()) +
+            ")";
+    }
 }

@@ -308,4 +308,20 @@ public class OrderBook {
         this.buckets = newBuckets;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "OrderBook(" +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
+            "bucketWidth=" +
+                (bucketWidth == null ? "null" : bucketWidth.toString()) + ", " +
+            "buckets=" +
+                (buckets == null ? "null" : buckets.toString()) +
+            ")";
+    }
 }

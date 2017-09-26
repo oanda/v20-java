@@ -98,4 +98,14 @@ public class MarketOrderPositionCloseout {
         this.units = units;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "MarketOrderPositionCloseout(" +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "units=" +
+                (units == null ? "null" : units.toString()) +
+            ")";
+    }
 }

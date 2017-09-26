@@ -1106,4 +1106,42 @@ public class AccountChangesState {
         this.positions = newPositions;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "AccountChangesState(" +
+            "unrealizedPL=" +
+                (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
+            "NAV=" +
+                (nAV == null ? "null" : nAV.toString()) + ", " +
+            "marginUsed=" +
+                (marginUsed == null ? "null" : marginUsed.toString()) + ", " +
+            "marginAvailable=" +
+                (marginAvailable == null ? "null" : marginAvailable.toString()) + ", " +
+            "positionValue=" +
+                (positionValue == null ? "null" : positionValue.toString()) + ", " +
+            "marginCloseoutUnrealizedPL=" +
+                (marginCloseoutUnrealizedPL == null ? "null" : marginCloseoutUnrealizedPL.toString()) + ", " +
+            "marginCloseoutNAV=" +
+                (marginCloseoutNAV == null ? "null" : marginCloseoutNAV.toString()) + ", " +
+            "marginCloseoutMarginUsed=" +
+                (marginCloseoutMarginUsed == null ? "null" : marginCloseoutMarginUsed.toString()) + ", " +
+            "marginCloseoutPercent=" +
+                (marginCloseoutPercent == null ? "null" : marginCloseoutPercent.toString()) + ", " +
+            "marginCloseoutPositionValue=" +
+                (marginCloseoutPositionValue == null ? "null" : marginCloseoutPositionValue.toString()) + ", " +
+            "withdrawalLimit=" +
+                (withdrawalLimit == null ? "null" : withdrawalLimit.toString()) + ", " +
+            "marginCallMarginUsed=" +
+                (marginCallMarginUsed == null ? "null" : marginCallMarginUsed.toString()) + ", " +
+            "marginCallPercent=" +
+                (marginCallPercent == null ? "null" : marginCallPercent.toString()) + ", " +
+            "orders=" +
+                (orders == null ? "null" : orders.toString()) + ", " +
+            "trades=" +
+                (trades == null ? "null" : trades.toString()) + ", " +
+            "positions=" +
+                (positions == null ? "null" : positions.toString()) +
+            ")";
+    }
 }

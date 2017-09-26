@@ -1018,4 +1018,52 @@ public class TrailingStopLossOrder implements Order {
         this.replacedByOrderID = new OrderID(replacedByOrderID);
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "TrailingStopLossOrder(" +
+            "id=" +
+                (id == null ? "null" : id.toString()) + ", " +
+            "createTime=" +
+                (createTime == null ? "null" : createTime.toString()) + ", " +
+            "state=" +
+                (state == null ? "null" : state.toString()) + ", " +
+            "clientExtensions=" +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "tradeID=" +
+                (tradeID == null ? "null" : tradeID.toString()) + ", " +
+            "clientTradeID=" +
+                (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
+            "distance=" +
+                (distance == null ? "null" : distance.toString()) + ", " +
+            "timeInForce=" +
+                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
+            "gtdTime=" +
+                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
+            "triggerCondition=" +
+                (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "trailingStopValue=" +
+                (trailingStopValue == null ? "null" : trailingStopValue.toString()) + ", " +
+            "fillingTransactionID=" +
+                (fillingTransactionID == null ? "null" : fillingTransactionID.toString()) + ", " +
+            "filledTime=" +
+                (filledTime == null ? "null" : filledTime.toString()) + ", " +
+            "tradeOpenedID=" +
+                (tradeOpenedID == null ? "null" : tradeOpenedID.toString()) + ", " +
+            "tradeReducedID=" +
+                (tradeReducedID == null ? "null" : tradeReducedID.toString()) + ", " +
+            "tradeClosedIDs=" +
+                (tradeClosedIDs == null ? "null" : tradeClosedIDs.toString()) + ", " +
+            "cancellingTransactionID=" +
+                (cancellingTransactionID == null ? "null" : cancellingTransactionID.toString()) + ", " +
+            "cancelledTime=" +
+                (cancelledTime == null ? "null" : cancelledTime.toString()) + ", " +
+            "replacesOrderID=" +
+                (replacesOrderID == null ? "null" : replacesOrderID.toString()) + ", " +
+            "replacedByOrderID=" +
+                (replacedByOrderID == null ? "null" : replacedByOrderID.toString()) +
+            ")";
+    }
 }

@@ -131,4 +131,18 @@ public class UserInfo {
         this.emailAddress = emailAddress;
         return this;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo(" +
+            "username=" +
+                (username == null ? "null" : username.toString()) + ", " +
+            "userID=" +
+                (userID == null ? "null" : userID.toString()) + ", " +
+            "country=" +
+                (country == null ? "null" : country.toString()) + ", " +
+            "emailAddress=" +
+                (emailAddress == null ? "null" : emailAddress.toString()) +
+            ")";
+    }
 }
