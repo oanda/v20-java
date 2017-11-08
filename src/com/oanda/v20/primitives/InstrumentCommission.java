@@ -21,51 +21,9 @@ public class InstrumentCommission {
      * @param other the InstrumentCommission to copy
      */
     public InstrumentCommission(InstrumentCommission other) {
-        this.instrument = other.instrument;
         this.commission = other.commission;
         this.unitsTraded = other.unitsTraded;
         this.minimumCommission = other.minimumCommission;
-    }
-
-    @SerializedName("instrument") private InstrumentName instrument;
-
-    /**
-     * Get the instrument
-     * <p>
-     * The name of the instrument
-     * <p>
-     * @return the instrument
-     * @see InstrumentName
-     */
-    public InstrumentName getInstrument() {
-        return this.instrument;
-    }
-
-    /**
-     * Set the instrument
-     * <p>
-     * The name of the instrument
-     * <p>
-     * @param instrument the instrument as an InstrumentName
-     * @return {@link InstrumentCommission InstrumentCommission}
-     * @see InstrumentName
-     */
-    public InstrumentCommission setInstrument(InstrumentName instrument) {
-        this.instrument = instrument;
-        return this;
-    }
-    /**
-     * Set the instrument
-     * <p>
-     * The name of the instrument
-     * <p>
-     * @param instrument the instrument as a String
-     * @return {@link InstrumentCommission InstrumentCommission}
-     * @see InstrumentName
-     */
-    public InstrumentCommission setInstrument(String instrument) {
-        this.instrument = new InstrumentName(instrument);
-        return this;
     }
 
     @SerializedName("commission") private DecimalNumber commission;
@@ -282,8 +240,6 @@ public class InstrumentCommission {
     @Override
     public String toString() {
         return "InstrumentCommission(" +
-            "instrument=" +
-                (instrument == null ? "null" : instrument.toString()) + ", " +
             "commission=" +
                 (commission == null ? "null" : commission.toString()) + ", " +
             "unitsTraded=" +

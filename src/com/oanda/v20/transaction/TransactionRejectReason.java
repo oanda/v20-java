@@ -427,11 +427,6 @@ public enum TransactionRejectReason {
     STOP_LOSS_ON_FILL_TRIGGER_CONDITION_INVALID,
 
     /**
-     * A Trailing Stop Loss Order for the specified Trade already exists
-     */
-    TRAILING_STOP_LOSS_ORDER_ALREADY_EXISTS,
-
-    /**
      * The Trailing Stop Loss on fill specified does not provide a distance
      */
     TRAILING_STOP_LOSS_ON_FILL_PRICE_DISTANCE_MISSING,

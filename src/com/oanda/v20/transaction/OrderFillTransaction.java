@@ -536,7 +536,9 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Get the Fill Price
      * <p>
-     * The average market price that the Order was filled at.
+     * This field is now deprecated and should no longer be used. The
+     * individual tradesClosed, tradeReduced and tradeOpened fields contain the
+     * exact/official price each unit was filled at.
      * <p>
      * @return the Fill Price
      * @see PriceValue
@@ -548,7 +550,9 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Set the Fill Price
      * <p>
-     * The average market price that the Order was filled at.
+     * This field is now deprecated and should no longer be used. The
+     * individual tradesClosed, tradeReduced and tradeOpened fields contain the
+     * exact/official price each unit was filled at.
      * <p>
      * @param price the Fill Price as a PriceValue
      * @return {@link OrderFillTransaction OrderFillTransaction}
@@ -561,7 +565,9 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Set the Fill Price
      * <p>
-     * The average market price that the Order was filled at.
+     * This field is now deprecated and should no longer be used. The
+     * individual tradesClosed, tradeReduced and tradeOpened fields contain the
+     * exact/official price each unit was filled at.
      * <p>
      * @param price the Fill Price as a String
      * @return {@link OrderFillTransaction OrderFillTransaction}
@@ -574,7 +580,9 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Set the Fill Price
      * <p>
-     * The average market price that the Order was filled at.
+     * This field is now deprecated and should no longer be used. The
+     * individual tradesClosed, tradeReduced and tradeOpened fields contain the
+     * exact/official price each unit was filled at.
      * <p>
      * @param price the Fill Price as a double
      * @return {@link OrderFillTransaction OrderFillTransaction}
@@ -587,7 +595,9 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Set the Fill Price
      * <p>
-     * The average market price that the Order was filled at.
+     * This field is now deprecated and should no longer be used. The
+     * individual tradesClosed, tradeReduced and tradeOpened fields contain the
+     * exact/official price each unit was filled at.
      * <p>
      * @param price the Fill Price as a BigDecimal
      * @return {@link OrderFillTransaction OrderFillTransaction}

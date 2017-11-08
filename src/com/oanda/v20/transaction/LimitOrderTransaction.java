@@ -654,7 +654,11 @@ public class LimitOrderTransaction implements Transaction {
      * always assume that an Order's trigger condition is set to the default
      * value when indicating the distance from an Order's trigger price, and
      * will always provide the default trigger condition when creating or
-     * modifying an Order.
+     * modifying an Order. A special restriction applies when creating a
+     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
+     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
+     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
+     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
      * <p>
      * @return the Trigger Condition
      * @see OrderTriggerCondition
@@ -678,7 +682,11 @@ public class LimitOrderTransaction implements Transaction {
      * always assume that an Order's trigger condition is set to the default
      * value when indicating the distance from an Order's trigger price, and
      * will always provide the default trigger condition when creating or
-     * modifying an Order.
+     * modifying an Order. A special restriction applies when creating a
+     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
+     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
+     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
+     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
      * <p>
      * @param triggerCondition the Trigger Condition as an
      * OrderTriggerCondition

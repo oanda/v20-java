@@ -4,8 +4,8 @@ import java.math.BigDecimal;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.trade.TradeID;
 import com.oanda.v20.transaction.ClientExtensions;
 import com.oanda.v20.transaction.ClientID;
@@ -163,74 +163,79 @@ public class TrailingStopLossOrderRequest implements OrderRequest {
         return this;
     }
 
-    @SerializedName("distance") private PriceValue distance;
+    @SerializedName("distance") private DecimalNumber distance;
 
     /**
      * Get the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
      * @return the Price Distance
-     * @see PriceValue
+     * @see DecimalNumber
      */
-    public PriceValue getDistance() {
+    public DecimalNumber getDistance() {
         return this.distance;
     }
 
     /**
      * Set the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
-     * @param distance the Price Distance as a PriceValue
+     * @param distance the Price Distance as a DecimalNumber
      * @return {@link TrailingStopLossOrderRequest
      * TrailingStopLossOrderRequest}
-     * @see PriceValue
+     * @see DecimalNumber
      */
-    public TrailingStopLossOrderRequest setDistance(PriceValue distance) {
+    public TrailingStopLossOrderRequest setDistance(DecimalNumber distance) {
         this.distance = distance;
         return this;
     }
     /**
      * Set the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
      * @param distance the Price Distance as a String
      * @return {@link TrailingStopLossOrderRequest
      * TrailingStopLossOrderRequest}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossOrderRequest setDistance(String distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
     /**
      * Set the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
      * @param distance the Price Distance as a double
      * @return {@link TrailingStopLossOrderRequest
      * TrailingStopLossOrderRequest}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossOrderRequest setDistance(double distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
     /**
      * Set the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
      * @param distance the Price Distance as a BigDecimal
      * @return {@link TrailingStopLossOrderRequest
      * TrailingStopLossOrderRequest}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossOrderRequest setDistance(BigDecimal distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
 
@@ -328,7 +333,11 @@ public class TrailingStopLossOrderRequest implements OrderRequest {
      * always assume that an Order's trigger condition is set to the default
      * value when indicating the distance from an Order's trigger price, and
      * will always provide the default trigger condition when creating or
-     * modifying an Order.
+     * modifying an Order. A special restriction applies when creating a
+     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
+     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
+     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
+     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
      * <p>
      * @return the Trigger Condition
      * @see OrderTriggerCondition
@@ -352,7 +361,11 @@ public class TrailingStopLossOrderRequest implements OrderRequest {
      * always assume that an Order's trigger condition is set to the default
      * value when indicating the distance from an Order's trigger price, and
      * will always provide the default trigger condition when creating or
-     * modifying an Order.
+     * modifying an Order. A special restriction applies when creating a
+     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
+     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
+     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
+     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
      * <p>
      * @param triggerCondition the Trigger Condition as an
      * OrderTriggerCondition

@@ -470,7 +470,9 @@ public class Price {
      * Get the Quote Home Conversions
      * <p>
      * The factors used to convert quantities of this price's Instrument's
-     * quote currency into a quantity of the Account's home currency.
+     * quote currency into a quantity of the Account's home currency. When the
+     * includeHomeConversions is present in the pricing request (regardless of
+     * its value), this field will not be present.
      * <p>
      * @return the Quote Home Conversions
      * @see QuoteHomeConversionFactors
@@ -483,7 +485,9 @@ public class Price {
      * Set the Quote Home Conversions
      * <p>
      * The factors used to convert quantities of this price's Instrument's
-     * quote currency into a quantity of the Account's home currency.
+     * quote currency into a quantity of the Account's home currency. When the
+     * includeHomeConversions is present in the pricing request (regardless of
+     * its value), this field will not be present.
      * <p>
      * @param quoteHomeConversionFactors the Quote Home Conversions as a
      * QuoteHomeConversionFactors

@@ -322,9 +322,10 @@ public class StopLossOrder implements Order {
     /**
      * Get the Price
      * <p>
-     * The price threshold specified for the StopLoss Order. The associated
-     * Trade will be closed by a market price that is equal to or worse than
-     * this threshold.
+     * The price threshold specified for the Stop Loss Order. If the guaranteed
+     * flag is false, the associated Trade will be closed by a market price
+     * that is equal to or worse than this threshold. If the flag is true the
+     * associated Trade will be closed at this price.
      * <p>
      * @return the Price
      * @see PriceValue
@@ -336,9 +337,10 @@ public class StopLossOrder implements Order {
     /**
      * Set the Price
      * <p>
-     * The price threshold specified for the StopLoss Order. The associated
-     * Trade will be closed by a market price that is equal to or worse than
-     * this threshold.
+     * The price threshold specified for the Stop Loss Order. If the guaranteed
+     * flag is false, the associated Trade will be closed by a market price
+     * that is equal to or worse than this threshold. If the flag is true the
+     * associated Trade will be closed at this price.
      * <p>
      * @param price the Price as a PriceValue
      * @return {@link StopLossOrder StopLossOrder}
@@ -351,9 +353,10 @@ public class StopLossOrder implements Order {
     /**
      * Set the Price
      * <p>
-     * The price threshold specified for the StopLoss Order. The associated
-     * Trade will be closed by a market price that is equal to or worse than
-     * this threshold.
+     * The price threshold specified for the Stop Loss Order. If the guaranteed
+     * flag is false, the associated Trade will be closed by a market price
+     * that is equal to or worse than this threshold. If the flag is true the
+     * associated Trade will be closed at this price.
      * <p>
      * @param price the Price as a String
      * @return {@link StopLossOrder StopLossOrder}
@@ -366,9 +369,10 @@ public class StopLossOrder implements Order {
     /**
      * Set the Price
      * <p>
-     * The price threshold specified for the StopLoss Order. The associated
-     * Trade will be closed by a market price that is equal to or worse than
-     * this threshold.
+     * The price threshold specified for the Stop Loss Order. If the guaranteed
+     * flag is false, the associated Trade will be closed by a market price
+     * that is equal to or worse than this threshold. If the flag is true the
+     * associated Trade will be closed at this price.
      * <p>
      * @param price the Price as a double
      * @return {@link StopLossOrder StopLossOrder}
@@ -381,9 +385,10 @@ public class StopLossOrder implements Order {
     /**
      * Set the Price
      * <p>
-     * The price threshold specified for the StopLoss Order. The associated
-     * Trade will be closed by a market price that is equal to or worse than
-     * this threshold.
+     * The price threshold specified for the Stop Loss Order. If the guaranteed
+     * flag is false, the associated Trade will be closed by a market price
+     * that is equal to or worse than this threshold. If the flag is true the
+     * associated Trade will be closed at this price.
      * <p>
      * @param price the Price as a BigDecimal
      * @return {@link StopLossOrder StopLossOrder}
@@ -485,7 +490,11 @@ public class StopLossOrder implements Order {
      * always assume that an Order's trigger condition is set to the default
      * value when indicating the distance from an Order's trigger price, and
      * will always provide the default trigger condition when creating or
-     * modifying an Order.
+     * modifying an Order. A special restriction applies when creating a
+     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
+     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
+     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
+     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
      * <p>
      * @return the Trigger Condition
      * @see OrderTriggerCondition
@@ -509,7 +518,11 @@ public class StopLossOrder implements Order {
      * always assume that an Order's trigger condition is set to the default
      * value when indicating the distance from an Order's trigger price, and
      * will always provide the default trigger condition when creating or
-     * modifying an Order.
+     * modifying an Order. A special restriction applies when creating a
+     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
+     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
+     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
+     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
      * <p>
      * @param triggerCondition the Trigger Condition as an
      * OrderTriggerCondition

@@ -49,6 +49,7 @@ public class Account {
         this.resettablePL = other.resettablePL;
         this.resettabledPLTime = other.resettabledPLTime;
         this.commission = other.commission;
+        this.guaranteedExecutionFees = other.guaranteedExecutionFees;
         this.marginRate = other.marginRate;
         this.marginCallEnterTime = other.marginCallEnterTime;
         if (other.marginCallExtensionCount != null)
@@ -215,8 +216,7 @@ public class Account {
     /**
      * Get the Balance
      * <p>
-     * The current balance of the Account. Represented in the Account's home
-     * currency.
+     * The current balance of the Account.
      * <p>
      * @return the Balance
      * @see AccountUnits
@@ -228,8 +228,7 @@ public class Account {
     /**
      * Set the Balance
      * <p>
-     * The current balance of the Account. Represented in the Account's home
-     * currency.
+     * The current balance of the Account.
      * <p>
      * @param balance the Balance as an AccountUnits
      * @return {@link Account Account}
@@ -242,8 +241,7 @@ public class Account {
     /**
      * Set the Balance
      * <p>
-     * The current balance of the Account. Represented in the Account's home
-     * currency.
+     * The current balance of the Account.
      * <p>
      * @param balance the Balance as a String
      * @return {@link Account Account}
@@ -256,8 +254,7 @@ public class Account {
     /**
      * Set the Balance
      * <p>
-     * The current balance of the Account. Represented in the Account's home
-     * currency.
+     * The current balance of the Account.
      * <p>
      * @param balance the Balance as a double
      * @return {@link Account Account}
@@ -270,8 +267,7 @@ public class Account {
     /**
      * Set the Balance
      * <p>
-     * The current balance of the Account. Represented in the Account's home
-     * currency.
+     * The current balance of the Account.
      * <p>
      * @param balance the Balance as a BigDecimal
      * @return {@link Account Account}
@@ -355,7 +351,6 @@ public class Account {
      * Get the Profit/Loss
      * <p>
      * The total profit/loss realized over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @return the Profit/Loss
      * @see AccountUnits
@@ -368,7 +363,6 @@ public class Account {
      * Set the Profit/Loss
      * <p>
      * The total profit/loss realized over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @param pl the Profit/Loss as an AccountUnits
      * @return {@link Account Account}
@@ -382,7 +376,6 @@ public class Account {
      * Set the Profit/Loss
      * <p>
      * The total profit/loss realized over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @param pl the Profit/Loss as a String
      * @return {@link Account Account}
@@ -396,7 +389,6 @@ public class Account {
      * Set the Profit/Loss
      * <p>
      * The total profit/loss realized over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @param pl the Profit/Loss as a double
      * @return {@link Account Account}
@@ -410,7 +402,6 @@ public class Account {
      * Set the Profit/Loss
      * <p>
      * The total profit/loss realized over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @param pl the Profit/Loss as a BigDecimal
      * @return {@link Account Account}
@@ -427,7 +418,7 @@ public class Account {
      * Get the Resettable Profit/Loss
      * <p>
      * The total realized profit/loss for the Account since it was last reset
-     * by the client. Represented in the Account's home currency.
+     * by the client.
      * <p>
      * @return the Resettable Profit/Loss
      * @see AccountUnits
@@ -440,7 +431,7 @@ public class Account {
      * Set the Resettable Profit/Loss
      * <p>
      * The total realized profit/loss for the Account since it was last reset
-     * by the client. Represented in the Account's home currency.
+     * by the client.
      * <p>
      * @param resettablePL the Resettable Profit/Loss as an AccountUnits
      * @return {@link Account Account}
@@ -454,7 +445,7 @@ public class Account {
      * Set the Resettable Profit/Loss
      * <p>
      * The total realized profit/loss for the Account since it was last reset
-     * by the client. Represented in the Account's home currency.
+     * by the client.
      * <p>
      * @param resettablePL the Resettable Profit/Loss as a String
      * @return {@link Account Account}
@@ -468,7 +459,7 @@ public class Account {
      * Set the Resettable Profit/Loss
      * <p>
      * The total realized profit/loss for the Account since it was last reset
-     * by the client. Represented in the Account's home currency.
+     * by the client.
      * <p>
      * @param resettablePL the Resettable Profit/Loss as a double
      * @return {@link Account Account}
@@ -482,7 +473,7 @@ public class Account {
      * Set the Resettable Profit/Loss
      * <p>
      * The total realized profit/loss for the Account since it was last reset
-     * by the client. Represented in the Account's home currency.
+     * by the client.
      * <p>
      * @param resettablePL the Resettable Profit/Loss as a BigDecimal
      * @return {@link Account Account}
@@ -540,7 +531,6 @@ public class Account {
      * Get the Commission
      * <p>
      * The total amount of commission paid over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @return the Commission
      * @see AccountUnits
@@ -553,7 +543,6 @@ public class Account {
      * Set the Commission
      * <p>
      * The total amount of commission paid over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @param commission the Commission as an AccountUnits
      * @return {@link Account Account}
@@ -567,7 +556,6 @@ public class Account {
      * Set the Commission
      * <p>
      * The total amount of commission paid over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @param commission the Commission as a String
      * @return {@link Account Account}
@@ -581,7 +569,6 @@ public class Account {
      * Set the Commission
      * <p>
      * The total amount of commission paid over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @param commission the Commission as a double
      * @return {@link Account Account}
@@ -595,7 +582,6 @@ public class Account {
      * Set the Commission
      * <p>
      * The total amount of commission paid over the lifetime of the Account.
-     * Represented in the Account's home currency.
      * <p>
      * @param commission the Commission as a BigDecimal
      * @return {@link Account Account}
@@ -603,6 +589,80 @@ public class Account {
      */
     public Account setCommission(BigDecimal commission) {
         this.commission = new AccountUnits(commission);
+        return this;
+    }
+
+    @SerializedName("guaranteedExecutionFees") private AccountUnits guaranteedExecutionFees;
+
+    /**
+     * Get the Guaranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders.
+     * <p>
+     * @return the Guaranteed Execution Fees
+     * @see AccountUnits
+     */
+    public AccountUnits getGuaranteedExecutionFees() {
+        return this.guaranteedExecutionFees;
+    }
+
+    /**
+     * Set the Guaranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders.
+     * <p>
+     * @param guaranteedExecutionFees the Guaranteed Execution Fees as an
+     * AccountUnits
+     * @return {@link Account Account}
+     * @see AccountUnits
+     */
+    public Account setGuaranteedExecutionFees(AccountUnits guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = guaranteedExecutionFees;
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders.
+     * <p>
+     * @param guaranteedExecutionFees the Guaranteed Execution Fees as a String
+     * @return {@link Account Account}
+     * @see AccountUnits
+     */
+    public Account setGuaranteedExecutionFees(String guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders.
+     * <p>
+     * @param guaranteedExecutionFees the Guaranteed Execution Fees as a double
+     * @return {@link Account Account}
+     * @see AccountUnits
+     */
+    public Account setGuaranteedExecutionFees(double guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders.
+     * <p>
+     * @param guaranteedExecutionFees the Guaranteed Execution Fees as a
+     * BigDecimal
+     * @return {@link Account Account}
+     * @see AccountUnits
+     */
+    public Account setGuaranteedExecutionFees(BigDecimal guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
         return this;
     }
 
@@ -912,7 +972,7 @@ public class Account {
      * Get the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @return the Unrealized Profit/Loss
      * @see AccountUnits
@@ -925,7 +985,7 @@ public class Account {
      * Set the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @param unrealizedPL the Unrealized Profit/Loss as an AccountUnits
      * @return {@link Account Account}
@@ -939,7 +999,7 @@ public class Account {
      * Set the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @param unrealizedPL the Unrealized Profit/Loss as a String
      * @return {@link Account Account}
@@ -953,7 +1013,7 @@ public class Account {
      * Set the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @param unrealizedPL the Unrealized Profit/Loss as a double
      * @return {@link Account Account}
@@ -967,7 +1027,7 @@ public class Account {
      * Set the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @param unrealizedPL the Unrealized Profit/Loss as a BigDecimal
      * @return {@link Account Account}
@@ -984,7 +1044,7 @@ public class Account {
      * Get the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @return the Net Asset Value
      * @see AccountUnits
@@ -997,7 +1057,7 @@ public class Account {
      * Set the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @param nAV the Net Asset Value as an AccountUnits
      * @return {@link Account Account}
@@ -1011,7 +1071,7 @@ public class Account {
      * Set the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @param nAV the Net Asset Value as a String
      * @return {@link Account Account}
@@ -1025,7 +1085,7 @@ public class Account {
      * Set the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @param nAV the Net Asset Value as a double
      * @return {@link Account Account}
@@ -1039,7 +1099,7 @@ public class Account {
      * Set the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @param nAV the Net Asset Value as a BigDecimal
      * @return {@link Account Account}
@@ -1055,8 +1115,7 @@ public class Account {
     /**
      * Get the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @return the Margin Used
      * @see AccountUnits
@@ -1068,8 +1127,7 @@ public class Account {
     /**
      * Set the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @param marginUsed the Margin Used as an AccountUnits
      * @return {@link Account Account}
@@ -1082,8 +1140,7 @@ public class Account {
     /**
      * Set the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @param marginUsed the Margin Used as a String
      * @return {@link Account Account}
@@ -1096,8 +1153,7 @@ public class Account {
     /**
      * Set the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @param marginUsed the Margin Used as a double
      * @return {@link Account Account}
@@ -1110,8 +1166,7 @@ public class Account {
     /**
      * Set the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @param marginUsed the Margin Used as a BigDecimal
      * @return {@link Account Account}
@@ -1127,8 +1182,7 @@ public class Account {
     /**
      * Get the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @return the Margin Available
      * @see AccountUnits
@@ -1140,8 +1194,7 @@ public class Account {
     /**
      * Set the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @param marginAvailable the Margin Available as an AccountUnits
      * @return {@link Account Account}
@@ -1154,8 +1207,7 @@ public class Account {
     /**
      * Set the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @param marginAvailable the Margin Available as a String
      * @return {@link Account Account}
@@ -1168,8 +1220,7 @@ public class Account {
     /**
      * Set the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @param marginAvailable the Margin Available as a double
      * @return {@link Account Account}
@@ -1182,8 +1233,7 @@ public class Account {
     /**
      * Set the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @param marginAvailable the Margin Available as a BigDecimal
      * @return {@link Account Account}
@@ -2017,6 +2067,8 @@ public class Account {
                 (resettabledPLTime == null ? "null" : resettabledPLTime.toString()) + ", " +
             "commission=" +
                 (commission == null ? "null" : commission.toString()) + ", " +
+            "guaranteedExecutionFees=" +
+                (guaranteedExecutionFees == null ? "null" : guaranteedExecutionFees.toString()) + ", " +
             "marginRate=" +
                 (marginRate == null ? "null" : marginRate.toString()) + ", " +
             "marginCallEnterTime=" +

@@ -45,7 +45,7 @@ public class CalculatedAccountState {
      * Get the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @return the Unrealized Profit/Loss
      * @see AccountUnits
@@ -58,7 +58,7 @@ public class CalculatedAccountState {
      * Set the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @param unrealizedPL the Unrealized Profit/Loss as an AccountUnits
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -72,7 +72,7 @@ public class CalculatedAccountState {
      * Set the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @param unrealizedPL the Unrealized Profit/Loss as a String
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -86,7 +86,7 @@ public class CalculatedAccountState {
      * Set the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @param unrealizedPL the Unrealized Profit/Loss as a double
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -100,7 +100,7 @@ public class CalculatedAccountState {
      * Set the Unrealized Profit/Loss
      * <p>
      * The total unrealized profit/loss for all Trades currently open in the
-     * Account. Represented in the Account's home currency.
+     * Account.
      * <p>
      * @param unrealizedPL the Unrealized Profit/Loss as a BigDecimal
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -117,7 +117,7 @@ public class CalculatedAccountState {
      * Get the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @return the Net Asset Value
      * @see AccountUnits
@@ -130,7 +130,7 @@ public class CalculatedAccountState {
      * Set the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @param nAV the Net Asset Value as an AccountUnits
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -144,7 +144,7 @@ public class CalculatedAccountState {
      * Set the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @param nAV the Net Asset Value as a String
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -158,7 +158,7 @@ public class CalculatedAccountState {
      * Set the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @param nAV the Net Asset Value as a double
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -172,7 +172,7 @@ public class CalculatedAccountState {
      * Set the Net Asset Value
      * <p>
      * The net asset value of the Account. Equal to Account balance +
-     * unrealizedPL. Represented in the Account's home currency.
+     * unrealizedPL.
      * <p>
      * @param nAV the Net Asset Value as a BigDecimal
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -188,8 +188,7 @@ public class CalculatedAccountState {
     /**
      * Get the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @return the Margin Used
      * @see AccountUnits
@@ -201,8 +200,7 @@ public class CalculatedAccountState {
     /**
      * Set the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @param marginUsed the Margin Used as an AccountUnits
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -215,8 +213,7 @@ public class CalculatedAccountState {
     /**
      * Set the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @param marginUsed the Margin Used as a String
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -229,8 +226,7 @@ public class CalculatedAccountState {
     /**
      * Set the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @param marginUsed the Margin Used as a double
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -243,8 +239,7 @@ public class CalculatedAccountState {
     /**
      * Set the Margin Used
      * <p>
-     * Margin currently used for the Account. Represented in the Account's home
-     * currency.
+     * Margin currently used for the Account.
      * <p>
      * @param marginUsed the Margin Used as a BigDecimal
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -260,8 +255,7 @@ public class CalculatedAccountState {
     /**
      * Get the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @return the Margin Available
      * @see AccountUnits
@@ -273,8 +267,7 @@ public class CalculatedAccountState {
     /**
      * Set the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @param marginAvailable the Margin Available as an AccountUnits
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -287,8 +280,7 @@ public class CalculatedAccountState {
     /**
      * Set the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @param marginAvailable the Margin Available as a String
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -301,8 +293,7 @@ public class CalculatedAccountState {
     /**
      * Set the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @param marginAvailable the Margin Available as a double
      * @return {@link CalculatedAccountState CalculatedAccountState}
@@ -315,8 +306,7 @@ public class CalculatedAccountState {
     /**
      * Set the Margin Available
      * <p>
-     * Margin available for Account. Represented in the Account's home
-     * currency.
+     * Margin available for Account currency.
      * <p>
      * @param marginAvailable the Margin Available as a BigDecimal
      * @return {@link CalculatedAccountState CalculatedAccountState}

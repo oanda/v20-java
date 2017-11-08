@@ -21,6 +21,7 @@ import org.apache.http.util.EntityUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 
 import com.oanda.v20.account.AccountContext;
 import com.oanda.v20.order.OrderContext;
@@ -189,7 +190,14 @@ public class Context {
             );
             error.status = statusCode;
         } else {
-            error = new RequestException(statusCode);
+            try {
+                error = (RequestException) gson.fromJson(
+                    responseBody, RequestException.class
+                );
+                error.status = statusCode;
+            } catch (JsonSyntaxException e) {
+                error = new RequestException(statusCode);
+            }
         }
 
         throw error;

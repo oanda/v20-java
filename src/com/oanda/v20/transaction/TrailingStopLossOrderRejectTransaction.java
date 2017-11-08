@@ -8,8 +8,8 @@ import com.oanda.v20.account.AccountID;
 import com.oanda.v20.order.OrderID;
 import com.oanda.v20.order.OrderTriggerCondition;
 import com.oanda.v20.order.TimeInForce;
-import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.trade.TradeID;
 
 /**
@@ -425,74 +425,79 @@ public class TrailingStopLossOrderRejectTransaction implements Transaction {
         return this;
     }
 
-    @SerializedName("distance") private PriceValue distance;
+    @SerializedName("distance") private DecimalNumber distance;
 
     /**
      * Get the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
      * @return the Price Distance
-     * @see PriceValue
+     * @see DecimalNumber
      */
-    public PriceValue getDistance() {
+    public DecimalNumber getDistance() {
         return this.distance;
     }
 
     /**
      * Set the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
-     * @param distance the Price Distance as a PriceValue
+     * @param distance the Price Distance as a DecimalNumber
      * @return {@link TrailingStopLossOrderRejectTransaction
      * TrailingStopLossOrderRejectTransaction}
-     * @see PriceValue
+     * @see DecimalNumber
      */
-    public TrailingStopLossOrderRejectTransaction setDistance(PriceValue distance) {
+    public TrailingStopLossOrderRejectTransaction setDistance(DecimalNumber distance) {
         this.distance = distance;
         return this;
     }
     /**
      * Set the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
      * @param distance the Price Distance as a String
      * @return {@link TrailingStopLossOrderRejectTransaction
      * TrailingStopLossOrderRejectTransaction}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossOrderRejectTransaction setDistance(String distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
     /**
      * Set the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
      * @param distance the Price Distance as a double
      * @return {@link TrailingStopLossOrderRejectTransaction
      * TrailingStopLossOrderRejectTransaction}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossOrderRejectTransaction setDistance(double distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
     /**
      * Set the Price Distance
      * <p>
-     * The price distance specified for the TrailingStopLoss Order.
+     * The price distance (in price units) specified for the TrailingStopLoss
+     * Order.
      * <p>
      * @param distance the Price Distance as a BigDecimal
      * @return {@link TrailingStopLossOrderRejectTransaction
      * TrailingStopLossOrderRejectTransaction}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossOrderRejectTransaction setDistance(BigDecimal distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
 
@@ -590,7 +595,11 @@ public class TrailingStopLossOrderRejectTransaction implements Transaction {
      * always assume that an Order's trigger condition is set to the default
      * value when indicating the distance from an Order's trigger price, and
      * will always provide the default trigger condition when creating or
-     * modifying an Order.
+     * modifying an Order. A special restriction applies when creating a
+     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
+     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
+     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
+     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
      * <p>
      * @return the Trigger Condition
      * @see OrderTriggerCondition
@@ -614,7 +623,11 @@ public class TrailingStopLossOrderRejectTransaction implements Transaction {
      * always assume that an Order's trigger condition is set to the default
      * value when indicating the distance from an Order's trigger price, and
      * will always provide the default trigger condition when creating or
-     * modifying an Order.
+     * modifying an Order. A special restriction applies when creating a
+     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
+     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
+     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
+     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
      * <p>
      * @param triggerCondition the Trigger Condition as an
      * OrderTriggerCondition

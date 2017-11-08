@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.google.gson.annotations.SerializedName;
 
+import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.trade.TradeID;
 
@@ -28,6 +29,7 @@ public class TradeOpen {
     public TradeOpen(TradeOpen other) {
         this.tradeID = other.tradeID;
         this.units = other.units;
+        this.price = other.price;
         if (other.clientExtensions != null)
         {
             this.clientExtensions = new ClientExtensions(other.clientExtensions);
@@ -142,6 +144,73 @@ public class TradeOpen {
         return this;
     }
 
+    @SerializedName("price") private PriceValue price;
+
+    /**
+     * Get the Units Opened Price
+     * <p>
+     * The average price that the units were opened at.
+     * <p>
+     * @return the Units Opened Price
+     * @see PriceValue
+     */
+    public PriceValue getPrice() {
+        return this.price;
+    }
+
+    /**
+     * Set the Units Opened Price
+     * <p>
+     * The average price that the units were opened at.
+     * <p>
+     * @param price the Units Opened Price as a PriceValue
+     * @return {@link TradeOpen TradeOpen}
+     * @see PriceValue
+     */
+    public TradeOpen setPrice(PriceValue price) {
+        this.price = price;
+        return this;
+    }
+    /**
+     * Set the Units Opened Price
+     * <p>
+     * The average price that the units were opened at.
+     * <p>
+     * @param price the Units Opened Price as a String
+     * @return {@link TradeOpen TradeOpen}
+     * @see PriceValue
+     */
+    public TradeOpen setPrice(String price) {
+        this.price = new PriceValue(price);
+        return this;
+    }
+    /**
+     * Set the Units Opened Price
+     * <p>
+     * The average price that the units were opened at.
+     * <p>
+     * @param price the Units Opened Price as a double
+     * @return {@link TradeOpen TradeOpen}
+     * @see PriceValue
+     */
+    public TradeOpen setPrice(double price) {
+        this.price = new PriceValue(price);
+        return this;
+    }
+    /**
+     * Set the Units Opened Price
+     * <p>
+     * The average price that the units were opened at.
+     * <p>
+     * @param price the Units Opened Price as a BigDecimal
+     * @return {@link TradeOpen TradeOpen}
+     * @see PriceValue
+     */
+    public TradeOpen setPrice(BigDecimal price) {
+        this.price = new PriceValue(price);
+        return this;
+    }
+
     @SerializedName("clientExtensions") private ClientExtensions clientExtensions;
 
     /**
@@ -177,6 +246,8 @@ public class TradeOpen {
                 (tradeID == null ? "null" : tradeID.toString()) + ", " +
             "units=" +
                 (units == null ? "null" : units.toString()) + ", " +
+            "price=" +
+                (price == null ? "null" : price.toString()) + ", " +
             "clientExtensions=" +
                 (clientExtensions == null ? "null" : clientExtensions.toString()) +
             ")";

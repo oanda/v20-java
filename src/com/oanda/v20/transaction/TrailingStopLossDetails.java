@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 import com.google.gson.annotations.SerializedName;
 
 import com.oanda.v20.order.TimeInForce;
-import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.DecimalNumber;
 
 /**
  * TrailingStopLossDetails specifies the details of a Trailing Stop Loss Order
@@ -37,7 +37,7 @@ public class TrailingStopLossDetails {
         }
     }
 
-    @SerializedName("distance") private PriceValue distance;
+    @SerializedName("distance") private DecimalNumber distance;
 
     /**
      * Get the Trailing Price Distance
@@ -46,9 +46,9 @@ public class TrailingStopLossDetails {
      * Trailing Stop Loss Order will be triggered at.
      * <p>
      * @return the Trailing Price Distance
-     * @see PriceValue
+     * @see DecimalNumber
      */
-    public PriceValue getDistance() {
+    public DecimalNumber getDistance() {
         return this.distance;
     }
 
@@ -58,11 +58,11 @@ public class TrailingStopLossDetails {
      * The distance (in price units) from the Trade's fill price that the
      * Trailing Stop Loss Order will be triggered at.
      * <p>
-     * @param distance the Trailing Price Distance as a PriceValue
+     * @param distance the Trailing Price Distance as a DecimalNumber
      * @return {@link TrailingStopLossDetails TrailingStopLossDetails}
-     * @see PriceValue
+     * @see DecimalNumber
      */
-    public TrailingStopLossDetails setDistance(PriceValue distance) {
+    public TrailingStopLossDetails setDistance(DecimalNumber distance) {
         this.distance = distance;
         return this;
     }
@@ -74,10 +74,10 @@ public class TrailingStopLossDetails {
      * <p>
      * @param distance the Trailing Price Distance as a String
      * @return {@link TrailingStopLossDetails TrailingStopLossDetails}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossDetails setDistance(String distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
     /**
@@ -88,10 +88,10 @@ public class TrailingStopLossDetails {
      * <p>
      * @param distance the Trailing Price Distance as a double
      * @return {@link TrailingStopLossDetails TrailingStopLossDetails}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossDetails setDistance(double distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
     /**
@@ -102,10 +102,10 @@ public class TrailingStopLossDetails {
      * <p>
      * @param distance the Trailing Price Distance as a BigDecimal
      * @return {@link TrailingStopLossDetails TrailingStopLossDetails}
-     * @see PriceValue
+     * @see DecimalNumber
      */
     public TrailingStopLossDetails setDistance(BigDecimal distance) {
-        this.distance = new PriceValue(distance);
+        this.distance = new DecimalNumber(distance);
         return this;
     }
 

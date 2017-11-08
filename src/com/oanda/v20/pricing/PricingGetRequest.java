@@ -78,8 +78,9 @@ public class PricingGetRequest extends Request {
     /**
      * Set the since
      * <p>
-     * Date/Time filter to apply to the returned prices. Only prices with a
-     * time later than this filter will be provided.
+     * Date/Time filter to apply to the response. Only prices and home
+     * conversions (if requested) with a time later than this filter will be
+     * provided, and are filtered independently.
      * <p>
      * @param since the since as a DateTime
      * @return {@link PricingGetRequest PricingGetRequest}
@@ -94,8 +95,9 @@ public class PricingGetRequest extends Request {
     /**
      * Set the since
      * <p>
-     * Date/Time filter to apply to the returned prices. Only prices with a
-     * time later than this filter will be provided.
+     * Date/Time filter to apply to the response. Only prices and home
+     * conversions (if requested) with a time later than this filter will be
+     * provided, and are filtered independently.
      * <p>
      * @param since the since as a String
      * @return {@link PricingGetRequest PricingGetRequest}

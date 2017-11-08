@@ -299,7 +299,7 @@ public class Position {
      * Get the Commission
      * <p>
      * The total amount of commission paid for this instrument over the
-     * lifetime of the Account. Represented in the Account's home currency.
+     * lifetime of the Account.
      * <p>
      * @return the Commission
      * @see AccountUnits
@@ -312,7 +312,7 @@ public class Position {
      * Set the Commission
      * <p>
      * The total amount of commission paid for this instrument over the
-     * lifetime of the Account. Represented in the Account's home currency.
+     * lifetime of the Account.
      * <p>
      * @param commission the Commission as an AccountUnits
      * @return {@link Position Position}
@@ -326,7 +326,7 @@ public class Position {
      * Set the Commission
      * <p>
      * The total amount of commission paid for this instrument over the
-     * lifetime of the Account. Represented in the Account's home currency.
+     * lifetime of the Account.
      * <p>
      * @param commission the Commission as a String
      * @return {@link Position Position}
@@ -340,7 +340,7 @@ public class Position {
      * Set the Commission
      * <p>
      * The total amount of commission paid for this instrument over the
-     * lifetime of the Account. Represented in the Account's home currency.
+     * lifetime of the Account.
      * <p>
      * @param commission the Commission as a double
      * @return {@link Position Position}
@@ -354,7 +354,7 @@ public class Position {
      * Set the Commission
      * <p>
      * The total amount of commission paid for this instrument over the
-     * lifetime of the Account. Represented in the Account's home currency.
+     * lifetime of the Account.
      * <p>
      * @param commission the Commission as a BigDecimal
      * @return {@link Position Position}

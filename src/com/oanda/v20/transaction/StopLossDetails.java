@@ -42,7 +42,8 @@ public class StopLossDetails {
     /**
      * Get the Price
      * <p>
-     * The price that the Stop Loss Order will be triggered at.
+     * The price that the Stop Loss Order will be triggered at. Only one of the
+     * price and distance fields may be specified.
      * <p>
      * @return the Price
      * @see PriceValue
@@ -54,7 +55,8 @@ public class StopLossDetails {
     /**
      * Set the Price
      * <p>
-     * The price that the Stop Loss Order will be triggered at.
+     * The price that the Stop Loss Order will be triggered at. Only one of the
+     * price and distance fields may be specified.
      * <p>
      * @param price the Price as a PriceValue
      * @return {@link StopLossDetails StopLossDetails}
@@ -67,7 +69,8 @@ public class StopLossDetails {
     /**
      * Set the Price
      * <p>
-     * The price that the Stop Loss Order will be triggered at.
+     * The price that the Stop Loss Order will be triggered at. Only one of the
+     * price and distance fields may be specified.
      * <p>
      * @param price the Price as a String
      * @return {@link StopLossDetails StopLossDetails}
@@ -80,7 +83,8 @@ public class StopLossDetails {
     /**
      * Set the Price
      * <p>
-     * The price that the Stop Loss Order will be triggered at.
+     * The price that the Stop Loss Order will be triggered at. Only one of the
+     * price and distance fields may be specified.
      * <p>
      * @param price the Price as a double
      * @return {@link StopLossDetails StopLossDetails}
@@ -93,7 +97,8 @@ public class StopLossDetails {
     /**
      * Set the Price
      * <p>
-     * The price that the Stop Loss Order will be triggered at.
+     * The price that the Stop Loss Order will be triggered at. Only one of the
+     * price and distance fields may be specified.
      * <p>
      * @param price the Price as a BigDecimal
      * @return {@link StopLossDetails StopLossDetails}

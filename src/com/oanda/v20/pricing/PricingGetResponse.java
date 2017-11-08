@@ -25,7 +25,7 @@ public class PricingGetResponse {
     /**
      * Get the prices
      * <p>
-     * The list of Price objects requested
+     * The list of Price objects requested.
      * <p>
      * @return the prices
      * @see Price

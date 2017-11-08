@@ -1,5 +1,10 @@
 OANDA v20 API Change Log
 
+Version 3.0.21 (November 08, 2017)
+
+	* Include error code and error message in request exceptions (Java)
+
+
 Version 3.0.20 (September 26, 2017)
 
 	* Added toString() methods to Java classes

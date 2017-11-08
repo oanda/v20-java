@@ -42,7 +42,8 @@ public class TakeProfitDetails {
     /**
      * Get the Price
      * <p>
-     * The price that the Take Profit Order will be triggered at.
+     * The price that the Take Profit Order will be triggered at. Only one of
+     * the price and distance fields may be specified.
      * <p>
      * @return the Price
      * @see PriceValue
@@ -54,7 +55,8 @@ public class TakeProfitDetails {
     /**
      * Set the Price
      * <p>
-     * The price that the Take Profit Order will be triggered at.
+     * The price that the Take Profit Order will be triggered at. Only one of
+     * the price and distance fields may be specified.
      * <p>
      * @param price the Price as a PriceValue
      * @return {@link TakeProfitDetails TakeProfitDetails}
@@ -67,7 +69,8 @@ public class TakeProfitDetails {
     /**
      * Set the Price
      * <p>
-     * The price that the Take Profit Order will be triggered at.
+     * The price that the Take Profit Order will be triggered at. Only one of
+     * the price and distance fields may be specified.
      * <p>
      * @param price the Price as a String
      * @return {@link TakeProfitDetails TakeProfitDetails}
@@ -80,7 +83,8 @@ public class TakeProfitDetails {
     /**
      * Set the Price
      * <p>
-     * The price that the Take Profit Order will be triggered at.
+     * The price that the Take Profit Order will be triggered at. Only one of
+     * the price and distance fields may be specified.
      * <p>
      * @param price the Price as a double
      * @return {@link TakeProfitDetails TakeProfitDetails}
@@ -93,7 +97,8 @@ public class TakeProfitDetails {
     /**
      * Set the Price
      * <p>
-     * The price that the Take Profit Order will be triggered at.
+     * The price that the Take Profit Order will be triggered at. Only one of
+     * the price and distance fields may be specified.
      * <p>
      * @param price the Price as a BigDecimal
      * @return {@link TakeProfitDetails TakeProfitDetails}
