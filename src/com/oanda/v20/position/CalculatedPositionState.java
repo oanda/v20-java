@@ -28,6 +28,7 @@ public class CalculatedPositionState {
         this.netUnrealizedPL = other.netUnrealizedPL;
         this.longUnrealizedPL = other.longUnrealizedPL;
         this.shortUnrealizedPL = other.shortUnrealizedPL;
+        this.marginUsed = other.marginUsed;
     }
 
     @SerializedName("instrument") private InstrumentName instrument;
@@ -275,6 +276,73 @@ public class CalculatedPositionState {
         return this;
     }
 
+    @SerializedName("marginUsed") private AccountUnits marginUsed;
+
+    /**
+     * Get the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @return the Margin Used
+     * @see AccountUnits
+     */
+    public AccountUnits getMarginUsed() {
+        return this.marginUsed;
+    }
+
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @param marginUsed the Margin Used as an AccountUnits
+     * @return {@link CalculatedPositionState CalculatedPositionState}
+     * @see AccountUnits
+     */
+    public CalculatedPositionState setMarginUsed(AccountUnits marginUsed) {
+        this.marginUsed = marginUsed;
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @param marginUsed the Margin Used as a String
+     * @return {@link CalculatedPositionState CalculatedPositionState}
+     * @see AccountUnits
+     */
+    public CalculatedPositionState setMarginUsed(String marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @param marginUsed the Margin Used as a double
+     * @return {@link CalculatedPositionState CalculatedPositionState}
+     * @see AccountUnits
+     */
+    public CalculatedPositionState setMarginUsed(double marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @param marginUsed the Margin Used as a BigDecimal
+     * @return {@link CalculatedPositionState CalculatedPositionState}
+     * @see AccountUnits
+     */
+    public CalculatedPositionState setMarginUsed(BigDecimal marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "CalculatedPositionState(" +
@@ -285,7 +353,9 @@ public class CalculatedPositionState {
             "longUnrealizedPL=" +
                 (longUnrealizedPL == null ? "null" : longUnrealizedPL.toString()) + ", " +
             "shortUnrealizedPL=" +
-                (shortUnrealizedPL == null ? "null" : shortUnrealizedPL.toString()) +
+                (shortUnrealizedPL == null ? "null" : shortUnrealizedPL.toString()) + ", " +
+            "marginUsed=" +
+                (marginUsed == null ? "null" : marginUsed.toString()) +
             ")";
     }
 }

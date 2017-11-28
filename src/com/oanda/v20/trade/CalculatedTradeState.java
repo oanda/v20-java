@@ -25,6 +25,7 @@ public class CalculatedTradeState {
     public CalculatedTradeState(CalculatedTradeState other) {
         this.id = other.id;
         this.unrealizedPL = other.unrealizedPL;
+        this.marginUsed = other.marginUsed;
     }
 
     @SerializedName("id") private TradeID id;
@@ -135,13 +136,82 @@ public class CalculatedTradeState {
         return this;
     }
 
+    @SerializedName("marginUsed") private AccountUnits marginUsed;
+
+    /**
+     * Get the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @return the Margin Used
+     * @see AccountUnits
+     */
+    public AccountUnits getMarginUsed() {
+        return this.marginUsed;
+    }
+
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @param marginUsed the Margin Used as an AccountUnits
+     * @return {@link CalculatedTradeState CalculatedTradeState}
+     * @see AccountUnits
+     */
+    public CalculatedTradeState setMarginUsed(AccountUnits marginUsed) {
+        this.marginUsed = marginUsed;
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @param marginUsed the Margin Used as a String
+     * @return {@link CalculatedTradeState CalculatedTradeState}
+     * @see AccountUnits
+     */
+    public CalculatedTradeState setMarginUsed(String marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @param marginUsed the Margin Used as a double
+     * @return {@link CalculatedTradeState CalculatedTradeState}
+     * @see AccountUnits
+     */
+    public CalculatedTradeState setMarginUsed(double marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @param marginUsed the Margin Used as a BigDecimal
+     * @return {@link CalculatedTradeState CalculatedTradeState}
+     * @see AccountUnits
+     */
+    public CalculatedTradeState setMarginUsed(BigDecimal marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "CalculatedTradeState(" +
             "id=" +
                 (id == null ? "null" : id.toString()) + ", " +
             "unrealizedPL=" +
-                (unrealizedPL == null ? "null" : unrealizedPL.toString()) +
+                (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
+            "marginUsed=" +
+                (marginUsed == null ? "null" : marginUsed.toString()) +
             ")";
     }
 }

@@ -29,6 +29,7 @@ public class Position {
         this.instrument = other.instrument;
         this.pl = other.pl;
         this.unrealizedPL = other.unrealizedPL;
+        this.marginUsed = other.marginUsed;
         this.resettablePL = other.resettablePL;
         this.commission = other.commission;
         if (other.longValue != null)
@@ -218,6 +219,73 @@ public class Position {
      */
     public Position setUnrealizedPL(BigDecimal unrealizedPL) {
         this.unrealizedPL = new AccountUnits(unrealizedPL);
+        return this;
+    }
+
+    @SerializedName("marginUsed") private AccountUnits marginUsed;
+
+    /**
+     * Get the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @return the Margin Used
+     * @see AccountUnits
+     */
+    public AccountUnits getMarginUsed() {
+        return this.marginUsed;
+    }
+
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @param marginUsed the Margin Used as an AccountUnits
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setMarginUsed(AccountUnits marginUsed) {
+        this.marginUsed = marginUsed;
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @param marginUsed the Margin Used as a String
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setMarginUsed(String marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @param marginUsed the Margin Used as a double
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setMarginUsed(double marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Position.
+     * <p>
+     * @param marginUsed the Margin Used as a BigDecimal
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setMarginUsed(BigDecimal marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
         return this;
     }
 
@@ -430,6 +498,8 @@ public class Position {
                 (pl == null ? "null" : pl.toString()) + ", " +
             "unrealizedPL=" +
                 (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
+            "marginUsed=" +
+                (marginUsed == null ? "null" : marginUsed.toString()) + ", " +
             "resettablePL=" +
                 (resettablePL == null ? "null" : resettablePL.toString()) + ", " +
             "commission=" +

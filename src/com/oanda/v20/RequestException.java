@@ -32,12 +32,17 @@ public class RequestException extends Exception {
     }
 
     public String toString() {
-        String str = "";
-        str += status;
-        str += " : ";
-        str += errorCode;
-        str += " : ";
-        str += errorMessage;
+        String str = "HTTP " + status;
+
+        if (errorCode != null) {
+            str += " : ";
+            str += errorCode;
+        }
+        if (errorMessage != null) {
+            str += " : ";
+            str += errorMessage;
+        }
+
         return str;
     }
 }

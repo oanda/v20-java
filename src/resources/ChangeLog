@@ -4,6 +4,8 @@ Version 3.0.21 (November 08, 2017)
 
 	* Include error code and error message in request exceptions (Java)
 
+	* Improved README.md (Java)
+
 
 Version 3.0.20 (September 26, 2017)
 

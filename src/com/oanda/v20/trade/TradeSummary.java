@@ -45,6 +45,7 @@ public class TradeSummary {
         this.currentUnits = other.currentUnits;
         this.realizedPL = other.realizedPL;
         this.unrealizedPL = other.unrealizedPL;
+        this.marginUsed = other.marginUsed;
         this.averageClosePrice = other.averageClosePrice;
         if (other.closingTransactionIDs != null)
         {
@@ -557,6 +558,73 @@ public class TradeSummary {
         return this;
     }
 
+    @SerializedName("marginUsed") private AccountUnits marginUsed;
+
+    /**
+     * Get the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @return the Margin Used
+     * @see AccountUnits
+     */
+    public AccountUnits getMarginUsed() {
+        return this.marginUsed;
+    }
+
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @param marginUsed the Margin Used as an AccountUnits
+     * @return {@link TradeSummary TradeSummary}
+     * @see AccountUnits
+     */
+    public TradeSummary setMarginUsed(AccountUnits marginUsed) {
+        this.marginUsed = marginUsed;
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @param marginUsed the Margin Used as a String
+     * @return {@link TradeSummary TradeSummary}
+     * @see AccountUnits
+     */
+    public TradeSummary setMarginUsed(String marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @param marginUsed the Margin Used as a double
+     * @return {@link TradeSummary TradeSummary}
+     * @see AccountUnits
+     */
+    public TradeSummary setMarginUsed(double marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+    /**
+     * Set the Margin Used
+     * <p>
+     * Margin currently used by the Trade.
+     * <p>
+     * @param marginUsed the Margin Used as a BigDecimal
+     * @return {@link TradeSummary TradeSummary}
+     * @see AccountUnits
+     */
+    public TradeSummary setMarginUsed(BigDecimal marginUsed) {
+        this.marginUsed = new AccountUnits(marginUsed);
+        return this;
+    }
+
     @SerializedName("averageClosePrice") private PriceValue averageClosePrice;
 
     /**
@@ -968,6 +1036,8 @@ public class TradeSummary {
                 (realizedPL == null ? "null" : realizedPL.toString()) + ", " +
             "unrealizedPL=" +
                 (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
+            "marginUsed=" +
+                (marginUsed == null ? "null" : marginUsed.toString()) + ", " +
             "averageClosePrice=" +
                 (averageClosePrice == null ? "null" : averageClosePrice.toString()) + ", " +
             "closingTransactionIDs=" +
