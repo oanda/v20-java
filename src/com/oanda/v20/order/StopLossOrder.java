@@ -9,6 +9,7 @@ import com.google.gson.annotations.SerializedName;
 
 import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.trade.TradeID;
 import com.oanda.v20.transaction.ClientExtensions;
 import com.oanda.v20.transaction.ClientID;
@@ -44,12 +45,18 @@ public class StopLossOrder implements Order {
             this.clientExtensions = new ClientExtensions(other.clientExtensions);
         }
         this.type = other.type;
+        this.guaranteedExecutionPremium = other.guaranteedExecutionPremium;
         this.tradeID = other.tradeID;
         this.clientTradeID = other.clientTradeID;
         this.price = other.price;
+        this.distance = other.distance;
         this.timeInForce = other.timeInForce;
         this.gtdTime = other.gtdTime;
         this.triggerCondition = other.triggerCondition;
+        if (other.guaranteed != null)
+        {
+            this.guaranteed = new Boolean(other.guaranteed);
+        }
         this.fillingTransactionID = other.fillingTransactionID;
         this.filledTime = other.filledTime;
         this.tradeOpenedID = other.tradeOpenedID;
@@ -232,6 +239,87 @@ public class StopLossOrder implements Order {
         return this;
     }
 
+    @SerializedName("guaranteedExecutionPremium") private DecimalNumber guaranteedExecutionPremium;
+
+    /**
+     * Get the Guaranteed Execution Fee
+     * <p>
+     * The premium that will be charged if the Stop Loss Order is guaranteed
+     * and the Order is filled at the guaranteed price. It is in price units
+     * and is charged for each unit of the Trade.
+     * <p>
+     * @return the Guaranteed Execution Fee
+     * @see DecimalNumber
+     */
+    public DecimalNumber getGuaranteedExecutionPremium() {
+        return this.guaranteedExecutionPremium;
+    }
+
+    /**
+     * Set the Guaranteed Execution Fee
+     * <p>
+     * The premium that will be charged if the Stop Loss Order is guaranteed
+     * and the Order is filled at the guaranteed price. It is in price units
+     * and is charged for each unit of the Trade.
+     * <p>
+     * @param guaranteedExecutionPremium the Guaranteed Execution Fee as a
+     * DecimalNumber
+     * @return {@link StopLossOrder StopLossOrder}
+     * @see DecimalNumber
+     */
+    public StopLossOrder setGuaranteedExecutionPremium(DecimalNumber guaranteedExecutionPremium) {
+        this.guaranteedExecutionPremium = guaranteedExecutionPremium;
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Fee
+     * <p>
+     * The premium that will be charged if the Stop Loss Order is guaranteed
+     * and the Order is filled at the guaranteed price. It is in price units
+     * and is charged for each unit of the Trade.
+     * <p>
+     * @param guaranteedExecutionPremium the Guaranteed Execution Fee as a
+     * String
+     * @return {@link StopLossOrder StopLossOrder}
+     * @see DecimalNumber
+     */
+    public StopLossOrder setGuaranteedExecutionPremium(String guaranteedExecutionPremium) {
+        this.guaranteedExecutionPremium = new DecimalNumber(guaranteedExecutionPremium);
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Fee
+     * <p>
+     * The premium that will be charged if the Stop Loss Order is guaranteed
+     * and the Order is filled at the guaranteed price. It is in price units
+     * and is charged for each unit of the Trade.
+     * <p>
+     * @param guaranteedExecutionPremium the Guaranteed Execution Fee as a
+     * double
+     * @return {@link StopLossOrder StopLossOrder}
+     * @see DecimalNumber
+     */
+    public StopLossOrder setGuaranteedExecutionPremium(double guaranteedExecutionPremium) {
+        this.guaranteedExecutionPremium = new DecimalNumber(guaranteedExecutionPremium);
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Fee
+     * <p>
+     * The premium that will be charged if the Stop Loss Order is guaranteed
+     * and the Order is filled at the guaranteed price. It is in price units
+     * and is charged for each unit of the Trade.
+     * <p>
+     * @param guaranteedExecutionPremium the Guaranteed Execution Fee as a
+     * BigDecimal
+     * @return {@link StopLossOrder StopLossOrder}
+     * @see DecimalNumber
+     */
+    public StopLossOrder setGuaranteedExecutionPremium(BigDecimal guaranteedExecutionPremium) {
+        this.guaranteedExecutionPremium = new DecimalNumber(guaranteedExecutionPremium);
+        return this;
+    }
+
     @SerializedName("tradeID") private TradeID tradeID;
 
     /**
@@ -399,6 +487,83 @@ public class StopLossOrder implements Order {
         return this;
     }
 
+    @SerializedName("distance") private DecimalNumber distance;
+
+    /**
+     * Get the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @return the Price Distance
+     * @see DecimalNumber
+     */
+    public DecimalNumber getDistance() {
+        return this.distance;
+    }
+
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a DecimalNumber
+     * @return {@link StopLossOrder StopLossOrder}
+     * @see DecimalNumber
+     */
+    public StopLossOrder setDistance(DecimalNumber distance) {
+        this.distance = distance;
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a String
+     * @return {@link StopLossOrder StopLossOrder}
+     * @see DecimalNumber
+     */
+    public StopLossOrder setDistance(String distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a double
+     * @return {@link StopLossOrder StopLossOrder}
+     * @see DecimalNumber
+     */
+    public StopLossOrder setDistance(double distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a BigDecimal
+     * @return {@link StopLossOrder StopLossOrder}
+     * @see DecimalNumber
+     */
+    public StopLossOrder setDistance(BigDecimal distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+
     @SerializedName("timeInForce") private TimeInForce timeInForce = TimeInForce.GTC;
 
     /**
@@ -531,6 +696,38 @@ public class StopLossOrder implements Order {
      */
     public StopLossOrder setTriggerCondition(OrderTriggerCondition triggerCondition) {
         this.triggerCondition = triggerCondition;
+        return this;
+    }
+
+    @SerializedName("guaranteed") private Boolean guaranteed;
+
+    /**
+     * Get the Guaranteed
+     * <p>
+     * Flag indicating that the Stop Loss Order is guaranteed. The default
+     * value depends on the GuaranteedStopLossOrderMode of the account, if it
+     * is REQUIRED, the default will be true, for DISABLED or ENABLED the
+     * default is false.
+     * <p>
+     * @return the Guaranteed
+     */
+    public Boolean getGuaranteed() {
+        return this.guaranteed;
+    }
+
+    /**
+     * Set the Guaranteed
+     * <p>
+     * Flag indicating that the Stop Loss Order is guaranteed. The default
+     * value depends on the GuaranteedStopLossOrderMode of the account, if it
+     * is REQUIRED, the default will be true, for DISABLED or ENABLED the
+     * default is false.
+     * <p>
+     * @param guaranteed the Guaranteed as a Boolean
+     * @return {@link StopLossOrder StopLossOrder}
+     */
+    public StopLossOrder setGuaranteed(Boolean guaranteed) {
+        this.guaranteed = guaranteed;
         return this;
     }
 
@@ -956,18 +1153,24 @@ public class StopLossOrder implements Order {
                 (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
             "type=" +
                 (type == null ? "null" : type.toString()) + ", " +
+            "guaranteedExecutionPremium=" +
+                (guaranteedExecutionPremium == null ? "null" : guaranteedExecutionPremium.toString()) + ", " +
             "tradeID=" +
                 (tradeID == null ? "null" : tradeID.toString()) + ", " +
             "clientTradeID=" +
                 (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
             "price=" +
                 (price == null ? "null" : price.toString()) + ", " +
+            "distance=" +
+                (distance == null ? "null" : distance.toString()) + ", " +
             "timeInForce=" +
                 (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
             "gtdTime=" +
                 (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
             "triggerCondition=" +
                 (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "guaranteed=" +
+                (guaranteed == null ? "null" : guaranteed.toString()) + ", " +
             "fillingTransactionID=" +
                 (fillingTransactionID == null ? "null" : fillingTransactionID.toString()) + ", " +
             "filledTime=" +

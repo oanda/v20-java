@@ -29,7 +29,7 @@ public class MarginCallExtendTransaction implements Transaction {
         this.time = other.time;
         if (other.userID != null)
         {
-            this.userID = new Integer(other.userID);
+            this.userID = new Long(other.userID);
         }
         this.accountID = other.accountID;
         this.batchID = other.batchID;
@@ -37,7 +37,7 @@ public class MarginCallExtendTransaction implements Transaction {
         this.type = other.type;
         if (other.extensionNumber != null)
         {
-            this.extensionNumber = new Integer(other.extensionNumber);
+            this.extensionNumber = new Long(other.extensionNumber);
         }
     }
 
@@ -123,7 +123,7 @@ public class MarginCallExtendTransaction implements Transaction {
         return this;
     }
 
-    @SerializedName("userID") private Integer userID;
+    @SerializedName("userID") private Long userID;
 
     /**
      * Get the User ID
@@ -132,7 +132,7 @@ public class MarginCallExtendTransaction implements Transaction {
      * <p>
      * @return the User ID
      */
-    public Integer getUserID() {
+    public Long getUserID() {
         return this.userID;
     }
 
@@ -141,10 +141,10 @@ public class MarginCallExtendTransaction implements Transaction {
      * <p>
      * The ID of the user that initiated the creation of the Transaction.
      * <p>
-     * @param userID the User ID as an Integer
+     * @param userID the User ID as a Long
      * @return {@link MarginCallExtendTransaction MarginCallExtendTransaction}
      */
-    public MarginCallExtendTransaction setUserID(Integer userID) {
+    public MarginCallExtendTransaction setUserID(Long userID) {
         this.userID = userID;
         return this;
     }
@@ -305,7 +305,7 @@ public class MarginCallExtendTransaction implements Transaction {
         return this;
     }
 
-    @SerializedName("extensionNumber") private Integer extensionNumber;
+    @SerializedName("extensionNumber") private Long extensionNumber;
 
     /**
      * Get the Extension Number
@@ -316,7 +316,7 @@ public class MarginCallExtendTransaction implements Transaction {
      * <p>
      * @return the Extension Number
      */
-    public Integer getExtensionNumber() {
+    public Long getExtensionNumber() {
         return this.extensionNumber;
     }
 
@@ -327,10 +327,10 @@ public class MarginCallExtendTransaction implements Transaction {
      * have been applied. This value will be set to 1 for the first
      * MarginCallExtend Transaction
      * <p>
-     * @param extensionNumber the Extension Number as an Integer
+     * @param extensionNumber the Extension Number as a Long
      * @return {@link MarginCallExtendTransaction MarginCallExtendTransaction}
      */
-    public MarginCallExtendTransaction setExtensionNumber(Integer extensionNumber) {
+    public MarginCallExtendTransaction setExtensionNumber(Long extensionNumber) {
         this.extensionNumber = extensionNumber;
         return this;
     }

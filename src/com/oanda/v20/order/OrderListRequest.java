@@ -105,10 +105,10 @@ public class OrderListRequest extends Request {
      * <p>
      * The maximum number of Orders to return
      * <p>
-     * @param count the count as an Integer
+     * @param count the count as a Long
      * @return {@link OrderListRequest OrderListRequest}
      */
-    public OrderListRequest setCount(Integer count)
+    public OrderListRequest setCount(Long count)
     {
         this.queryParams.put("count", count);
         return this;

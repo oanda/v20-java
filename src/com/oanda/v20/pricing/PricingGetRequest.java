@@ -79,8 +79,9 @@ public class PricingGetRequest extends Request {
      * Set the since
      * <p>
      * Date/Time filter to apply to the response. Only prices and home
-     * conversions (if requested) with a time later than this filter will be
-     * provided, and are filtered independently.
+     * conversions (if requested) with a time later than this filter (i.e. the
+     * price has changed after the since time) will be provided, and are
+     * filtered independently.
      * <p>
      * @param since the since as a DateTime
      * @return {@link PricingGetRequest PricingGetRequest}
@@ -96,8 +97,9 @@ public class PricingGetRequest extends Request {
      * Set the since
      * <p>
      * Date/Time filter to apply to the response. Only prices and home
-     * conversions (if requested) with a time later than this filter will be
-     * provided, and are filtered independently.
+     * conversions (if requested) with a time later than this filter (i.e. the
+     * price has changed after the since time) will be provided, and are
+     * filtered independently.
      * <p>
      * @param since the since as a String
      * @return {@link PricingGetRequest PricingGetRequest}
@@ -121,6 +123,23 @@ public class PricingGetRequest extends Request {
     public PricingGetRequest setIncludeUnitsAvailable(Boolean includeUnitsAvailable)
     {
         this.queryParams.put("includeUnitsAvailable", includeUnitsAvailable);
+        return this;
+    }
+
+    /**
+     * Set the includeHomeConversions
+     * <p>
+     * Flag that enables the inclusion of the homeConversions field in the
+     * returned response. An entry will be returned for each currency in the
+     * set of all base and quote currencies present in the requested
+     * instruments list.
+     * <p>
+     * @param includeHomeConversions the includeHomeConversions as a Boolean
+     * @return {@link PricingGetRequest PricingGetRequest}
+     */
+    public PricingGetRequest setIncludeHomeConversions(Boolean includeHomeConversions)
+    {
+        this.queryParams.put("includeHomeConversions", includeHomeConversions);
         return this;
     }
 }

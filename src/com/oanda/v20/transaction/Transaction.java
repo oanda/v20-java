@@ -88,17 +88,17 @@ public interface Transaction {
      * <p>
      * @return the User ID
      */
-    public Integer getUserID();
+    public Long getUserID();
 
     /**
      * Set the User ID
      * <p>
      * The ID of the user that initiated the creation of the Transaction.
      * <p>
-     * @param userID the User ID as an Integer
+     * @param userID the User ID as a Long
      * @return {@link Transaction Transaction}
      */
-    public Transaction setUserID(Integer userID);
+    public Transaction setUserID(Long userID);
 
     /**
      * Get the Account ID

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import com.google.gson.annotations.SerializedName;
 
 import com.oanda.v20.pricing.PriceValue;
+import com.oanda.v20.primitives.AccountUnits;
 import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.trade.TradeID;
 
@@ -30,10 +31,13 @@ public class TradeOpen {
         this.tradeID = other.tradeID;
         this.units = other.units;
         this.price = other.price;
+        this.guaranteedExecutionFee = other.guaranteedExecutionFee;
         if (other.clientExtensions != null)
         {
             this.clientExtensions = new ClientExtensions(other.clientExtensions);
         }
+        this.halfSpreadCost = other.halfSpreadCost;
+        this.initialMarginRequired = other.initialMarginRequired;
     }
 
     @SerializedName("tradeID") private TradeID tradeID;
@@ -211,6 +215,80 @@ public class TradeOpen {
         return this;
     }
 
+    @SerializedName("guaranteedExecutionFee") private AccountUnits guaranteedExecutionFee;
+
+    /**
+     * Get the Guranteed Execution Fee
+     * <p>
+     * This is the fee charged for opening the trade if it has a guaranteed
+     * Stop Loss Order attached to it.
+     * <p>
+     * @return the Guranteed Execution Fee
+     * @see AccountUnits
+     */
+    public AccountUnits getGuaranteedExecutionFee() {
+        return this.guaranteedExecutionFee;
+    }
+
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * This is the fee charged for opening the trade if it has a guaranteed
+     * Stop Loss Order attached to it.
+     * <p>
+     * @param guaranteedExecutionFee the Guranteed Execution Fee as an
+     * AccountUnits
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setGuaranteedExecutionFee(AccountUnits guaranteedExecutionFee) {
+        this.guaranteedExecutionFee = guaranteedExecutionFee;
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * This is the fee charged for opening the trade if it has a guaranteed
+     * Stop Loss Order attached to it.
+     * <p>
+     * @param guaranteedExecutionFee the Guranteed Execution Fee as a String
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setGuaranteedExecutionFee(String guaranteedExecutionFee) {
+        this.guaranteedExecutionFee = new AccountUnits(guaranteedExecutionFee);
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * This is the fee charged for opening the trade if it has a guaranteed
+     * Stop Loss Order attached to it.
+     * <p>
+     * @param guaranteedExecutionFee the Guranteed Execution Fee as a double
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setGuaranteedExecutionFee(double guaranteedExecutionFee) {
+        this.guaranteedExecutionFee = new AccountUnits(guaranteedExecutionFee);
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * This is the fee charged for opening the trade if it has a guaranteed
+     * Stop Loss Order attached to it.
+     * <p>
+     * @param guaranteedExecutionFee the Guranteed Execution Fee as a
+     * BigDecimal
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setGuaranteedExecutionFee(BigDecimal guaranteedExecutionFee) {
+        this.guaranteedExecutionFee = new AccountUnits(guaranteedExecutionFee);
+        return this;
+    }
+
     @SerializedName("clientExtensions") private ClientExtensions clientExtensions;
 
     /**
@@ -239,6 +317,156 @@ public class TradeOpen {
         return this;
     }
 
+    @SerializedName("halfSpreadCost") private AccountUnits halfSpreadCost;
+
+    /**
+     * Get the Half Spread Cost
+     * <p>
+     * The half spread cost for the trade open. This can be a positive or
+     * negative value and is represented in the home currency of the Account.
+     * <p>
+     * @return the Half Spread Cost
+     * @see AccountUnits
+     */
+    public AccountUnits getHalfSpreadCost() {
+        return this.halfSpreadCost;
+    }
+
+    /**
+     * Set the Half Spread Cost
+     * <p>
+     * The half spread cost for the trade open. This can be a positive or
+     * negative value and is represented in the home currency of the Account.
+     * <p>
+     * @param halfSpreadCost the Half Spread Cost as an AccountUnits
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setHalfSpreadCost(AccountUnits halfSpreadCost) {
+        this.halfSpreadCost = halfSpreadCost;
+        return this;
+    }
+    /**
+     * Set the Half Spread Cost
+     * <p>
+     * The half spread cost for the trade open. This can be a positive or
+     * negative value and is represented in the home currency of the Account.
+     * <p>
+     * @param halfSpreadCost the Half Spread Cost as a String
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setHalfSpreadCost(String halfSpreadCost) {
+        this.halfSpreadCost = new AccountUnits(halfSpreadCost);
+        return this;
+    }
+    /**
+     * Set the Half Spread Cost
+     * <p>
+     * The half spread cost for the trade open. This can be a positive or
+     * negative value and is represented in the home currency of the Account.
+     * <p>
+     * @param halfSpreadCost the Half Spread Cost as a double
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setHalfSpreadCost(double halfSpreadCost) {
+        this.halfSpreadCost = new AccountUnits(halfSpreadCost);
+        return this;
+    }
+    /**
+     * Set the Half Spread Cost
+     * <p>
+     * The half spread cost for the trade open. This can be a positive or
+     * negative value and is represented in the home currency of the Account.
+     * <p>
+     * @param halfSpreadCost the Half Spread Cost as a BigDecimal
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setHalfSpreadCost(BigDecimal halfSpreadCost) {
+        this.halfSpreadCost = new AccountUnits(halfSpreadCost);
+        return this;
+    }
+
+    @SerializedName("initialMarginRequired") private AccountUnits initialMarginRequired;
+
+    /**
+     * Get the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @return the Initial Margin Required
+     * @see AccountUnits
+     */
+    public AccountUnits getInitialMarginRequired() {
+        return this.initialMarginRequired;
+    }
+
+    /**
+     * Set the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @param initialMarginRequired the Initial Margin Required as an
+     * AccountUnits
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setInitialMarginRequired(AccountUnits initialMarginRequired) {
+        this.initialMarginRequired = initialMarginRequired;
+        return this;
+    }
+    /**
+     * Set the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @param initialMarginRequired the Initial Margin Required as a String
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setInitialMarginRequired(String initialMarginRequired) {
+        this.initialMarginRequired = new AccountUnits(initialMarginRequired);
+        return this;
+    }
+    /**
+     * Set the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @param initialMarginRequired the Initial Margin Required as a double
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setInitialMarginRequired(double initialMarginRequired) {
+        this.initialMarginRequired = new AccountUnits(initialMarginRequired);
+        return this;
+    }
+    /**
+     * Set the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @param initialMarginRequired the Initial Margin Required as a BigDecimal
+     * @return {@link TradeOpen TradeOpen}
+     * @see AccountUnits
+     */
+    public TradeOpen setInitialMarginRequired(BigDecimal initialMarginRequired) {
+        this.initialMarginRequired = new AccountUnits(initialMarginRequired);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "TradeOpen(" +
@@ -248,8 +476,14 @@ public class TradeOpen {
                 (units == null ? "null" : units.toString()) + ", " +
             "price=" +
                 (price == null ? "null" : price.toString()) + ", " +
+            "guaranteedExecutionFee=" +
+                (guaranteedExecutionFee == null ? "null" : guaranteedExecutionFee.toString()) + ", " +
             "clientExtensions=" +
-                (clientExtensions == null ? "null" : clientExtensions.toString()) +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "halfSpreadCost=" +
+                (halfSpreadCost == null ? "null" : halfSpreadCost.toString()) + ", " +
+            "initialMarginRequired=" +
+                (initialMarginRequired == null ? "null" : initialMarginRequired.toString()) +
             ")";
     }
 }

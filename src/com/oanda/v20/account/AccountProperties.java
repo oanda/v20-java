@@ -26,7 +26,7 @@ public class AccountProperties {
         this.id = other.id;
         if (other.mt4AccountID != null)
         {
-            this.mt4AccountID = new Integer(other.mt4AccountID);
+            this.mt4AccountID = new Long(other.mt4AccountID);
         }
         if (other.tags != null)
         {
@@ -75,7 +75,7 @@ public class AccountProperties {
         return this;
     }
 
-    @SerializedName("mt4AccountID") private Integer mt4AccountID;
+    @SerializedName("mt4AccountID") private Long mt4AccountID;
 
     /**
      * Get the MT4 Account ID
@@ -85,7 +85,7 @@ public class AccountProperties {
      * <p>
      * @return the MT4 Account ID
      */
-    public Integer getMt4AccountID() {
+    public Long getMt4AccountID() {
         return this.mt4AccountID;
     }
 
@@ -95,10 +95,10 @@ public class AccountProperties {
      * The Account's associated MT4 Account ID. This field will not be present
      * if the Account is not an MT4 account.
      * <p>
-     * @param mt4AccountID the MT4 Account ID as an Integer
+     * @param mt4AccountID the MT4 Account ID as a Long
      * @return {@link AccountProperties AccountProperties}
      */
-    public AccountProperties setMt4AccountID(Integer mt4AccountID) {
+    public AccountProperties setMt4AccountID(Long mt4AccountID) {
         this.mt4AccountID = mt4AccountID;
         return this;
     }

@@ -10,6 +10,7 @@ import com.oanda.v20.order.OrderTriggerCondition;
 import com.oanda.v20.order.TimeInForce;
 import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.trade.TradeID;
 
 /**
@@ -36,7 +37,7 @@ public class StopLossOrderTransaction implements Transaction {
         this.time = other.time;
         if (other.userID != null)
         {
-            this.userID = new Integer(other.userID);
+            this.userID = new Long(other.userID);
         }
         this.accountID = other.accountID;
         this.batchID = other.batchID;
@@ -45,9 +46,15 @@ public class StopLossOrderTransaction implements Transaction {
         this.tradeID = other.tradeID;
         this.clientTradeID = other.clientTradeID;
         this.price = other.price;
+        this.distance = other.distance;
         this.timeInForce = other.timeInForce;
         this.gtdTime = other.gtdTime;
         this.triggerCondition = other.triggerCondition;
+        if (other.guaranteed != null)
+        {
+            this.guaranteed = new Boolean(other.guaranteed);
+        }
+        this.guaranteedExecutionPremium = other.guaranteedExecutionPremium;
         this.reason = other.reason;
         if (other.clientExtensions != null)
         {
@@ -140,7 +147,7 @@ public class StopLossOrderTransaction implements Transaction {
         return this;
     }
 
-    @SerializedName("userID") private Integer userID;
+    @SerializedName("userID") private Long userID;
 
     /**
      * Get the User ID
@@ -149,7 +156,7 @@ public class StopLossOrderTransaction implements Transaction {
      * <p>
      * @return the User ID
      */
-    public Integer getUserID() {
+    public Long getUserID() {
         return this.userID;
     }
 
@@ -158,10 +165,10 @@ public class StopLossOrderTransaction implements Transaction {
      * <p>
      * The ID of the user that initiated the creation of the Transaction.
      * <p>
-     * @param userID the User ID as an Integer
+     * @param userID the User ID as a Long
      * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
      */
-    public StopLossOrderTransaction setUserID(Integer userID) {
+    public StopLossOrderTransaction setUserID(Long userID) {
         this.userID = userID;
         return this;
     }
@@ -489,6 +496,83 @@ public class StopLossOrderTransaction implements Transaction {
         return this;
     }
 
+    @SerializedName("distance") private DecimalNumber distance;
+
+    /**
+     * Get the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @return the Price Distance
+     * @see DecimalNumber
+     */
+    public DecimalNumber getDistance() {
+        return this.distance;
+    }
+
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a DecimalNumber
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     * @see DecimalNumber
+     */
+    public StopLossOrderTransaction setDistance(DecimalNumber distance) {
+        this.distance = distance;
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a String
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     * @see DecimalNumber
+     */
+    public StopLossOrderTransaction setDistance(String distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a double
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     * @see DecimalNumber
+     */
+    public StopLossOrderTransaction setDistance(double distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a BigDecimal
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     * @see DecimalNumber
+     */
+    public StopLossOrderTransaction setDistance(BigDecimal distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+
     @SerializedName("timeInForce") private TimeInForce timeInForce = TimeInForce.GTC;
 
     /**
@@ -621,6 +705,124 @@ public class StopLossOrderTransaction implements Transaction {
      */
     public StopLossOrderTransaction setTriggerCondition(OrderTriggerCondition triggerCondition) {
         this.triggerCondition = triggerCondition;
+        return this;
+    }
+
+    @SerializedName("guaranteed") private Boolean guaranteed;
+
+    /**
+     * Get the Guaranteed
+     * <p>
+     * Flag indicating that the Stop Loss Order is guaranteed. The default
+     * value depends on the GuaranteedStopLossOrderMode of the account, if it
+     * is REQUIRED, the default will be true, for DISABLED or ENABLED the
+     * default is false.
+     * <p>
+     * @return the Guaranteed
+     */
+    public Boolean getGuaranteed() {
+        return this.guaranteed;
+    }
+
+    /**
+     * Set the Guaranteed
+     * <p>
+     * Flag indicating that the Stop Loss Order is guaranteed. The default
+     * value depends on the GuaranteedStopLossOrderMode of the account, if it
+     * is REQUIRED, the default will be true, for DISABLED or ENABLED the
+     * default is false.
+     * <p>
+     * @param guaranteed the Guaranteed as a Boolean
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     */
+    public StopLossOrderTransaction setGuaranteed(Boolean guaranteed) {
+        this.guaranteed = guaranteed;
+        return this;
+    }
+
+    @SerializedName("guaranteedExecutionPremium") private DecimalNumber guaranteedExecutionPremium;
+
+    /**
+     * Get the Guaranteed Execution Premium
+     * <p>
+     * The fee that will be charged if the Stop Loss Order is guaranteed and
+     * the Order is filled at the guaranteed price. The value is determined at
+     * Order creation time. It is in price units and is charged for each unit
+     * of the Trade.
+     * <p>
+     * @return the Guaranteed Execution Premium
+     * @see DecimalNumber
+     */
+    public DecimalNumber getGuaranteedExecutionPremium() {
+        return this.guaranteedExecutionPremium;
+    }
+
+    /**
+     * Set the Guaranteed Execution Premium
+     * <p>
+     * The fee that will be charged if the Stop Loss Order is guaranteed and
+     * the Order is filled at the guaranteed price. The value is determined at
+     * Order creation time. It is in price units and is charged for each unit
+     * of the Trade.
+     * <p>
+     * @param guaranteedExecutionPremium the Guaranteed Execution Premium as a
+     * DecimalNumber
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     * @see DecimalNumber
+     */
+    public StopLossOrderTransaction setGuaranteedExecutionPremium(DecimalNumber guaranteedExecutionPremium) {
+        this.guaranteedExecutionPremium = guaranteedExecutionPremium;
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Premium
+     * <p>
+     * The fee that will be charged if the Stop Loss Order is guaranteed and
+     * the Order is filled at the guaranteed price. The value is determined at
+     * Order creation time. It is in price units and is charged for each unit
+     * of the Trade.
+     * <p>
+     * @param guaranteedExecutionPremium the Guaranteed Execution Premium as a
+     * String
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     * @see DecimalNumber
+     */
+    public StopLossOrderTransaction setGuaranteedExecutionPremium(String guaranteedExecutionPremium) {
+        this.guaranteedExecutionPremium = new DecimalNumber(guaranteedExecutionPremium);
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Premium
+     * <p>
+     * The fee that will be charged if the Stop Loss Order is guaranteed and
+     * the Order is filled at the guaranteed price. The value is determined at
+     * Order creation time. It is in price units and is charged for each unit
+     * of the Trade.
+     * <p>
+     * @param guaranteedExecutionPremium the Guaranteed Execution Premium as a
+     * double
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     * @see DecimalNumber
+     */
+    public StopLossOrderTransaction setGuaranteedExecutionPremium(double guaranteedExecutionPremium) {
+        this.guaranteedExecutionPremium = new DecimalNumber(guaranteedExecutionPremium);
+        return this;
+    }
+    /**
+     * Set the Guaranteed Execution Premium
+     * <p>
+     * The fee that will be charged if the Stop Loss Order is guaranteed and
+     * the Order is filled at the guaranteed price. The value is determined at
+     * Order creation time. It is in price units and is charged for each unit
+     * of the Trade.
+     * <p>
+     * @param guaranteedExecutionPremium the Guaranteed Execution Premium as a
+     * BigDecimal
+     * @return {@link StopLossOrderTransaction StopLossOrderTransaction}
+     * @see DecimalNumber
+     */
+    public StopLossOrderTransaction setGuaranteedExecutionPremium(BigDecimal guaranteedExecutionPremium) {
+        this.guaranteedExecutionPremium = new DecimalNumber(guaranteedExecutionPremium);
         return this;
     }
 
@@ -844,12 +1046,18 @@ public class StopLossOrderTransaction implements Transaction {
                 (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
             "price=" +
                 (price == null ? "null" : price.toString()) + ", " +
+            "distance=" +
+                (distance == null ? "null" : distance.toString()) + ", " +
             "timeInForce=" +
                 (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
             "gtdTime=" +
                 (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
             "triggerCondition=" +
                 (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "guaranteed=" +
+                (guaranteed == null ? "null" : guaranteed.toString()) + ", " +
+            "guaranteedExecutionPremium=" +
+                (guaranteedExecutionPremium == null ? "null" : guaranteedExecutionPremium.toString()) + ", " +
             "reason=" +
                 (reason == null ? "null" : reason.toString()) + ", " +
             "clientExtensions=" +

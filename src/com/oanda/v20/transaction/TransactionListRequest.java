@@ -93,10 +93,10 @@ public class TransactionListRequest extends Request {
      * <p>
      * The number of Transactions to include in each page of the results.
      * <p>
-     * @param pageSize the pageSize as an Integer
+     * @param pageSize the pageSize as a Long
      * @return {@link TransactionListRequest TransactionListRequest}
      */
-    public TransactionListRequest setPageSize(Integer pageSize)
+    public TransactionListRequest setPageSize(Long pageSize)
     {
         this.queryParams.put("pageSize", pageSize);
         return this;

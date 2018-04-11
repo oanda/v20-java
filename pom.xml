@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.oanda.v20</groupId>
   <artifactId>v20</artifactId>
-  <version>3.0.21</version>
+  <version>3.0.22</version>
 
   <packaging>jar</packaging>
 
@@ -41,7 +41,7 @@
   <scm>
     <connection>https://github.com/oanda/v20-java.git</connection>
     <developerConnection>https://github.com/oanda/v20-java.git</developerConnection>
-    <tag>3.0.21</tag>
+    <tag>3.0.22</tag>
     <url>https://github.com/oanda/v20-java</url>
   </scm>
 

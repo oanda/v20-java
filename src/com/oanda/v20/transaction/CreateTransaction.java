@@ -29,7 +29,7 @@ public class CreateTransaction implements Transaction {
         this.time = other.time;
         if (other.userID != null)
         {
-            this.userID = new Integer(other.userID);
+            this.userID = new Long(other.userID);
         }
         this.accountID = other.accountID;
         this.batchID = other.batchID;
@@ -37,19 +37,19 @@ public class CreateTransaction implements Transaction {
         this.type = other.type;
         if (other.divisionID != null)
         {
-            this.divisionID = new Integer(other.divisionID);
+            this.divisionID = new Long(other.divisionID);
         }
         if (other.siteID != null)
         {
-            this.siteID = new Integer(other.siteID);
+            this.siteID = new Long(other.siteID);
         }
         if (other.accountUserID != null)
         {
-            this.accountUserID = new Integer(other.accountUserID);
+            this.accountUserID = new Long(other.accountUserID);
         }
         if (other.accountNumber != null)
         {
-            this.accountNumber = new Integer(other.accountNumber);
+            this.accountNumber = new Long(other.accountNumber);
         }
         this.homeCurrency = other.homeCurrency;
     }
@@ -136,7 +136,7 @@ public class CreateTransaction implements Transaction {
         return this;
     }
 
-    @SerializedName("userID") private Integer userID;
+    @SerializedName("userID") private Long userID;
 
     /**
      * Get the User ID
@@ -145,7 +145,7 @@ public class CreateTransaction implements Transaction {
      * <p>
      * @return the User ID
      */
-    public Integer getUserID() {
+    public Long getUserID() {
         return this.userID;
     }
 
@@ -154,10 +154,10 @@ public class CreateTransaction implements Transaction {
      * <p>
      * The ID of the user that initiated the creation of the Transaction.
      * <p>
-     * @param userID the User ID as an Integer
+     * @param userID the User ID as a Long
      * @return {@link CreateTransaction CreateTransaction}
      */
-    public CreateTransaction setUserID(Integer userID) {
+    public CreateTransaction setUserID(Long userID) {
         this.userID = userID;
         return this;
     }
@@ -318,7 +318,7 @@ public class CreateTransaction implements Transaction {
         return this;
     }
 
-    @SerializedName("divisionID") private Integer divisionID;
+    @SerializedName("divisionID") private Long divisionID;
 
     /**
      * Get the Division ID
@@ -327,7 +327,7 @@ public class CreateTransaction implements Transaction {
      * <p>
      * @return the Division ID
      */
-    public Integer getDivisionID() {
+    public Long getDivisionID() {
         return this.divisionID;
     }
 
@@ -336,15 +336,15 @@ public class CreateTransaction implements Transaction {
      * <p>
      * The ID of the Division that the Account is in
      * <p>
-     * @param divisionID the Division ID as an Integer
+     * @param divisionID the Division ID as a Long
      * @return {@link CreateTransaction CreateTransaction}
      */
-    public CreateTransaction setDivisionID(Integer divisionID) {
+    public CreateTransaction setDivisionID(Long divisionID) {
         this.divisionID = divisionID;
         return this;
     }
 
-    @SerializedName("siteID") private Integer siteID;
+    @SerializedName("siteID") private Long siteID;
 
     /**
      * Get the Site ID
@@ -353,7 +353,7 @@ public class CreateTransaction implements Transaction {
      * <p>
      * @return the Site ID
      */
-    public Integer getSiteID() {
+    public Long getSiteID() {
         return this.siteID;
     }
 
@@ -362,15 +362,15 @@ public class CreateTransaction implements Transaction {
      * <p>
      * The ID of the Site that the Account was created at
      * <p>
-     * @param siteID the Site ID as an Integer
+     * @param siteID the Site ID as a Long
      * @return {@link CreateTransaction CreateTransaction}
      */
-    public CreateTransaction setSiteID(Integer siteID) {
+    public CreateTransaction setSiteID(Long siteID) {
         this.siteID = siteID;
         return this;
     }
 
-    @SerializedName("accountUserID") private Integer accountUserID;
+    @SerializedName("accountUserID") private Long accountUserID;
 
     /**
      * Get the Account User ID
@@ -379,7 +379,7 @@ public class CreateTransaction implements Transaction {
      * <p>
      * @return the Account User ID
      */
-    public Integer getAccountUserID() {
+    public Long getAccountUserID() {
         return this.accountUserID;
     }
 
@@ -388,15 +388,15 @@ public class CreateTransaction implements Transaction {
      * <p>
      * The ID of the user that the Account was created for
      * <p>
-     * @param accountUserID the Account User ID as an Integer
+     * @param accountUserID the Account User ID as a Long
      * @return {@link CreateTransaction CreateTransaction}
      */
-    public CreateTransaction setAccountUserID(Integer accountUserID) {
+    public CreateTransaction setAccountUserID(Long accountUserID) {
         this.accountUserID = accountUserID;
         return this;
     }
 
-    @SerializedName("accountNumber") private Integer accountNumber;
+    @SerializedName("accountNumber") private Long accountNumber;
 
     /**
      * Get the Account Number
@@ -405,7 +405,7 @@ public class CreateTransaction implements Transaction {
      * <p>
      * @return the Account Number
      */
-    public Integer getAccountNumber() {
+    public Long getAccountNumber() {
         return this.accountNumber;
     }
 
@@ -414,10 +414,10 @@ public class CreateTransaction implements Transaction {
      * <p>
      * The number of the Account within the site/division/user
      * <p>
-     * @param accountNumber the Account Number as an Integer
+     * @param accountNumber the Account Number as a Long
      * @return {@link CreateTransaction CreateTransaction}
      */
-    public CreateTransaction setAccountNumber(Integer accountNumber) {
+    public CreateTransaction setAccountNumber(Long accountNumber) {
         this.accountNumber = accountNumber;
         return this;
     }

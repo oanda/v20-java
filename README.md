@@ -18,7 +18,7 @@ section in the pom.xml file as follows:
     <dependency>
       <groupId>com.oanda.v20</groupId>
       <artifactId>v20</artifactId>
-      <version>3.0.21</version>
+      <version>3.0.22</version>
     </dependency>
   </dependencies>
 ```
@@ -75,7 +75,7 @@ library:
 
 - Group Id: `com.oanda.v20`
 - Artifact Id: `v20`
-- Version: `3.0.21`
+- Version: `3.0.22`
 
 Click "OK" to complete adding the v20 library.
 

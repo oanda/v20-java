@@ -48,7 +48,7 @@ public class TransactionListResponse {
         return this.to;
     }
 
-    @SerializedName("pageSize") private Integer pageSize;
+    @SerializedName("pageSize") private Long pageSize;
 
     /**
      * Get the pageSize
@@ -57,7 +57,7 @@ public class TransactionListResponse {
      * <p>
      * @return the pageSize
      */
-    public Integer getPageSize() {
+    public Long getPageSize() {
         return this.pageSize;
     }
 
@@ -75,7 +75,7 @@ public class TransactionListResponse {
         return this.type;
     }
 
-    @SerializedName("count") private Integer count;
+    @SerializedName("count") private Long count;
 
     /**
      * Get the count
@@ -84,7 +84,7 @@ public class TransactionListResponse {
      * <p>
      * @return the count
      */
-    public Integer getCount() {
+    public Long getCount() {
         return this.count;
     }
 

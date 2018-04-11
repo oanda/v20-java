@@ -26,15 +26,15 @@ public class Instrument {
         this.displayName = other.displayName;
         if (other.pipLocation != null)
         {
-            this.pipLocation = new Integer(other.pipLocation);
+            this.pipLocation = new Long(other.pipLocation);
         }
         if (other.displayPrecision != null)
         {
-            this.displayPrecision = new Integer(other.displayPrecision);
+            this.displayPrecision = new Long(other.displayPrecision);
         }
         if (other.tradeUnitsPrecision != null)
         {
-            this.tradeUnitsPrecision = new Integer(other.tradeUnitsPrecision);
+            this.tradeUnitsPrecision = new Long(other.tradeUnitsPrecision);
         }
         this.minimumTradeSize = other.minimumTradeSize;
         this.maximumTrailingStopDistance = other.maximumTrailingStopDistance;
@@ -143,7 +143,7 @@ public class Instrument {
         return this;
     }
 
-    @SerializedName("pipLocation") private Integer pipLocation;
+    @SerializedName("pipLocation") private Long pipLocation;
 
     /**
      * Get the pipLocation
@@ -155,7 +155,7 @@ public class Instrument {
      * <p>
      * @return the pipLocation
      */
-    public Integer getPipLocation() {
+    public Long getPipLocation() {
         return this.pipLocation;
     }
 
@@ -167,15 +167,15 @@ public class Instrument {
      * (e.g. -4 pipLocation results in a decimal pip position of 10 ^ -4 =
      * 0.0001).
      * <p>
-     * @param pipLocation the pipLocation as an Integer
+     * @param pipLocation the pipLocation as a Long
      * @return {@link Instrument Instrument}
      */
-    public Instrument setPipLocation(Integer pipLocation) {
+    public Instrument setPipLocation(Long pipLocation) {
         this.pipLocation = pipLocation;
         return this;
     }
 
-    @SerializedName("displayPrecision") private Integer displayPrecision;
+    @SerializedName("displayPrecision") private Long displayPrecision;
 
     /**
      * Get the displayPrecision
@@ -186,7 +186,7 @@ public class Instrument {
      * <p>
      * @return the displayPrecision
      */
-    public Integer getDisplayPrecision() {
+    public Long getDisplayPrecision() {
         return this.displayPrecision;
     }
 
@@ -197,15 +197,15 @@ public class Instrument {
      * this instrument. (e.g. a displayPrecision of 5 would result in a price
      * of "1" being displayed as "1.00000")
      * <p>
-     * @param displayPrecision the displayPrecision as an Integer
+     * @param displayPrecision the displayPrecision as a Long
      * @return {@link Instrument Instrument}
      */
-    public Instrument setDisplayPrecision(Integer displayPrecision) {
+    public Instrument setDisplayPrecision(Long displayPrecision) {
         this.displayPrecision = displayPrecision;
         return this;
     }
 
-    @SerializedName("tradeUnitsPrecision") private Integer tradeUnitsPrecision;
+    @SerializedName("tradeUnitsPrecision") private Long tradeUnitsPrecision;
 
     /**
      * Get the tradeUnitsPrecision
@@ -215,7 +215,7 @@ public class Instrument {
      * <p>
      * @return the tradeUnitsPrecision
      */
-    public Integer getTradeUnitsPrecision() {
+    public Long getTradeUnitsPrecision() {
         return this.tradeUnitsPrecision;
     }
 
@@ -225,10 +225,10 @@ public class Instrument {
      * The amount of decimal places that may be provided when specifying the
      * number of units traded for this instrument.
      * <p>
-     * @param tradeUnitsPrecision the tradeUnitsPrecision as an Integer
+     * @param tradeUnitsPrecision the tradeUnitsPrecision as a Long
      * @return {@link Instrument Instrument}
      */
-    public Instrument setTradeUnitsPrecision(Integer tradeUnitsPrecision) {
+    public Instrument setTradeUnitsPrecision(Long tradeUnitsPrecision) {
         this.tradeUnitsPrecision = tradeUnitsPrecision;
         return this;
     }

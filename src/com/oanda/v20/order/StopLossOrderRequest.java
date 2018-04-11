@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName;
 
 import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.trade.TradeID;
 import com.oanda.v20.transaction.ClientExtensions;
 import com.oanda.v20.transaction.ClientID;
@@ -35,9 +36,14 @@ public class StopLossOrderRequest implements OrderRequest {
         this.tradeID = other.tradeID;
         this.clientTradeID = other.clientTradeID;
         this.price = other.price;
+        this.distance = other.distance;
         this.timeInForce = other.timeInForce;
         this.gtdTime = other.gtdTime;
         this.triggerCondition = other.triggerCondition;
+        if (other.guaranteed != null)
+        {
+            this.guaranteed = new Boolean(other.guaranteed);
+        }
         if (other.clientExtensions != null)
         {
             this.clientExtensions = new ClientExtensions(other.clientExtensions);
@@ -241,6 +247,83 @@ public class StopLossOrderRequest implements OrderRequest {
         return this;
     }
 
+    @SerializedName("distance") private DecimalNumber distance;
+
+    /**
+     * Get the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @return the Price Distance
+     * @see DecimalNumber
+     */
+    public DecimalNumber getDistance() {
+        return this.distance;
+    }
+
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a DecimalNumber
+     * @return {@link StopLossOrderRequest StopLossOrderRequest}
+     * @see DecimalNumber
+     */
+    public StopLossOrderRequest setDistance(DecimalNumber distance) {
+        this.distance = distance;
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a String
+     * @return {@link StopLossOrderRequest StopLossOrderRequest}
+     * @see DecimalNumber
+     */
+    public StopLossOrderRequest setDistance(String distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a double
+     * @return {@link StopLossOrderRequest StopLossOrderRequest}
+     * @see DecimalNumber
+     */
+    public StopLossOrderRequest setDistance(double distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Account's current price
+     * to use as the Stop Loss Order price. If the Trade is short the
+     * Instrument's bid price is used, and for long Trades the ask is used.
+     * <p>
+     * @param distance the Price Distance as a BigDecimal
+     * @return {@link StopLossOrderRequest StopLossOrderRequest}
+     * @see DecimalNumber
+     */
+    public StopLossOrderRequest setDistance(BigDecimal distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+
     @SerializedName("timeInForce") private TimeInForce timeInForce = TimeInForce.GTC;
 
     /**
@@ -376,6 +459,38 @@ public class StopLossOrderRequest implements OrderRequest {
         return this;
     }
 
+    @SerializedName("guaranteed") private Boolean guaranteed;
+
+    /**
+     * Get the Guaranteed
+     * <p>
+     * Flag indicating that the Stop Loss Order is guaranteed. The default
+     * value depends on the GuaranteedStopLossOrderMode of the account, if it
+     * is REQUIRED, the default will be true, for DISABLED or ENABLED the
+     * default is false.
+     * <p>
+     * @return the Guaranteed
+     */
+    public Boolean getGuaranteed() {
+        return this.guaranteed;
+    }
+
+    /**
+     * Set the Guaranteed
+     * <p>
+     * Flag indicating that the Stop Loss Order is guaranteed. The default
+     * value depends on the GuaranteedStopLossOrderMode of the account, if it
+     * is REQUIRED, the default will be true, for DISABLED or ENABLED the
+     * default is false.
+     * <p>
+     * @param guaranteed the Guaranteed as a Boolean
+     * @return {@link StopLossOrderRequest StopLossOrderRequest}
+     */
+    public StopLossOrderRequest setGuaranteed(Boolean guaranteed) {
+        this.guaranteed = guaranteed;
+        return this;
+    }
+
     @SerializedName("clientExtensions") private ClientExtensions clientExtensions;
 
     /**
@@ -417,12 +532,16 @@ public class StopLossOrderRequest implements OrderRequest {
                 (clientTradeID == null ? "null" : clientTradeID.toString()) + ", " +
             "price=" +
                 (price == null ? "null" : price.toString()) + ", " +
+            "distance=" +
+                (distance == null ? "null" : distance.toString()) + ", " +
             "timeInForce=" +
                 (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
             "gtdTime=" +
                 (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
             "triggerCondition=" +
                 (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "guaranteed=" +
+                (guaranteed == null ? "null" : guaranteed.toString()) + ", " +
             "clientExtensions=" +
                 (clientExtensions == null ? "null" : clientExtensions.toString()) +
             ")";

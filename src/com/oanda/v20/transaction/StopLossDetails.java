@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import com.oanda.v20.order.TimeInForce;
 import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.DecimalNumber;
 
 /**
  * StopLossDetails specifies the details of a Stop Loss Order to be created on
@@ -29,11 +30,16 @@ public class StopLossDetails {
      */
     public StopLossDetails(StopLossDetails other) {
         this.price = other.price;
+        this.distance = other.distance;
         this.timeInForce = other.timeInForce;
         this.gtdTime = other.gtdTime;
         if (other.clientExtensions != null)
         {
             this.clientExtensions = new ClientExtensions(other.clientExtensions);
+        }
+        if (other.guaranteed != null)
+        {
+            this.guaranteed = new Boolean(other.guaranteed);
         }
     }
 
@@ -106,6 +112,83 @@ public class StopLossDetails {
      */
     public StopLossDetails setPrice(BigDecimal price) {
         this.price = new PriceValue(price);
+        return this;
+    }
+
+    @SerializedName("distance") private DecimalNumber distance;
+
+    /**
+     * Get the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Trade's open price to
+     * use as the Stop Loss Order price. Only one of the distance and price
+     * fields may be specified.
+     * <p>
+     * @return the Price Distance
+     * @see DecimalNumber
+     */
+    public DecimalNumber getDistance() {
+        return this.distance;
+    }
+
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Trade's open price to
+     * use as the Stop Loss Order price. Only one of the distance and price
+     * fields may be specified.
+     * <p>
+     * @param distance the Price Distance as a DecimalNumber
+     * @return {@link StopLossDetails StopLossDetails}
+     * @see DecimalNumber
+     */
+    public StopLossDetails setDistance(DecimalNumber distance) {
+        this.distance = distance;
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Trade's open price to
+     * use as the Stop Loss Order price. Only one of the distance and price
+     * fields may be specified.
+     * <p>
+     * @param distance the Price Distance as a String
+     * @return {@link StopLossDetails StopLossDetails}
+     * @see DecimalNumber
+     */
+    public StopLossDetails setDistance(String distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Trade's open price to
+     * use as the Stop Loss Order price. Only one of the distance and price
+     * fields may be specified.
+     * <p>
+     * @param distance the Price Distance as a double
+     * @return {@link StopLossDetails StopLossDetails}
+     * @see DecimalNumber
+     */
+    public StopLossDetails setDistance(double distance) {
+        this.distance = new DecimalNumber(distance);
+        return this;
+    }
+    /**
+     * Set the Price Distance
+     * <p>
+     * Specifies the distance (in price units) from the Trade's open price to
+     * use as the Stop Loss Order price. Only one of the distance and price
+     * fields may be specified.
+     * <p>
+     * @param distance the Price Distance as a BigDecimal
+     * @return {@link StopLossDetails StopLossDetails}
+     * @see DecimalNumber
+     */
+    public StopLossDetails setDistance(BigDecimal distance) {
+        this.distance = new DecimalNumber(distance);
         return this;
     }
 
@@ -211,17 +294,53 @@ public class StopLossDetails {
         return this;
     }
 
+    @SerializedName("guaranteed") private Boolean guaranteed;
+
+    /**
+     * Get the Guaranteed
+     * <p>
+     * Flag indicating that the price for the Stop Loss Order is guaranteed.
+     * The default value depends on the GuaranteedStopLossOrderMode of the
+     * account, if it is REQUIRED, the default will be true, for DISABLED or
+     * ENABLED the default is false.
+     * <p>
+     * @return the Guaranteed
+     */
+    public Boolean getGuaranteed() {
+        return this.guaranteed;
+    }
+
+    /**
+     * Set the Guaranteed
+     * <p>
+     * Flag indicating that the price for the Stop Loss Order is guaranteed.
+     * The default value depends on the GuaranteedStopLossOrderMode of the
+     * account, if it is REQUIRED, the default will be true, for DISABLED or
+     * ENABLED the default is false.
+     * <p>
+     * @param guaranteed the Guaranteed as a Boolean
+     * @return {@link StopLossDetails StopLossDetails}
+     */
+    public StopLossDetails setGuaranteed(Boolean guaranteed) {
+        this.guaranteed = guaranteed;
+        return this;
+    }
+
     @Override
     public String toString() {
         return "StopLossDetails(" +
             "price=" +
                 (price == null ? "null" : price.toString()) + ", " +
+            "distance=" +
+                (distance == null ? "null" : distance.toString()) + ", " +
             "timeInForce=" +
                 (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
             "gtdTime=" +
                 (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
             "clientExtensions=" +
-                (clientExtensions == null ? "null" : clientExtensions.toString()) +
+                (clientExtensions == null ? "null" : clientExtensions.toString()) + ", " +
+            "guaranteed=" +
+                (guaranteed == null ? "null" : guaranteed.toString()) +
             ")";
     }
 }

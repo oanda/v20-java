@@ -1,7 +1,7 @@
 package com.oanda.v20.pricing;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -32,6 +32,22 @@ public class PricingGetResponse {
      */
     public List<Price> getPrices() {
         return this.prices;
+    }
+
+    @SerializedName("homeConversions") private ArrayList<HomeConversions> homeConversions;
+
+    /**
+     * Get the homeConversions
+     * <p>
+     * The list of home currency conversion factors requested. This field will
+     * only be present if includeHomeConversions was set to true in the
+     * request.
+     * <p>
+     * @return the homeConversions
+     * @see HomeConversions
+     */
+    public List<HomeConversions> getHomeConversions() {
+        return this.homeConversions;
     }
 
     @SerializedName("time") private DateTime time;

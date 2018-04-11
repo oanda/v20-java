@@ -34,32 +34,34 @@ public class AccountSummary {
         this.balance = other.balance;
         if (other.createdByUserID != null)
         {
-            this.createdByUserID = new Integer(other.createdByUserID);
+            this.createdByUserID = new Long(other.createdByUserID);
         }
         this.createdTime = other.createdTime;
+        this.guaranteedStopLossOrderMode = other.guaranteedStopLossOrderMode;
         this.pl = other.pl;
         this.resettablePL = other.resettablePL;
-        this.resettabledPLTime = other.resettabledPLTime;
+        this.resettablePLTime = other.resettablePLTime;
+        this.financing = other.financing;
         this.commission = other.commission;
         this.guaranteedExecutionFees = other.guaranteedExecutionFees;
         this.marginRate = other.marginRate;
         this.marginCallEnterTime = other.marginCallEnterTime;
         if (other.marginCallExtensionCount != null)
         {
-            this.marginCallExtensionCount = new Integer(other.marginCallExtensionCount);
+            this.marginCallExtensionCount = new Long(other.marginCallExtensionCount);
         }
         this.lastMarginCallExtensionTime = other.lastMarginCallExtensionTime;
         if (other.openTradeCount != null)
         {
-            this.openTradeCount = new Integer(other.openTradeCount);
+            this.openTradeCount = new Long(other.openTradeCount);
         }
         if (other.openPositionCount != null)
         {
-            this.openPositionCount = new Integer(other.openPositionCount);
+            this.openPositionCount = new Long(other.openPositionCount);
         }
         if (other.pendingOrderCount != null)
         {
-            this.pendingOrderCount = new Integer(other.pendingOrderCount);
+            this.pendingOrderCount = new Long(other.pendingOrderCount);
         }
         if (other.hedgingEnabled != null)
         {
@@ -258,7 +260,7 @@ public class AccountSummary {
         return this;
     }
 
-    @SerializedName("createdByUserID") private Integer createdByUserID;
+    @SerializedName("createdByUserID") private Long createdByUserID;
 
     /**
      * Get the Created by User ID
@@ -267,7 +269,7 @@ public class AccountSummary {
      * <p>
      * @return the Created by User ID
      */
-    public Integer getCreatedByUserID() {
+    public Long getCreatedByUserID() {
         return this.createdByUserID;
     }
 
@@ -276,10 +278,10 @@ public class AccountSummary {
      * <p>
      * ID of the user that created the Account.
      * <p>
-     * @param createdByUserID the Created by User ID as an Integer
+     * @param createdByUserID the Created by User ID as a Long
      * @return {@link AccountSummary AccountSummary}
      */
-    public AccountSummary setCreatedByUserID(Integer createdByUserID) {
+    public AccountSummary setCreatedByUserID(Long createdByUserID) {
         this.createdByUserID = createdByUserID;
         return this;
     }
@@ -322,6 +324,35 @@ public class AccountSummary {
      */
     public AccountSummary setCreatedTime(String createdTime) {
         this.createdTime = new DateTime(createdTime);
+        return this;
+    }
+
+    @SerializedName("guaranteedStopLossOrderMode") private GuaranteedStopLossOrderMode guaranteedStopLossOrderMode;
+
+    /**
+     * Get the Guaranteed Stop Loss Order Mode
+     * <p>
+     * The current guaranteed Stop Loss Order mode of the Account.
+     * <p>
+     * @return the Guaranteed Stop Loss Order Mode
+     * @see GuaranteedStopLossOrderMode
+     */
+    public GuaranteedStopLossOrderMode getGuaranteedStopLossOrderMode() {
+        return this.guaranteedStopLossOrderMode;
+    }
+
+    /**
+     * Set the Guaranteed Stop Loss Order Mode
+     * <p>
+     * The current guaranteed Stop Loss Order mode of the Account.
+     * <p>
+     * @param guaranteedStopLossOrderMode the Guaranteed Stop Loss Order Mode
+     * as a GuaranteedStopLossOrderMode
+     * @return {@link AccountSummary AccountSummary}
+     * @see GuaranteedStopLossOrderMode
+     */
+    public AccountSummary setGuaranteedStopLossOrderMode(GuaranteedStopLossOrderMode guaranteedStopLossOrderMode) {
+        this.guaranteedStopLossOrderMode = guaranteedStopLossOrderMode;
         return this;
     }
 
@@ -464,7 +495,7 @@ public class AccountSummary {
         return this;
     }
 
-    @SerializedName("resettabledPLTime") private DateTime resettabledPLTime;
+    @SerializedName("resettablePLTime") private DateTime resettablePLTime;
 
     /**
      * Get the Profit/Loss Reset Time
@@ -474,8 +505,8 @@ public class AccountSummary {
      * @return the Profit/Loss Reset Time
      * @see DateTime
      */
-    public DateTime getResettabledPLTime() {
-        return this.resettabledPLTime;
+    public DateTime getResettablePLTime() {
+        return this.resettablePLTime;
     }
 
     /**
@@ -483,12 +514,12 @@ public class AccountSummary {
      * <p>
      * The date/time that the Account's resettablePL was last reset.
      * <p>
-     * @param resettabledPLTime the Profit/Loss Reset Time as a DateTime
+     * @param resettablePLTime the Profit/Loss Reset Time as a DateTime
      * @return {@link AccountSummary AccountSummary}
      * @see DateTime
      */
-    public AccountSummary setResettabledPLTime(DateTime resettabledPLTime) {
-        this.resettabledPLTime = resettabledPLTime;
+    public AccountSummary setResettablePLTime(DateTime resettablePLTime) {
+        this.resettablePLTime = resettablePLTime;
         return this;
     }
     /**
@@ -496,12 +527,84 @@ public class AccountSummary {
      * <p>
      * The date/time that the Account's resettablePL was last reset.
      * <p>
-     * @param resettabledPLTime the Profit/Loss Reset Time as a String
+     * @param resettablePLTime the Profit/Loss Reset Time as a String
      * @return {@link AccountSummary AccountSummary}
      * @see DateTime
      */
-    public AccountSummary setResettabledPLTime(String resettabledPLTime) {
-        this.resettabledPLTime = new DateTime(resettabledPLTime);
+    public AccountSummary setResettablePLTime(String resettablePLTime) {
+        this.resettablePLTime = new DateTime(resettablePLTime);
+        return this;
+    }
+
+    @SerializedName("financing") private AccountUnits financing;
+
+    /**
+     * Get the Financing
+     * <p>
+     * The total amount of financing paid/collected over the lifetime of the
+     * Account.
+     * <p>
+     * @return the Financing
+     * @see AccountUnits
+     */
+    public AccountUnits getFinancing() {
+        return this.financing;
+    }
+
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected over the lifetime of the
+     * Account.
+     * <p>
+     * @param financing the Financing as an AccountUnits
+     * @return {@link AccountSummary AccountSummary}
+     * @see AccountUnits
+     */
+    public AccountSummary setFinancing(AccountUnits financing) {
+        this.financing = financing;
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected over the lifetime of the
+     * Account.
+     * <p>
+     * @param financing the Financing as a String
+     * @return {@link AccountSummary AccountSummary}
+     * @see AccountUnits
+     */
+    public AccountSummary setFinancing(String financing) {
+        this.financing = new AccountUnits(financing);
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected over the lifetime of the
+     * Account.
+     * <p>
+     * @param financing the Financing as a double
+     * @return {@link AccountSummary AccountSummary}
+     * @see AccountUnits
+     */
+    public AccountSummary setFinancing(double financing) {
+        this.financing = new AccountUnits(financing);
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected over the lifetime of the
+     * Account.
+     * <p>
+     * @param financing the Financing as a BigDecimal
+     * @return {@link AccountSummary AccountSummary}
+     * @see AccountUnits
+     */
+    public AccountSummary setFinancing(BigDecimal financing) {
+        this.financing = new AccountUnits(financing);
         return this;
     }
 
@@ -772,7 +875,7 @@ public class AccountSummary {
         return this;
     }
 
-    @SerializedName("marginCallExtensionCount") private Integer marginCallExtensionCount;
+    @SerializedName("marginCallExtensionCount") private Long marginCallExtensionCount;
 
     /**
      * Get the Margin Call Extension Count
@@ -781,7 +884,7 @@ public class AccountSummary {
      * <p>
      * @return the Margin Call Extension Count
      */
-    public Integer getMarginCallExtensionCount() {
+    public Long getMarginCallExtensionCount() {
         return this.marginCallExtensionCount;
     }
 
@@ -790,11 +893,11 @@ public class AccountSummary {
      * <p>
      * The number of times that the Account's current margin call was extended.
      * <p>
-     * @param marginCallExtensionCount the Margin Call Extension Count as an
-     * Integer
+     * @param marginCallExtensionCount the Margin Call Extension Count as a
+     * Long
      * @return {@link AccountSummary AccountSummary}
      */
-    public AccountSummary setMarginCallExtensionCount(Integer marginCallExtensionCount) {
+    public AccountSummary setMarginCallExtensionCount(Long marginCallExtensionCount) {
         this.marginCallExtensionCount = marginCallExtensionCount;
         return this;
     }
@@ -842,7 +945,7 @@ public class AccountSummary {
         return this;
     }
 
-    @SerializedName("openTradeCount") private Integer openTradeCount;
+    @SerializedName("openTradeCount") private Long openTradeCount;
 
     /**
      * Get the Open Trade Count
@@ -851,7 +954,7 @@ public class AccountSummary {
      * <p>
      * @return the Open Trade Count
      */
-    public Integer getOpenTradeCount() {
+    public Long getOpenTradeCount() {
         return this.openTradeCount;
     }
 
@@ -860,15 +963,15 @@ public class AccountSummary {
      * <p>
      * The number of Trades currently open in the Account.
      * <p>
-     * @param openTradeCount the Open Trade Count as an Integer
+     * @param openTradeCount the Open Trade Count as a Long
      * @return {@link AccountSummary AccountSummary}
      */
-    public AccountSummary setOpenTradeCount(Integer openTradeCount) {
+    public AccountSummary setOpenTradeCount(Long openTradeCount) {
         this.openTradeCount = openTradeCount;
         return this;
     }
 
-    @SerializedName("openPositionCount") private Integer openPositionCount;
+    @SerializedName("openPositionCount") private Long openPositionCount;
 
     /**
      * Get the Open Position Count
@@ -877,7 +980,7 @@ public class AccountSummary {
      * <p>
      * @return the Open Position Count
      */
-    public Integer getOpenPositionCount() {
+    public Long getOpenPositionCount() {
         return this.openPositionCount;
     }
 
@@ -886,15 +989,15 @@ public class AccountSummary {
      * <p>
      * The number of Positions currently open in the Account.
      * <p>
-     * @param openPositionCount the Open Position Count as an Integer
+     * @param openPositionCount the Open Position Count as a Long
      * @return {@link AccountSummary AccountSummary}
      */
-    public AccountSummary setOpenPositionCount(Integer openPositionCount) {
+    public AccountSummary setOpenPositionCount(Long openPositionCount) {
         this.openPositionCount = openPositionCount;
         return this;
     }
 
-    @SerializedName("pendingOrderCount") private Integer pendingOrderCount;
+    @SerializedName("pendingOrderCount") private Long pendingOrderCount;
 
     /**
      * Get the Pending Order Count
@@ -903,7 +1006,7 @@ public class AccountSummary {
      * <p>
      * @return the Pending Order Count
      */
-    public Integer getPendingOrderCount() {
+    public Long getPendingOrderCount() {
         return this.pendingOrderCount;
     }
 
@@ -912,10 +1015,10 @@ public class AccountSummary {
      * <p>
      * The number of Orders currently pending in the Account.
      * <p>
-     * @param pendingOrderCount the Pending Order Count as an Integer
+     * @param pendingOrderCount the Pending Order Count as a Long
      * @return {@link AccountSummary AccountSummary}
      */
-    public AccountSummary setPendingOrderCount(Integer pendingOrderCount) {
+    public AccountSummary setPendingOrderCount(Long pendingOrderCount) {
         this.pendingOrderCount = pendingOrderCount;
         return this;
     }
@@ -1916,12 +2019,16 @@ public class AccountSummary {
                 (createdByUserID == null ? "null" : createdByUserID.toString()) + ", " +
             "createdTime=" +
                 (createdTime == null ? "null" : createdTime.toString()) + ", " +
+            "guaranteedStopLossOrderMode=" +
+                (guaranteedStopLossOrderMode == null ? "null" : guaranteedStopLossOrderMode.toString()) + ", " +
             "pl=" +
                 (pl == null ? "null" : pl.toString()) + ", " +
             "resettablePL=" +
                 (resettablePL == null ? "null" : resettablePL.toString()) + ", " +
-            "resettabledPLTime=" +
-                (resettabledPLTime == null ? "null" : resettabledPLTime.toString()) + ", " +
+            "resettablePLTime=" +
+                (resettablePLTime == null ? "null" : resettablePLTime.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) + ", " +
             "commission=" +
                 (commission == null ? "null" : commission.toString()) + ", " +
             "guaranteedExecutionFees=" +

@@ -22,7 +22,7 @@ public class UserInfoExternal {
     public UserInfoExternal(UserInfoExternal other) {
         if (other.userID != null)
         {
-            this.userID = new Integer(other.userID);
+            this.userID = new Long(other.userID);
         }
         this.country = other.country;
         if (other.fIFO != null)
@@ -31,7 +31,7 @@ public class UserInfoExternal {
         }
     }
 
-    @SerializedName("userID") private Integer userID;
+    @SerializedName("userID") private Long userID;
 
     /**
      * Get the userID
@@ -40,7 +40,7 @@ public class UserInfoExternal {
      * <p>
      * @return the userID
      */
-    public Integer getUserID() {
+    public Long getUserID() {
         return this.userID;
     }
 
@@ -49,10 +49,10 @@ public class UserInfoExternal {
      * <p>
      * The user's OANDA-assigned user ID.
      * <p>
-     * @param userID the userID as an Integer
+     * @param userID the userID as a Long
      * @return {@link UserInfoExternal UserInfoExternal}
      */
-    public UserInfoExternal setUserID(Integer userID) {
+    public UserInfoExternal setUserID(Long userID) {
         this.userID = userID;
         return this;
     }

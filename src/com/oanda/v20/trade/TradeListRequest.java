@@ -105,10 +105,10 @@ public class TradeListRequest extends Request {
      * <p>
      * The maximum number of Trades to return.
      * <p>
-     * @param count the count as an Integer
+     * @param count the count as a Long
      * @return {@link TradeListRequest TradeListRequest}
      */
-    public TradeListRequest setCount(Integer count)
+    public TradeListRequest setCount(Long count)
     {
         this.queryParams.put("count", count);
         return this;

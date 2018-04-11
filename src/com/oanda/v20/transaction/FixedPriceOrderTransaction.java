@@ -5,35 +5,33 @@ import java.math.BigDecimal;
 import com.google.gson.annotations.SerializedName;
 
 import com.oanda.v20.account.AccountID;
-import com.oanda.v20.order.OrderID;
 import com.oanda.v20.order.OrderPositionFill;
-import com.oanda.v20.order.OrderTriggerCondition;
-import com.oanda.v20.order.TimeInForce;
 import com.oanda.v20.pricing.PriceValue;
 import com.oanda.v20.primitives.DateTime;
 import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.primitives.InstrumentName;
 
 /**
- * A LimitOrderTransaction represents the creation of a Limit Order in the
- * user's Account.
+ * A FixedPriceOrderTransaction represents the creation of a Fixed Price Order
+ * in the user's account. A Fixed Price Order is an Order that is filled
+ * immediately at a specified price.
  * <p>
- * Create Limit Order {id} ({reason}): {units} of {instrument} @ {price}
+ * Create Fixed Price Order {id} ({reason}): {units} of {instrument}
  */
-public class LimitOrderTransaction implements Transaction {
+public class FixedPriceOrderTransaction implements Transaction {
 
     /**
      * Default constructor.
      */
-    public LimitOrderTransaction() {
+    public FixedPriceOrderTransaction() {
     }
 
     /**
      * Copy constructor
      * <p>
-     * @param other the LimitOrderTransaction to copy
+     * @param other the FixedPriceOrderTransaction to copy
      */
-    public LimitOrderTransaction(LimitOrderTransaction other) {
+    public FixedPriceOrderTransaction(FixedPriceOrderTransaction other) {
         this.id = other.id;
         this.time = other.time;
         if (other.userID != null)
@@ -47,10 +45,8 @@ public class LimitOrderTransaction implements Transaction {
         this.instrument = other.instrument;
         this.units = other.units;
         this.price = other.price;
-        this.timeInForce = other.timeInForce;
-        this.gtdTime = other.gtdTime;
         this.positionFill = other.positionFill;
-        this.triggerCondition = other.triggerCondition;
+        this.tradeState = other.tradeState;
         this.reason = other.reason;
         if (other.clientExtensions != null)
         {
@@ -72,8 +68,6 @@ public class LimitOrderTransaction implements Transaction {
         {
             this.tradeClientExtensions = new ClientExtensions(other.tradeClientExtensions);
         }
-        this.replacesOrderID = other.replacesOrderID;
-        this.cancellingTransactionID = other.cancellingTransactionID;
     }
 
     @SerializedName("id") private TransactionID id;
@@ -96,10 +90,10 @@ public class LimitOrderTransaction implements Transaction {
      * The Transaction's Identifier.
      * <p>
      * @param id the Transaction ID as a TransactionID
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see TransactionID
      */
-    public LimitOrderTransaction setId(TransactionID id) {
+    public FixedPriceOrderTransaction setId(TransactionID id) {
         this.id = id;
         return this;
     }
@@ -109,10 +103,10 @@ public class LimitOrderTransaction implements Transaction {
      * The Transaction's Identifier.
      * <p>
      * @param id the Transaction ID as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see TransactionID
      */
-    public LimitOrderTransaction setId(String id) {
+    public FixedPriceOrderTransaction setId(String id) {
         this.id = new TransactionID(id);
         return this;
     }
@@ -137,10 +131,10 @@ public class LimitOrderTransaction implements Transaction {
      * The date/time when the Transaction was created.
      * <p>
      * @param time the Time as a DateTime
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see DateTime
      */
-    public LimitOrderTransaction setTime(DateTime time) {
+    public FixedPriceOrderTransaction setTime(DateTime time) {
         this.time = time;
         return this;
     }
@@ -150,10 +144,10 @@ public class LimitOrderTransaction implements Transaction {
      * The date/time when the Transaction was created.
      * <p>
      * @param time the Time as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see DateTime
      */
-    public LimitOrderTransaction setTime(String time) {
+    public FixedPriceOrderTransaction setTime(String time) {
         this.time = new DateTime(time);
         return this;
     }
@@ -177,9 +171,9 @@ public class LimitOrderTransaction implements Transaction {
      * The ID of the user that initiated the creation of the Transaction.
      * <p>
      * @param userID the User ID as a Long
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      */
-    public LimitOrderTransaction setUserID(Long userID) {
+    public FixedPriceOrderTransaction setUserID(Long userID) {
         this.userID = userID;
         return this;
     }
@@ -204,10 +198,10 @@ public class LimitOrderTransaction implements Transaction {
      * The ID of the Account the Transaction was created for.
      * <p>
      * @param accountID the Account ID as an AccountID
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see AccountID
      */
-    public LimitOrderTransaction setAccountID(AccountID accountID) {
+    public FixedPriceOrderTransaction setAccountID(AccountID accountID) {
         this.accountID = accountID;
         return this;
     }
@@ -217,10 +211,10 @@ public class LimitOrderTransaction implements Transaction {
      * The ID of the Account the Transaction was created for.
      * <p>
      * @param accountID the Account ID as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see AccountID
      */
-    public LimitOrderTransaction setAccountID(String accountID) {
+    public FixedPriceOrderTransaction setAccountID(String accountID) {
         this.accountID = new AccountID(accountID);
         return this;
     }
@@ -247,10 +241,10 @@ public class LimitOrderTransaction implements Transaction {
      * the same batch are applied to the Account simultaneously.
      * <p>
      * @param batchID the Transaction Batch ID as a TransactionID
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see TransactionID
      */
-    public LimitOrderTransaction setBatchID(TransactionID batchID) {
+    public FixedPriceOrderTransaction setBatchID(TransactionID batchID) {
         this.batchID = batchID;
         return this;
     }
@@ -261,10 +255,10 @@ public class LimitOrderTransaction implements Transaction {
      * the same batch are applied to the Account simultaneously.
      * <p>
      * @param batchID the Transaction Batch ID as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see TransactionID
      */
-    public LimitOrderTransaction setBatchID(String batchID) {
+    public FixedPriceOrderTransaction setBatchID(String batchID) {
         this.batchID = new TransactionID(batchID);
         return this;
     }
@@ -289,10 +283,10 @@ public class LimitOrderTransaction implements Transaction {
      * The Request ID of the request which generated the transaction.
      * <p>
      * @param requestID the Request ID as a RequestID
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see RequestID
      */
-    public LimitOrderTransaction setRequestID(RequestID requestID) {
+    public FixedPriceOrderTransaction setRequestID(RequestID requestID) {
         this.requestID = requestID;
         return this;
     }
@@ -302,21 +296,21 @@ public class LimitOrderTransaction implements Transaction {
      * The Request ID of the request which generated the transaction.
      * <p>
      * @param requestID the Request ID as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see RequestID
      */
-    public LimitOrderTransaction setRequestID(String requestID) {
+    public FixedPriceOrderTransaction setRequestID(String requestID) {
         this.requestID = new RequestID(requestID);
         return this;
     }
 
-    @SerializedName("type") private TransactionType type = TransactionType.LIMIT_ORDER;
+    @SerializedName("type") private TransactionType type = TransactionType.FIXED_PRICE_ORDER;
 
     /**
      * Get the Type
      * <p>
-     * The Type of the Transaction. Always set to "LIMIT_ORDER" in a
-     * LimitOrderTransaction.
+     * The Type of the Transaction. Always set to "FIXED_PRICE_ORDER" in a
+     * FixedPriceOrderTransaction.
      * <p>
      * @return the Type
      * @see TransactionType
@@ -328,14 +322,14 @@ public class LimitOrderTransaction implements Transaction {
     /**
      * Set the Type
      * <p>
-     * The Type of the Transaction. Always set to "LIMIT_ORDER" in a
-     * LimitOrderTransaction.
+     * The Type of the Transaction. Always set to "FIXED_PRICE_ORDER" in a
+     * FixedPriceOrderTransaction.
      * <p>
      * @param type the Type as a TransactionType
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see TransactionType
      */
-    public LimitOrderTransaction setType(TransactionType type) {
+    public FixedPriceOrderTransaction setType(TransactionType type) {
         this.type = type;
         return this;
     }
@@ -345,7 +339,7 @@ public class LimitOrderTransaction implements Transaction {
     /**
      * Get the Instrument
      * <p>
-     * The Limit Order's Instrument.
+     * The Fixed Price Order's Instrument.
      * <p>
      * @return the Instrument
      * @see InstrumentName
@@ -357,26 +351,26 @@ public class LimitOrderTransaction implements Transaction {
     /**
      * Set the Instrument
      * <p>
-     * The Limit Order's Instrument.
+     * The Fixed Price Order's Instrument.
      * <p>
      * @param instrument the Instrument as an InstrumentName
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see InstrumentName
      */
-    public LimitOrderTransaction setInstrument(InstrumentName instrument) {
+    public FixedPriceOrderTransaction setInstrument(InstrumentName instrument) {
         this.instrument = instrument;
         return this;
     }
     /**
      * Set the Instrument
      * <p>
-     * The Limit Order's Instrument.
+     * The Fixed Price Order's Instrument.
      * <p>
      * @param instrument the Instrument as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see InstrumentName
      */
-    public LimitOrderTransaction setInstrument(String instrument) {
+    public FixedPriceOrderTransaction setInstrument(String instrument) {
         this.instrument = new InstrumentName(instrument);
         return this;
     }
@@ -386,9 +380,9 @@ public class LimitOrderTransaction implements Transaction {
     /**
      * Get the Amount
      * <p>
-     * The quantity requested to be filled by the Limit Order. A posititive
-     * number of units results in a long Order, and a negative number of units
-     * results in a short Order.
+     * The quantity requested to be filled by the Fixed Price Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
      * <p>
      * @return the Amount
      * @see DecimalNumber
@@ -400,60 +394,60 @@ public class LimitOrderTransaction implements Transaction {
     /**
      * Set the Amount
      * <p>
-     * The quantity requested to be filled by the Limit Order. A posititive
-     * number of units results in a long Order, and a negative number of units
-     * results in a short Order.
+     * The quantity requested to be filled by the Fixed Price Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
      * <p>
      * @param units the Amount as a DecimalNumber
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see DecimalNumber
      */
-    public LimitOrderTransaction setUnits(DecimalNumber units) {
+    public FixedPriceOrderTransaction setUnits(DecimalNumber units) {
         this.units = units;
         return this;
     }
     /**
      * Set the Amount
      * <p>
-     * The quantity requested to be filled by the Limit Order. A posititive
-     * number of units results in a long Order, and a negative number of units
-     * results in a short Order.
+     * The quantity requested to be filled by the Fixed Price Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
      * <p>
      * @param units the Amount as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see DecimalNumber
      */
-    public LimitOrderTransaction setUnits(String units) {
+    public FixedPriceOrderTransaction setUnits(String units) {
         this.units = new DecimalNumber(units);
         return this;
     }
     /**
      * Set the Amount
      * <p>
-     * The quantity requested to be filled by the Limit Order. A posititive
-     * number of units results in a long Order, and a negative number of units
-     * results in a short Order.
+     * The quantity requested to be filled by the Fixed Price Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
      * <p>
      * @param units the Amount as a double
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see DecimalNumber
      */
-    public LimitOrderTransaction setUnits(double units) {
+    public FixedPriceOrderTransaction setUnits(double units) {
         this.units = new DecimalNumber(units);
         return this;
     }
     /**
      * Set the Amount
      * <p>
-     * The quantity requested to be filled by the Limit Order. A posititive
-     * number of units results in a long Order, and a negative number of units
-     * results in a short Order.
+     * The quantity requested to be filled by the Fixed Price Order. A
+     * posititive number of units results in a long Order, and a negative
+     * number of units results in a short Order.
      * <p>
      * @param units the Amount as a BigDecimal
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see DecimalNumber
      */
-    public LimitOrderTransaction setUnits(BigDecimal units) {
+    public FixedPriceOrderTransaction setUnits(BigDecimal units) {
         this.units = new DecimalNumber(units);
         return this;
     }
@@ -463,9 +457,8 @@ public class LimitOrderTransaction implements Transaction {
     /**
      * Get the Price
      * <p>
-     * The price threshold specified for the Limit Order. The Limit Order will
-     * only be filled by a market price that is equal to or better than this
-     * price.
+     * The price specified for the Fixed Price Order. This price is the exact
+     * price that the Fixed Price Order will be filled at.
      * <p>
      * @return the Price
      * @see PriceValue
@@ -477,133 +470,57 @@ public class LimitOrderTransaction implements Transaction {
     /**
      * Set the Price
      * <p>
-     * The price threshold specified for the Limit Order. The Limit Order will
-     * only be filled by a market price that is equal to or better than this
-     * price.
+     * The price specified for the Fixed Price Order. This price is the exact
+     * price that the Fixed Price Order will be filled at.
      * <p>
      * @param price the Price as a PriceValue
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see PriceValue
      */
-    public LimitOrderTransaction setPrice(PriceValue price) {
+    public FixedPriceOrderTransaction setPrice(PriceValue price) {
         this.price = price;
         return this;
     }
     /**
      * Set the Price
      * <p>
-     * The price threshold specified for the Limit Order. The Limit Order will
-     * only be filled by a market price that is equal to or better than this
-     * price.
+     * The price specified for the Fixed Price Order. This price is the exact
+     * price that the Fixed Price Order will be filled at.
      * <p>
      * @param price the Price as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see PriceValue
      */
-    public LimitOrderTransaction setPrice(String price) {
+    public FixedPriceOrderTransaction setPrice(String price) {
         this.price = new PriceValue(price);
         return this;
     }
     /**
      * Set the Price
      * <p>
-     * The price threshold specified for the Limit Order. The Limit Order will
-     * only be filled by a market price that is equal to or better than this
-     * price.
+     * The price specified for the Fixed Price Order. This price is the exact
+     * price that the Fixed Price Order will be filled at.
      * <p>
      * @param price the Price as a double
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see PriceValue
      */
-    public LimitOrderTransaction setPrice(double price) {
+    public FixedPriceOrderTransaction setPrice(double price) {
         this.price = new PriceValue(price);
         return this;
     }
     /**
      * Set the Price
      * <p>
-     * The price threshold specified for the Limit Order. The Limit Order will
-     * only be filled by a market price that is equal to or better than this
-     * price.
+     * The price specified for the Fixed Price Order. This price is the exact
+     * price that the Fixed Price Order will be filled at.
      * <p>
      * @param price the Price as a BigDecimal
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see PriceValue
      */
-    public LimitOrderTransaction setPrice(BigDecimal price) {
+    public FixedPriceOrderTransaction setPrice(BigDecimal price) {
         this.price = new PriceValue(price);
-        return this;
-    }
-
-    @SerializedName("timeInForce") private TimeInForce timeInForce = TimeInForce.GTC;
-
-    /**
-     * Get the Time In Force
-     * <p>
-     * The time-in-force requested for the Limit Order.
-     * <p>
-     * @return the Time In Force
-     * @see TimeInForce
-     */
-    public TimeInForce getTimeInForce() {
-        return this.timeInForce;
-    }
-
-    /**
-     * Set the Time In Force
-     * <p>
-     * The time-in-force requested for the Limit Order.
-     * <p>
-     * @param timeInForce the Time In Force as a TimeInForce
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see TimeInForce
-     */
-    public LimitOrderTransaction setTimeInForce(TimeInForce timeInForce) {
-        this.timeInForce = timeInForce;
-        return this;
-    }
-
-    @SerializedName("gtdTime") private DateTime gtdTime;
-
-    /**
-     * Get the GTD Time
-     * <p>
-     * The date/time when the Limit Order will be cancelled if its timeInForce
-     * is "GTD".
-     * <p>
-     * @return the GTD Time
-     * @see DateTime
-     */
-    public DateTime getGtdTime() {
-        return this.gtdTime;
-    }
-
-    /**
-     * Set the GTD Time
-     * <p>
-     * The date/time when the Limit Order will be cancelled if its timeInForce
-     * is "GTD".
-     * <p>
-     * @param gtdTime the GTD Time as a DateTime
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see DateTime
-     */
-    public LimitOrderTransaction setGtdTime(DateTime gtdTime) {
-        this.gtdTime = gtdTime;
-        return this;
-    }
-    /**
-     * Set the GTD Time
-     * <p>
-     * The date/time when the Limit Order will be cancelled if its timeInForce
-     * is "GTD".
-     * <p>
-     * @param gtdTime the GTD Time as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see DateTime
-     */
-    public LimitOrderTransaction setGtdTime(String gtdTime) {
-        this.gtdTime = new DateTime(gtdTime);
         return this;
     }
 
@@ -629,99 +546,66 @@ public class LimitOrderTransaction implements Transaction {
      * Order is filled.
      * <p>
      * @param positionFill the Position Fill as an OrderPositionFill
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see OrderPositionFill
      */
-    public LimitOrderTransaction setPositionFill(OrderPositionFill positionFill) {
+    public FixedPriceOrderTransaction setPositionFill(OrderPositionFill positionFill) {
         this.positionFill = positionFill;
         return this;
     }
 
-    @SerializedName("triggerCondition") private OrderTriggerCondition triggerCondition = OrderTriggerCondition.DEFAULT;
+    @SerializedName("tradeState") private String tradeState;
 
     /**
-     * Get the Trigger Condition
+     * Get the TradeState
      * <p>
-     * Specification of which price component should be used when determining
-     * if an Order should be triggered and filled. This allows Orders to be
-     * triggered based on the bid, ask, mid, default (ask for buy, bid for
-     * sell) or inverse (ask for sell, bid for buy) price depending on the
-     * desired behaviour. Orders are always filled using their default price
-     * component. This feature is only provided through the REST API. Clients
-     * who choose to specify a non-default trigger condition will not see it
-     * reflected in any of OANDA's proprietary or partner trading platforms,
-     * their transaction history or their account statements. OANDA platforms
-     * always assume that an Order's trigger condition is set to the default
-     * value when indicating the distance from an Order's trigger price, and
-     * will always provide the default trigger condition when creating or
-     * modifying an Order. A special restriction applies when creating a
-     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
-     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
-     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
-     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
+     * The state that the trade resulting from the Fixed Price Order should be
+     * set to.
      * <p>
-     * @return the Trigger Condition
-     * @see OrderTriggerCondition
+     * @return the TradeState
      */
-    public OrderTriggerCondition getTriggerCondition() {
-        return this.triggerCondition;
+    public String getTradeState() {
+        return this.tradeState;
     }
 
     /**
-     * Set the Trigger Condition
+     * Set the TradeState
      * <p>
-     * Specification of which price component should be used when determining
-     * if an Order should be triggered and filled. This allows Orders to be
-     * triggered based on the bid, ask, mid, default (ask for buy, bid for
-     * sell) or inverse (ask for sell, bid for buy) price depending on the
-     * desired behaviour. Orders are always filled using their default price
-     * component. This feature is only provided through the REST API. Clients
-     * who choose to specify a non-default trigger condition will not see it
-     * reflected in any of OANDA's proprietary or partner trading platforms,
-     * their transaction history or their account statements. OANDA platforms
-     * always assume that an Order's trigger condition is set to the default
-     * value when indicating the distance from an Order's trigger price, and
-     * will always provide the default trigger condition when creating or
-     * modifying an Order. A special restriction applies when creating a
-     * guaranteed Stop Loss Order. In this case the TriggerCondition value must
-     * either be "DEFAULT", or the "natural" trigger side "DEFAULT" results in.
-     * So for a Stop Loss Order for a long trade valid values are "DEFAULT" and
-     * "BID", and for short trades "DEFAULT" and "ASK" are valid.
+     * The state that the trade resulting from the Fixed Price Order should be
+     * set to.
      * <p>
-     * @param triggerCondition the Trigger Condition as an
-     * OrderTriggerCondition
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see OrderTriggerCondition
+     * @param tradeState the TradeState as a String
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      */
-    public LimitOrderTransaction setTriggerCondition(OrderTriggerCondition triggerCondition) {
-        this.triggerCondition = triggerCondition;
+    public FixedPriceOrderTransaction setTradeState(String tradeState) {
+        this.tradeState = tradeState;
         return this;
     }
 
-    @SerializedName("reason") private LimitOrderReason reason;
+    @SerializedName("reason") private FixedPriceOrderReason reason;
 
     /**
      * Get the Reason
      * <p>
-     * The reason that the Limit Order was initiated
+     * The reason that the Fixed Price Order was created
      * <p>
      * @return the Reason
-     * @see LimitOrderReason
+     * @see FixedPriceOrderReason
      */
-    public LimitOrderReason getReason() {
+    public FixedPriceOrderReason getReason() {
         return this.reason;
     }
 
     /**
      * Set the Reason
      * <p>
-     * The reason that the Limit Order was initiated
+     * The reason that the Fixed Price Order was created
      * <p>
-     * @param reason the Reason as a LimitOrderReason
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see LimitOrderReason
+     * @param reason the Reason as a FixedPriceOrderReason
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
+     * @see FixedPriceOrderReason
      */
-    public LimitOrderTransaction setReason(LimitOrderReason reason) {
+    public FixedPriceOrderTransaction setReason(FixedPriceOrderReason reason) {
         this.reason = reason;
         return this;
     }
@@ -729,12 +613,11 @@ public class LimitOrderTransaction implements Transaction {
     @SerializedName("clientExtensions") private ClientExtensions clientExtensions;
 
     /**
-     * Get the Order Client Extensions
+     * Get the Client Extensions
      * <p>
-     * Client Extensions to add to the Order (only provided if the Order is
-     * being created with client extensions).
+     * The client extensions for the Fixed Price Order.
      * <p>
-     * @return the Order Client Extensions
+     * @return the Client Extensions
      * @see ClientExtensions
      */
     public ClientExtensions getClientExtensions() {
@@ -742,17 +625,15 @@ public class LimitOrderTransaction implements Transaction {
     }
 
     /**
-     * Set the Order Client Extensions
+     * Set the Client Extensions
      * <p>
-     * Client Extensions to add to the Order (only provided if the Order is
-     * being created with client extensions).
+     * The client extensions for the Fixed Price Order.
      * <p>
-     * @param clientExtensions the Order Client Extensions as a
-     * ClientExtensions
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @param clientExtensions the Client Extensions as a ClientExtensions
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see ClientExtensions
      */
-    public LimitOrderTransaction setClientExtensions(ClientExtensions clientExtensions) {
+    public FixedPriceOrderTransaction setClientExtensions(ClientExtensions clientExtensions) {
         this.clientExtensions = clientExtensions;
         return this;
     }
@@ -779,10 +660,10 @@ public class LimitOrderTransaction implements Transaction {
      * Trade opened when the Order is filled (if such a Trade is created).
      * <p>
      * @param takeProfitOnFill the Take Profit On Fill as a TakeProfitDetails
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see TakeProfitDetails
      */
-    public LimitOrderTransaction setTakeProfitOnFill(TakeProfitDetails takeProfitOnFill) {
+    public FixedPriceOrderTransaction setTakeProfitOnFill(TakeProfitDetails takeProfitOnFill) {
         this.takeProfitOnFill = takeProfitOnFill;
         return this;
     }
@@ -809,10 +690,10 @@ public class LimitOrderTransaction implements Transaction {
      * Trade opened when the Order is filled (if such a Trade is created).
      * <p>
      * @param stopLossOnFill the Stop Loss On Fill as a StopLossDetails
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see StopLossDetails
      */
-    public LimitOrderTransaction setStopLossOnFill(StopLossDetails stopLossOnFill) {
+    public FixedPriceOrderTransaction setStopLossOnFill(StopLossDetails stopLossOnFill) {
         this.stopLossOnFill = stopLossOnFill;
         return this;
     }
@@ -842,10 +723,10 @@ public class LimitOrderTransaction implements Transaction {
      * <p>
      * @param trailingStopLossOnFill the Trailing Stop Loss On Fill as a
      * TrailingStopLossDetails
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see TrailingStopLossDetails
      */
-    public LimitOrderTransaction setTrailingStopLossOnFill(TrailingStopLossDetails trailingStopLossOnFill) {
+    public FixedPriceOrderTransaction setTrailingStopLossOnFill(TrailingStopLossDetails trailingStopLossOnFill) {
         this.trailingStopLossOnFill = trailingStopLossOnFill;
         return this;
     }
@@ -875,107 +756,17 @@ public class LimitOrderTransaction implements Transaction {
      * <p>
      * @param tradeClientExtensions the Trade Client Extensions as a
      * ClientExtensions
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
+     * @return {@link FixedPriceOrderTransaction FixedPriceOrderTransaction}
      * @see ClientExtensions
      */
-    public LimitOrderTransaction setTradeClientExtensions(ClientExtensions tradeClientExtensions) {
+    public FixedPriceOrderTransaction setTradeClientExtensions(ClientExtensions tradeClientExtensions) {
         this.tradeClientExtensions = tradeClientExtensions;
-        return this;
-    }
-
-    @SerializedName("replacesOrderID") private OrderID replacesOrderID;
-
-    /**
-     * Get the Replaces Order ID
-     * <p>
-     * The ID of the Order that this Order replaces (only provided if this
-     * Order replaces an existing Order).
-     * <p>
-     * @return the Replaces Order ID
-     * @see OrderID
-     */
-    public OrderID getReplacesOrderID() {
-        return this.replacesOrderID;
-    }
-
-    /**
-     * Set the Replaces Order ID
-     * <p>
-     * The ID of the Order that this Order replaces (only provided if this
-     * Order replaces an existing Order).
-     * <p>
-     * @param replacesOrderID the Replaces Order ID as an OrderID
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see OrderID
-     */
-    public LimitOrderTransaction setReplacesOrderID(OrderID replacesOrderID) {
-        this.replacesOrderID = replacesOrderID;
-        return this;
-    }
-    /**
-     * Set the Replaces Order ID
-     * <p>
-     * The ID of the Order that this Order replaces (only provided if this
-     * Order replaces an existing Order).
-     * <p>
-     * @param replacesOrderID the Replaces Order ID as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see OrderID
-     */
-    public LimitOrderTransaction setReplacesOrderID(String replacesOrderID) {
-        this.replacesOrderID = new OrderID(replacesOrderID);
-        return this;
-    }
-
-    @SerializedName("cancellingTransactionID") private TransactionID cancellingTransactionID;
-
-    /**
-     * Get the Replaces Order Cancel Transaction ID
-     * <p>
-     * The ID of the Transaction that cancels the replaced Order (only provided
-     * if this Order replaces an existing Order).
-     * <p>
-     * @return the Replaces Order Cancel Transaction ID
-     * @see TransactionID
-     */
-    public TransactionID getCancellingTransactionID() {
-        return this.cancellingTransactionID;
-    }
-
-    /**
-     * Set the Replaces Order Cancel Transaction ID
-     * <p>
-     * The ID of the Transaction that cancels the replaced Order (only provided
-     * if this Order replaces an existing Order).
-     * <p>
-     * @param cancellingTransactionID the Replaces Order Cancel Transaction ID
-     * as a TransactionID
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see TransactionID
-     */
-    public LimitOrderTransaction setCancellingTransactionID(TransactionID cancellingTransactionID) {
-        this.cancellingTransactionID = cancellingTransactionID;
-        return this;
-    }
-    /**
-     * Set the Replaces Order Cancel Transaction ID
-     * <p>
-     * The ID of the Transaction that cancels the replaced Order (only provided
-     * if this Order replaces an existing Order).
-     * <p>
-     * @param cancellingTransactionID the Replaces Order Cancel Transaction ID
-     * as a String
-     * @return {@link LimitOrderTransaction LimitOrderTransaction}
-     * @see TransactionID
-     */
-    public LimitOrderTransaction setCancellingTransactionID(String cancellingTransactionID) {
-        this.cancellingTransactionID = new TransactionID(cancellingTransactionID);
         return this;
     }
 
     @Override
     public String toString() {
-        return "LimitOrderTransaction(" +
+        return "FixedPriceOrderTransaction(" +
             "id=" +
                 (id == null ? "null" : id.toString()) + ", " +
             "time=" +
@@ -996,14 +787,10 @@ public class LimitOrderTransaction implements Transaction {
                 (units == null ? "null" : units.toString()) + ", " +
             "price=" +
                 (price == null ? "null" : price.toString()) + ", " +
-            "timeInForce=" +
-                (timeInForce == null ? "null" : timeInForce.toString()) + ", " +
-            "gtdTime=" +
-                (gtdTime == null ? "null" : gtdTime.toString()) + ", " +
             "positionFill=" +
                 (positionFill == null ? "null" : positionFill.toString()) + ", " +
-            "triggerCondition=" +
-                (triggerCondition == null ? "null" : triggerCondition.toString()) + ", " +
+            "tradeState=" +
+                (tradeState == null ? "null" : tradeState.toString()) + ", " +
             "reason=" +
                 (reason == null ? "null" : reason.toString()) + ", " +
             "clientExtensions=" +
@@ -1015,11 +802,7 @@ public class LimitOrderTransaction implements Transaction {
             "trailingStopLossOnFill=" +
                 (trailingStopLossOnFill == null ? "null" : trailingStopLossOnFill.toString()) + ", " +
             "tradeClientExtensions=" +
-                (tradeClientExtensions == null ? "null" : tradeClientExtensions.toString()) + ", " +
-            "replacesOrderID=" +
-                (replacesOrderID == null ? "null" : replacesOrderID.toString()) + ", " +
-            "cancellingTransactionID=" +
-                (cancellingTransactionID == null ? "null" : cancellingTransactionID.toString()) +
+                (tradeClientExtensions == null ? "null" : tradeClientExtensions.toString()) +
             ")";
     }
 }

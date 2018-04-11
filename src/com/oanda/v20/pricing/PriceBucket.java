@@ -24,7 +24,7 @@ public class PriceBucket {
         this.price = other.price;
         if (other.liquidity != null)
         {
-            this.liquidity = new Integer(other.liquidity);
+            this.liquidity = new Long(other.liquidity);
         }
     }
 
@@ -95,7 +95,7 @@ public class PriceBucket {
         return this;
     }
 
-    @SerializedName("liquidity") private Integer liquidity;
+    @SerializedName("liquidity") private Long liquidity;
 
     /**
      * Get the Liquidity
@@ -104,7 +104,7 @@ public class PriceBucket {
      * <p>
      * @return the Liquidity
      */
-    public Integer getLiquidity() {
+    public Long getLiquidity() {
         return this.liquidity;
     }
 
@@ -113,10 +113,10 @@ public class PriceBucket {
      * <p>
      * The amount of liquidity offered by the PriceBucket
      * <p>
-     * @param liquidity the Liquidity as an Integer
+     * @param liquidity the Liquidity as a Long
      * @return {@link PriceBucket PriceBucket}
      */
-    public PriceBucket setLiquidity(Integer liquidity) {
+    public PriceBucket setLiquidity(Long liquidity) {
         this.liquidity = liquidity;
         return this;
     }

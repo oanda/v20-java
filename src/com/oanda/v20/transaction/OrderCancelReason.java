@@ -119,6 +119,76 @@ public enum OrderCancelReason {
     STOP_LOSS_ON_FILL_LOSS,
 
     /**
+     * Filling the Order would result in the creation of a Stop Loss Order
+     * whose price would be zero or negative due to the specified distance.
+     */
+    STOP_LOSS_ON_FILL_PRICE_DISTANCE_MAXIMUM_EXCEEDED,
+
+    /**
+     * Filling the Order would not result in the creation of Stop Loss Order,
+     * however the Account's configuration requires that all Trades have a Stop
+     * Loss Order attached to them.
+     */
+    STOP_LOSS_ON_FILL_REQUIRED,
+
+    /**
+     * Filling the Order would not result in the creation of a guaranteed Stop
+     * Loss Order, however the Account's configuration requires that all Trades
+     * have a guaranteed Stop Loss Order attached to them.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_REQUIRED,
+
+    /**
+     * Filling the Order would result in the creation of a guaranteed Stop Loss
+     * Order, however the Account's configuration does not allow guaranteed
+     * Stop Loss Orders.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_NOT_ALLOWED,
+
+    /**
+     * Filling the Order would result in the creation of a guaranteed Stop Loss
+     * Order with a distance smaller than the configured mininum distance.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_MINIMUM_DISTANCE_NOT_MET,
+
+    /**
+     * Filling the Order would result in the creation of a guaranteed Stop Loss
+     * Order with trigger price and number of units that that violates the
+     * account's guaranteed Stop Loss Order level restriction.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_LEVEL_RESTRICTION_EXCEEDED,
+
+    /**
+     * Filling the Order would result in the creation of a guaranteed Stop Loss
+     * Order for a hedged Trade, however the Account's configuration does not
+     * allow guaranteed Stop Loss Orders for hedged Trades/Positions.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_HEDGING_NOT_ALLOWED,
+
+    /**
+     * Filling the Order would result in the creation of a Stop Loss Order
+     * whose TimeInForce value is invalid. A likely cause would be if the
+     * Account requires guaranteed stop loss orders and the TimeInForce value
+     * were not GTC.
+     */
+    STOP_LOSS_ON_FILL_TIME_IN_FORCE_INVALID,
+
+    /**
+     * Filling the Order would result in the creation of a Stop Loss Order
+     * whose TriggerCondition value is invalid. A likely cause would be if the
+     * stop loss order is guaranteed and the TimeInForce is not TRIGGER_DEFAULT
+     * or TRIGGER_BID for a long trade, or not TRIGGER_DEFAULT or TRIGGER_ASK
+     * for a short trade.
+     */
+    STOP_LOSS_ON_FILL_TRIGGER_CONDITION_INVALID,
+
+    /**
+     * Filling the Order would result in the creation of a Take Profit Order
+     * whose price would be zero or negative due to the specified distance.
+     */
+    TAKE_PROFIT_ON_FILL_PRICE_DISTANCE_MAXIMUM_EXCEEDED,
+
+    /**
      * Filling the Order would have resulted in the creation of a Trailing Stop
      * Loss Order with a GTD time in the past.
      */
@@ -169,5 +239,19 @@ public enum OrderCancelReason {
      * Filling the Order would have resulted in the Account's maximum position
      * size limit being exceeded for the Order's instrument.
      */
-    POSITION_SIZE_EXCEEDED
+    POSITION_SIZE_EXCEEDED,
+
+    /**
+     * Filling the Order would result in the creation of a Trade, however there
+     * already exists an opposing (hedged) Trade that has a guaranteed Stop
+     * Loss Order attached to it. Guaranteed Stop Loss Orders cannot be
+     * combined with hedged positions.
+     */
+    HEDGING_GSLO_VIOLATION,
+
+    /**
+     * Filling the order would cause the maximum position value allowed for the
+     * account to be exceeded. The Order has been cancelled as a result.
+     */
+    ACCOUNT_POSITION_VALUE_LIMIT_EXCEEDED
 }

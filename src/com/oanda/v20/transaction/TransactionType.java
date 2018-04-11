@@ -51,6 +51,11 @@ public enum TransactionType {
     MARKET_ORDER_REJECT,
 
     /**
+     * Fixed Price Order Transaction
+     */
+    FIXED_PRICE_ORDER,
+
+    /**
      * Limit Order Transaction
      */
     LIMIT_ORDER,

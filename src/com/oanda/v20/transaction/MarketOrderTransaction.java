@@ -39,7 +39,7 @@ public class MarketOrderTransaction implements Transaction {
         this.time = other.time;
         if (other.userID != null)
         {
-            this.userID = new Integer(other.userID);
+            this.userID = new Long(other.userID);
         }
         this.accountID = other.accountID;
         this.batchID = other.batchID;
@@ -175,7 +175,7 @@ public class MarketOrderTransaction implements Transaction {
         return this;
     }
 
-    @SerializedName("userID") private Integer userID;
+    @SerializedName("userID") private Long userID;
 
     /**
      * Get the User ID
@@ -184,7 +184,7 @@ public class MarketOrderTransaction implements Transaction {
      * <p>
      * @return the User ID
      */
-    public Integer getUserID() {
+    public Long getUserID() {
         return this.userID;
     }
 
@@ -193,10 +193,10 @@ public class MarketOrderTransaction implements Transaction {
      * <p>
      * The ID of the user that initiated the creation of the Transaction.
      * <p>
-     * @param userID the User ID as an Integer
+     * @param userID the User ID as a Long
      * @return {@link MarketOrderTransaction MarketOrderTransaction}
      */
-    public MarketOrderTransaction setUserID(Integer userID) {
+    public MarketOrderTransaction setUserID(Long userID) {
         this.userID = userID;
         return this;
     }

@@ -40,7 +40,7 @@ public class OrderFillTransaction implements Transaction {
         this.time = other.time;
         if (other.userID != null)
         {
-            this.userID = new Integer(other.userID);
+            this.userID = new Long(other.userID);
         }
         this.accountID = other.accountID;
         this.batchID = other.batchID;
@@ -50,6 +50,8 @@ public class OrderFillTransaction implements Transaction {
         this.clientOrderID = other.clientOrderID;
         this.instrument = other.instrument;
         this.units = other.units;
+        this.gainQuoteHomeConversionFactor = other.gainQuoteHomeConversionFactor;
+        this.lossQuoteHomeConversionFactor = other.lossQuoteHomeConversionFactor;
         this.price = other.price;
         if (other.fullPrice != null)
         {
@@ -59,6 +61,7 @@ public class OrderFillTransaction implements Transaction {
         this.pl = other.pl;
         this.financing = other.financing;
         this.commission = other.commission;
+        this.guaranteedExecutionFee = other.guaranteedExecutionFee;
         this.accountBalance = other.accountBalance;
         if (other.tradeOpened != null)
         {
@@ -72,6 +75,7 @@ public class OrderFillTransaction implements Transaction {
         {
             this.tradeReduced = new TradeReduce(other.tradeReduced);
         }
+        this.halfSpreadCost = other.halfSpreadCost;
     }
 
     @SerializedName("id") private TransactionID id;
@@ -156,7 +160,7 @@ public class OrderFillTransaction implements Transaction {
         return this;
     }
 
-    @SerializedName("userID") private Integer userID;
+    @SerializedName("userID") private Long userID;
 
     /**
      * Get the User ID
@@ -165,7 +169,7 @@ public class OrderFillTransaction implements Transaction {
      * <p>
      * @return the User ID
      */
-    public Integer getUserID() {
+    public Long getUserID() {
         return this.userID;
     }
 
@@ -174,10 +178,10 @@ public class OrderFillTransaction implements Transaction {
      * <p>
      * The ID of the user that initiated the creation of the Transaction.
      * <p>
-     * @param userID the User ID as an Integer
+     * @param userID the User ID as a Long
      * @return {@link OrderFillTransaction OrderFillTransaction}
      */
-    public OrderFillTransaction setUserID(Integer userID) {
+    public OrderFillTransaction setUserID(Long userID) {
         this.userID = userID;
         return this;
     }
@@ -531,6 +535,168 @@ public class OrderFillTransaction implements Transaction {
         return this;
     }
 
+    @SerializedName("gainQuoteHomeConversionFactor") private DecimalNumber gainQuoteHomeConversionFactor;
+
+    /**
+     * Get the Gain Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any gains realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @return the Gain Quote Home Conversion Factor
+     * @see DecimalNumber
+     */
+    public DecimalNumber getGainQuoteHomeConversionFactor() {
+        return this.gainQuoteHomeConversionFactor;
+    }
+
+    /**
+     * Set the Gain Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any gains realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @param gainQuoteHomeConversionFactor the Gain Quote Home Conversion
+     * Factor as a DecimalNumber
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see DecimalNumber
+     */
+    public OrderFillTransaction setGainQuoteHomeConversionFactor(DecimalNumber gainQuoteHomeConversionFactor) {
+        this.gainQuoteHomeConversionFactor = gainQuoteHomeConversionFactor;
+        return this;
+    }
+    /**
+     * Set the Gain Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any gains realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @param gainQuoteHomeConversionFactor the Gain Quote Home Conversion
+     * Factor as a String
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see DecimalNumber
+     */
+    public OrderFillTransaction setGainQuoteHomeConversionFactor(String gainQuoteHomeConversionFactor) {
+        this.gainQuoteHomeConversionFactor = new DecimalNumber(gainQuoteHomeConversionFactor);
+        return this;
+    }
+    /**
+     * Set the Gain Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any gains realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @param gainQuoteHomeConversionFactor the Gain Quote Home Conversion
+     * Factor as a double
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see DecimalNumber
+     */
+    public OrderFillTransaction setGainQuoteHomeConversionFactor(double gainQuoteHomeConversionFactor) {
+        this.gainQuoteHomeConversionFactor = new DecimalNumber(gainQuoteHomeConversionFactor);
+        return this;
+    }
+    /**
+     * Set the Gain Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any gains realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @param gainQuoteHomeConversionFactor the Gain Quote Home Conversion
+     * Factor as a BigDecimal
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see DecimalNumber
+     */
+    public OrderFillTransaction setGainQuoteHomeConversionFactor(BigDecimal gainQuoteHomeConversionFactor) {
+        this.gainQuoteHomeConversionFactor = new DecimalNumber(gainQuoteHomeConversionFactor);
+        return this;
+    }
+
+    @SerializedName("lossQuoteHomeConversionFactor") private DecimalNumber lossQuoteHomeConversionFactor;
+
+    /**
+     * Get the Loss Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any losses realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @return the Loss Quote Home Conversion Factor
+     * @see DecimalNumber
+     */
+    public DecimalNumber getLossQuoteHomeConversionFactor() {
+        return this.lossQuoteHomeConversionFactor;
+    }
+
+    /**
+     * Set the Loss Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any losses realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @param lossQuoteHomeConversionFactor the Loss Quote Home Conversion
+     * Factor as a DecimalNumber
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see DecimalNumber
+     */
+    public OrderFillTransaction setLossQuoteHomeConversionFactor(DecimalNumber lossQuoteHomeConversionFactor) {
+        this.lossQuoteHomeConversionFactor = lossQuoteHomeConversionFactor;
+        return this;
+    }
+    /**
+     * Set the Loss Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any losses realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @param lossQuoteHomeConversionFactor the Loss Quote Home Conversion
+     * Factor as a String
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see DecimalNumber
+     */
+    public OrderFillTransaction setLossQuoteHomeConversionFactor(String lossQuoteHomeConversionFactor) {
+        this.lossQuoteHomeConversionFactor = new DecimalNumber(lossQuoteHomeConversionFactor);
+        return this;
+    }
+    /**
+     * Set the Loss Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any losses realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @param lossQuoteHomeConversionFactor the Loss Quote Home Conversion
+     * Factor as a double
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see DecimalNumber
+     */
+    public OrderFillTransaction setLossQuoteHomeConversionFactor(double lossQuoteHomeConversionFactor) {
+        this.lossQuoteHomeConversionFactor = new DecimalNumber(lossQuoteHomeConversionFactor);
+        return this;
+    }
+    /**
+     * Set the Loss Quote Home Conversion Factor
+     * <p>
+     * This is the conversion factor in effect for the Account at the time of
+     * the OrderFill for converting any losses realized in Instrument quote
+     * units into units of the Account's home currency.
+     * <p>
+     * @param lossQuoteHomeConversionFactor the Loss Quote Home Conversion
+     * Factor as a BigDecimal
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see DecimalNumber
+     */
+    public OrderFillTransaction setLossQuoteHomeConversionFactor(BigDecimal lossQuoteHomeConversionFactor) {
+        this.lossQuoteHomeConversionFactor = new DecimalNumber(lossQuoteHomeConversionFactor);
+        return this;
+    }
+
     @SerializedName("price") private PriceValue price;
 
     /**
@@ -880,6 +1046,80 @@ public class OrderFillTransaction implements Transaction {
         return this;
     }
 
+    @SerializedName("guaranteedExecutionFee") private AccountUnits guaranteedExecutionFee;
+
+    /**
+     * Get the Guranteed Execution Fee
+     * <p>
+     * The total guaranteed execution fees charged for all Trades opened,
+     * closed or reduced with guaranteed Stop Loss Orders.
+     * <p>
+     * @return the Guranteed Execution Fee
+     * @see AccountUnits
+     */
+    public AccountUnits getGuaranteedExecutionFee() {
+        return this.guaranteedExecutionFee;
+    }
+
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * The total guaranteed execution fees charged for all Trades opened,
+     * closed or reduced with guaranteed Stop Loss Orders.
+     * <p>
+     * @param guaranteedExecutionFee the Guranteed Execution Fee as an
+     * AccountUnits
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setGuaranteedExecutionFee(AccountUnits guaranteedExecutionFee) {
+        this.guaranteedExecutionFee = guaranteedExecutionFee;
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * The total guaranteed execution fees charged for all Trades opened,
+     * closed or reduced with guaranteed Stop Loss Orders.
+     * <p>
+     * @param guaranteedExecutionFee the Guranteed Execution Fee as a String
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setGuaranteedExecutionFee(String guaranteedExecutionFee) {
+        this.guaranteedExecutionFee = new AccountUnits(guaranteedExecutionFee);
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * The total guaranteed execution fees charged for all Trades opened,
+     * closed or reduced with guaranteed Stop Loss Orders.
+     * <p>
+     * @param guaranteedExecutionFee the Guranteed Execution Fee as a double
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setGuaranteedExecutionFee(double guaranteedExecutionFee) {
+        this.guaranteedExecutionFee = new AccountUnits(guaranteedExecutionFee);
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * The total guaranteed execution fees charged for all Trades opened,
+     * closed or reduced with guaranteed Stop Loss Orders.
+     * <p>
+     * @param guaranteedExecutionFee the Guranteed Execution Fee as a
+     * BigDecimal
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setGuaranteedExecutionFee(BigDecimal guaranteedExecutionFee) {
+        this.guaranteedExecutionFee = new AccountUnits(guaranteedExecutionFee);
+        return this;
+    }
+
     @SerializedName("accountBalance") private AccountUnits accountBalance;
 
     /**
@@ -1050,6 +1290,88 @@ public class OrderFillTransaction implements Transaction {
         return this;
     }
 
+    @SerializedName("halfSpreadCost") private AccountUnits halfSpreadCost;
+
+    /**
+     * Get the Half Spread Cost
+     * <p>
+     * The half spread cost for the OrderFill, which is the sum of the
+     * halfSpreadCost values in the tradeOpened, tradesClosed and tradeReduced
+     * fields. This can be a positive or negative value and is represented in
+     * the home currency of the Account.
+     * <p>
+     * @return the Half Spread Cost
+     * @see AccountUnits
+     */
+    public AccountUnits getHalfSpreadCost() {
+        return this.halfSpreadCost;
+    }
+
+    /**
+     * Set the Half Spread Cost
+     * <p>
+     * The half spread cost for the OrderFill, which is the sum of the
+     * halfSpreadCost values in the tradeOpened, tradesClosed and tradeReduced
+     * fields. This can be a positive or negative value and is represented in
+     * the home currency of the Account.
+     * <p>
+     * @param halfSpreadCost the Half Spread Cost as an AccountUnits
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setHalfSpreadCost(AccountUnits halfSpreadCost) {
+        this.halfSpreadCost = halfSpreadCost;
+        return this;
+    }
+    /**
+     * Set the Half Spread Cost
+     * <p>
+     * The half spread cost for the OrderFill, which is the sum of the
+     * halfSpreadCost values in the tradeOpened, tradesClosed and tradeReduced
+     * fields. This can be a positive or negative value and is represented in
+     * the home currency of the Account.
+     * <p>
+     * @param halfSpreadCost the Half Spread Cost as a String
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setHalfSpreadCost(String halfSpreadCost) {
+        this.halfSpreadCost = new AccountUnits(halfSpreadCost);
+        return this;
+    }
+    /**
+     * Set the Half Spread Cost
+     * <p>
+     * The half spread cost for the OrderFill, which is the sum of the
+     * halfSpreadCost values in the tradeOpened, tradesClosed and tradeReduced
+     * fields. This can be a positive or negative value and is represented in
+     * the home currency of the Account.
+     * <p>
+     * @param halfSpreadCost the Half Spread Cost as a double
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setHalfSpreadCost(double halfSpreadCost) {
+        this.halfSpreadCost = new AccountUnits(halfSpreadCost);
+        return this;
+    }
+    /**
+     * Set the Half Spread Cost
+     * <p>
+     * The half spread cost for the OrderFill, which is the sum of the
+     * halfSpreadCost values in the tradeOpened, tradesClosed and tradeReduced
+     * fields. This can be a positive or negative value and is represented in
+     * the home currency of the Account.
+     * <p>
+     * @param halfSpreadCost the Half Spread Cost as a BigDecimal
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see AccountUnits
+     */
+    public OrderFillTransaction setHalfSpreadCost(BigDecimal halfSpreadCost) {
+        this.halfSpreadCost = new AccountUnits(halfSpreadCost);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "OrderFillTransaction(" +
@@ -1075,6 +1397,10 @@ public class OrderFillTransaction implements Transaction {
                 (instrument == null ? "null" : instrument.toString()) + ", " +
             "units=" +
                 (units == null ? "null" : units.toString()) + ", " +
+            "gainQuoteHomeConversionFactor=" +
+                (gainQuoteHomeConversionFactor == null ? "null" : gainQuoteHomeConversionFactor.toString()) + ", " +
+            "lossQuoteHomeConversionFactor=" +
+                (lossQuoteHomeConversionFactor == null ? "null" : lossQuoteHomeConversionFactor.toString()) + ", " +
             "price=" +
                 (price == null ? "null" : price.toString()) + ", " +
             "fullPrice=" +
@@ -1087,6 +1413,8 @@ public class OrderFillTransaction implements Transaction {
                 (financing == null ? "null" : financing.toString()) + ", " +
             "commission=" +
                 (commission == null ? "null" : commission.toString()) + ", " +
+            "guaranteedExecutionFee=" +
+                (guaranteedExecutionFee == null ? "null" : guaranteedExecutionFee.toString()) + ", " +
             "accountBalance=" +
                 (accountBalance == null ? "null" : accountBalance.toString()) + ", " +
             "tradeOpened=" +
@@ -1094,7 +1422,9 @@ public class OrderFillTransaction implements Transaction {
             "tradesClosed=" +
                 (tradesClosed == null ? "null" : tradesClosed.toString()) + ", " +
             "tradeReduced=" +
-                (tradeReduced == null ? "null" : tradeReduced.toString()) +
+                (tradeReduced == null ? "null" : tradeReduced.toString()) + ", " +
+            "halfSpreadCost=" +
+                (halfSpreadCost == null ? "null" : halfSpreadCost.toString()) +
             ")";
     }
 }

@@ -38,5 +38,10 @@ public enum OrderType {
     /**
      * A Trailing Stop Loss Order
      */
-    TRAILING_STOP_LOSS
+    TRAILING_STOP_LOSS,
+
+    /**
+     * A Fixed Price Order
+     */
+    FIXED_PRICE
 }

@@ -60,10 +60,10 @@ public class InstrumentCandlesRequest extends Request {
      * range combined with the graularity will determine the number of
      * candlesticks to return.
      * <p>
-     * @param count the count as an Integer
+     * @param count the count as a Long
      * @return {@link InstrumentCandlesRequest InstrumentCandlesRequest}
      */
-    public InstrumentCandlesRequest setCount(Integer count)
+    public InstrumentCandlesRequest setCount(Long count)
     {
         this.queryParams.put("count", count);
         return this;
@@ -170,10 +170,10 @@ public class InstrumentCandlesRequest extends Request {
      * The hour of the day (in the specified timezone) to use for granularities
      * that have daily alignments.
      * <p>
-     * @param dailyAlignment the dailyAlignment as an Integer
+     * @param dailyAlignment the dailyAlignment as a Long
      * @return {@link InstrumentCandlesRequest InstrumentCandlesRequest}
      */
-    public InstrumentCandlesRequest setDailyAlignment(Integer dailyAlignment)
+    public InstrumentCandlesRequest setDailyAlignment(Long dailyAlignment)
     {
         this.queryParams.put("dailyAlignment", dailyAlignment);
         return this;
@@ -184,7 +184,8 @@ public class InstrumentCandlesRequest extends Request {
      * <p>
      * The timezone to use for the dailyAlignment parameter. Candlesticks with
      * daily alignment will be aligned to the dailyAlignment hour within the
-     * alignmentTimezone.
+     * alignmentTimezone.  Note that the returned times will still be
+     * represented in UTC.
      * <p>
      * @param alignmentTimezone the alignmentTimezone as a String
      * @return {@link InstrumentCandlesRequest InstrumentCandlesRequest}

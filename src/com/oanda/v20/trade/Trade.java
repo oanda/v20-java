@@ -45,6 +45,7 @@ public class Trade {
         this.openTime = other.openTime;
         this.state = other.state;
         this.initialUnits = other.initialUnits;
+        this.initialMarginRequired = other.initialMarginRequired;
         this.currentUnits = other.currentUnits;
         this.realizedPL = other.realizedPL;
         this.unrealizedPL = other.unrealizedPL;
@@ -361,6 +362,84 @@ public class Trade {
      */
     public Trade setInitialUnits(BigDecimal initialUnits) {
         this.initialUnits = new DecimalNumber(initialUnits);
+        return this;
+    }
+
+    @SerializedName("initialMarginRequired") private AccountUnits initialMarginRequired;
+
+    /**
+     * Get the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @return the Initial Margin Required
+     * @see AccountUnits
+     */
+    public AccountUnits getInitialMarginRequired() {
+        return this.initialMarginRequired;
+    }
+
+    /**
+     * Set the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @param initialMarginRequired the Initial Margin Required as an
+     * AccountUnits
+     * @return {@link Trade Trade}
+     * @see AccountUnits
+     */
+    public Trade setInitialMarginRequired(AccountUnits initialMarginRequired) {
+        this.initialMarginRequired = initialMarginRequired;
+        return this;
+    }
+    /**
+     * Set the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @param initialMarginRequired the Initial Margin Required as a String
+     * @return {@link Trade Trade}
+     * @see AccountUnits
+     */
+    public Trade setInitialMarginRequired(String initialMarginRequired) {
+        this.initialMarginRequired = new AccountUnits(initialMarginRequired);
+        return this;
+    }
+    /**
+     * Set the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @param initialMarginRequired the Initial Margin Required as a double
+     * @return {@link Trade Trade}
+     * @see AccountUnits
+     */
+    public Trade setInitialMarginRequired(double initialMarginRequired) {
+        this.initialMarginRequired = new AccountUnits(initialMarginRequired);
+        return this;
+    }
+    /**
+     * Set the Initial Margin Required
+     * <p>
+     * The margin required at the time the Trade was created. Note, this is the
+     * 'pure' margin required, it is not the 'effective' margin used that
+     * factors in the trade risk if a GSLO is attached to the trade.
+     * <p>
+     * @param initialMarginRequired the Initial Margin Required as a BigDecimal
+     * @return {@link Trade Trade}
+     * @see AccountUnits
+     */
+    public Trade setInitialMarginRequired(BigDecimal initialMarginRequired) {
+        this.initialMarginRequired = new AccountUnits(initialMarginRequired);
         return this;
     }
 
@@ -999,6 +1078,8 @@ public class Trade {
                 (state == null ? "null" : state.toString()) + ", " +
             "initialUnits=" +
                 (initialUnits == null ? "null" : initialUnits.toString()) + ", " +
+            "initialMarginRequired=" +
+                (initialMarginRequired == null ? "null" : initialMarginRequired.toString()) + ", " +
             "currentUnits=" +
                 (currentUnits == null ? "null" : currentUnits.toString()) + ", " +
             "realizedPL=" +

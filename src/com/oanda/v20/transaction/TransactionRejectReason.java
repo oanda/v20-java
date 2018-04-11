@@ -95,6 +95,13 @@ public enum TransactionRejectReason {
     TRADE_IDENTIFIER_INCONSISTENCY,
 
     /**
+     * The Account had insufficient margin to perform the action specified. One
+     * possible reason for this is due to the creation or modification of a
+     * guaranteed StopLoss Order.
+     */
+    INSUFFICIENT_MARGIN,
+
+    /**
      * Order instrument has not been specified
      */
     INSTRUMENT_MISSING,
@@ -365,6 +372,102 @@ public enum TransactionRejectReason {
     STOP_LOSS_ORDER_ALREADY_EXISTS,
 
     /**
+     * An attempt was made to to create a non-guaranteed stop loss order in an
+     * account that requires all stop loss orders to be guaranteed.
+     */
+    STOP_LOSS_ORDER_GUARANTEED_REQUIRED,
+
+    /**
+     * An attempt to create a guaranteed stop loss order with a price that is
+     * within the current tradeable spread.
+     */
+    STOP_LOSS_ORDER_GUARANTEED_PRICE_WITHIN_SPREAD,
+
+    /**
+     * An attempt was made to create a guaranteed Stop Loss Order, however the
+     * Account's configuration does not allow guaranteed Stop Loss Orders.
+     */
+    STOP_LOSS_ORDER_GUARANTEED_NOT_ALLOWED,
+
+    /**
+     * An attempt was made to create a guaranteed Stop Loss Order when the
+     * market was halted.
+     */
+    STOP_LOSS_ORDER_GUARANTEED_HALTED_CREATE_VIOLATION,
+
+    /**
+     * An attempt was made to re-create a guaranteed Stop Loss Order with a
+     * tighter fill price when the market was halted.
+     */
+    STOP_LOSS_ORDER_GUARANTEED_HALTED_TIGHTEN_VIOLATION,
+
+    /**
+     * An attempt was made to create a guaranteed Stop Loss Order on a hedged
+     * Trade (ie there is an existing open Trade in the opposing direction),
+     * however the Account's configuration does not allow guaranteed Stop Loss
+     * Orders for hedged Trades/Positions.
+     */
+    STOP_LOSS_ORDER_GUARANTEED_HEDGING_NOT_ALLOWED,
+
+    /**
+     * An attempt was made to create a guaranteed Stop Loss Order, however the
+     * distance between the current price and the trigger price does not meet
+     * the Account's configured minimumGuaranteedStopLossDistance.
+     */
+    STOP_LOSS_ORDER_GUARANTEED_MINIMUM_DISTANCE_NOT_MET,
+
+    /**
+     * An attempt was made to cancel a Stop Loss Order, however the Account's
+     * configuration requires every Trade have an associated Stop Loss Order.
+     */
+    STOP_LOSS_ORDER_NOT_CANCELABLE,
+
+    /**
+     * An attempt was made to cancel and replace a Stop Loss Order, however the
+     * Account's configuration prevents the modification of Stop Loss Orders.
+     */
+    STOP_LOSS_ORDER_NOT_REPLACEABLE,
+
+    /**
+     * An attempt was made to create a guaranteed Stop Loss Order, however
+     * doing so would exceed the Account's configured guaranteed StopLoss Order
+     * level restriction volume.
+     */
+    STOP_LOSS_ORDER_GUARANTEED_LEVEL_RESTRICTION_EXCEEDED,
+
+    /**
+     * The Stop Loss Order request contains both the price and distance fields.
+     */
+    STOP_LOSS_ORDER_PRICE_AND_DISTANCE_BOTH_SPECIFIED,
+
+    /**
+     * The Stop Loss Order request contains neither the price nor distance
+     * fields.
+     */
+    STOP_LOSS_ORDER_PRICE_AND_DISTANCE_BOTH_MISSING,
+
+    /**
+     * An attempt to create a pending Order was made with no Stop Loss Order on
+     * fill specified and the Account's configuration requires that every Trade
+     * have an associated Stop Loss Order.
+     */
+    STOP_LOSS_ON_FILL_REQUIRED_FOR_PENDING_ORDER,
+
+    /**
+     * An attempt to create a pending Order was made with a Stop Loss Order on
+     * fill that was explicitly configured to be guaranteed, however the
+     * Account's configuration does not allow guaranteed Stop Loss Orders.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_NOT_ALLOWED,
+
+    /**
+     * An attempt to create a pending Order was made with a Stop Loss Order on
+     * fill that was explicitly configured to be not guaranteed, however the
+     * Account's configuration requires guaranteed Stop Loss Orders.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_REQUIRED,
+
+    /**
      * The Stop Loss on fill specified does not provide a price
      */
     STOP_LOSS_ON_FILL_PRICE_MISSING,
@@ -379,6 +482,47 @@ public enum TransactionRejectReason {
      * allowed by the Order's instrument
      */
     STOP_LOSS_ON_FILL_PRICE_PRECISION_EXCEEDED,
+
+    /**
+     * An attempt to create a pending Order was made with the distance between
+     * the guaranteed Stop Loss Order on fill's price and the pending Order's
+     * price is less than the Account's configured minimum guaranteed stop loss
+     * distance.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_MINIMUM_DISTANCE_NOT_MET,
+
+    /**
+     * An attempt to create a pending Order was made with a guaranteed Stop
+     * Loss Order on fill configured, and the Order's units exceed the
+     * Account's configured guaranteed StopLoss Order level restriction volume.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_LEVEL_RESTRICTION_EXCEEDED,
+
+    /**
+     * The Stop Loss on fill distance is invalid
+     */
+    STOP_LOSS_ON_FILL_DISTANCE_INVALID,
+
+    /**
+     * The Stop Loss on fill price distance exceeds the maximum allowed amount
+     */
+    STOP_LOSS_ON_FILL_PRICE_DISTANCE_MAXIMUM_EXCEEDED,
+
+    /**
+     * The Stop Loss on fill distance contains more precision than is allowed
+     * by the instrument
+     */
+    STOP_LOSS_ON_FILL_DISTANCE_PRECISION_EXCEEDED,
+
+    /**
+     * The Stop Loss on fill contains both the price and distance fields.
+     */
+    STOP_LOSS_ON_FILL_PRICE_AND_DISTANCE_BOTH_SPECIFIED,
+
+    /**
+     * The Stop Loss on fill contains neither the price nor distance fields.
+     */
+    STOP_LOSS_ON_FILL_PRICE_AND_DISTANCE_BOTH_MISSING,
 
     /**
      * The Stop Loss on fill specified does not provide a TimeInForce
@@ -425,6 +569,11 @@ public enum TransactionRejectReason {
      * The Stop Loss on fill specifies an invalid TriggerCondition
      */
     STOP_LOSS_ON_FILL_TRIGGER_CONDITION_INVALID,
+
+    /**
+     * A Trailing Stop Loss Order for the specified Trade already exists
+     */
+    TRAILING_STOP_LOSS_ORDER_ALREADY_EXISTS,
 
     /**
      * The Trailing Stop Loss on fill specified does not provide a distance

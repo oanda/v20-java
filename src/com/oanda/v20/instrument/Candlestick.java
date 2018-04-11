@@ -36,7 +36,7 @@ public class Candlestick {
         }
         if (other.volume != null)
         {
-            this.volume = new Integer(other.volume);
+            this.volume = new Long(other.volume);
         }
         if (other.complete != null)
         {
@@ -175,7 +175,7 @@ public class Candlestick {
         return this;
     }
 
-    @SerializedName("volume") private Integer volume;
+    @SerializedName("volume") private Long volume;
 
     /**
      * Get the volume
@@ -185,7 +185,7 @@ public class Candlestick {
      * <p>
      * @return the volume
      */
-    public Integer getVolume() {
+    public Long getVolume() {
         return this.volume;
     }
 
@@ -195,10 +195,10 @@ public class Candlestick {
      * The number of prices created during the time-range represented by the
      * candlestick.
      * <p>
-     * @param volume the volume as an Integer
+     * @param volume the volume as a Long
      * @return {@link Candlestick Candlestick}
      */
-    public Candlestick setVolume(Integer volume) {
+    public Candlestick setVolume(Long volume) {
         this.volume = volume;
         return this;
     }

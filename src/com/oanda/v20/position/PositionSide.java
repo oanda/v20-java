@@ -40,6 +40,8 @@ public class PositionSide {
         this.pl = other.pl;
         this.unrealizedPL = other.unrealizedPL;
         this.resettablePL = other.resettablePL;
+        this.financing = other.financing;
+        this.guaranteedExecutionFees = other.guaranteedExecutionFees;
     }
 
     @SerializedName("units") private DecimalNumber units;
@@ -447,6 +449,157 @@ public class PositionSide {
         return this;
     }
 
+    @SerializedName("financing") private AccountUnits financing;
+
+    /**
+     * Get the Financing
+     * <p>
+     * The total amount of financing paid/collected for this PositionSide over
+     * the lifetime of the Account.
+     * <p>
+     * @return the Financing
+     * @see AccountUnits
+     */
+    public AccountUnits getFinancing() {
+        return this.financing;
+    }
+
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected for this PositionSide over
+     * the lifetime of the Account.
+     * <p>
+     * @param financing the Financing as an AccountUnits
+     * @return {@link PositionSide PositionSide}
+     * @see AccountUnits
+     */
+    public PositionSide setFinancing(AccountUnits financing) {
+        this.financing = financing;
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected for this PositionSide over
+     * the lifetime of the Account.
+     * <p>
+     * @param financing the Financing as a String
+     * @return {@link PositionSide PositionSide}
+     * @see AccountUnits
+     */
+    public PositionSide setFinancing(String financing) {
+        this.financing = new AccountUnits(financing);
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected for this PositionSide over
+     * the lifetime of the Account.
+     * <p>
+     * @param financing the Financing as a double
+     * @return {@link PositionSide PositionSide}
+     * @see AccountUnits
+     */
+    public PositionSide setFinancing(double financing) {
+        this.financing = new AccountUnits(financing);
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected for this PositionSide over
+     * the lifetime of the Account.
+     * <p>
+     * @param financing the Financing as a BigDecimal
+     * @return {@link PositionSide PositionSide}
+     * @see AccountUnits
+     */
+    public PositionSide setFinancing(BigDecimal financing) {
+        this.financing = new AccountUnits(financing);
+        return this;
+    }
+
+    @SerializedName("guaranteedExecutionFees") private AccountUnits guaranteedExecutionFees;
+
+    /**
+     * Get the Guranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders attached to Trades for this
+     * PositionSide.
+     * <p>
+     * @return the Guranteed Execution Fees
+     * @see AccountUnits
+     */
+    public AccountUnits getGuaranteedExecutionFees() {
+        return this.guaranteedExecutionFees;
+    }
+
+    /**
+     * Set the Guranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders attached to Trades for this
+     * PositionSide.
+     * <p>
+     * @param guaranteedExecutionFees the Guranteed Execution Fees as an
+     * AccountUnits
+     * @return {@link PositionSide PositionSide}
+     * @see AccountUnits
+     */
+    public PositionSide setGuaranteedExecutionFees(AccountUnits guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = guaranteedExecutionFees;
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders attached to Trades for this
+     * PositionSide.
+     * <p>
+     * @param guaranteedExecutionFees the Guranteed Execution Fees as a String
+     * @return {@link PositionSide PositionSide}
+     * @see AccountUnits
+     */
+    public PositionSide setGuaranteedExecutionFees(String guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders attached to Trades for this
+     * PositionSide.
+     * <p>
+     * @param guaranteedExecutionFees the Guranteed Execution Fees as a double
+     * @return {@link PositionSide PositionSide}
+     * @see AccountUnits
+     */
+    public PositionSide setGuaranteedExecutionFees(double guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fees
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders attached to Trades for this
+     * PositionSide.
+     * <p>
+     * @param guaranteedExecutionFees the Guranteed Execution Fees as a
+     * BigDecimal
+     * @return {@link PositionSide PositionSide}
+     * @see AccountUnits
+     */
+    public PositionSide setGuaranteedExecutionFees(BigDecimal guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "PositionSide(" +
@@ -461,7 +614,11 @@ public class PositionSide {
             "unrealizedPL=" +
                 (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
             "resettablePL=" +
-                (resettablePL == null ? "null" : resettablePL.toString()) +
+                (resettablePL == null ? "null" : resettablePL.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) + ", " +
+            "guaranteedExecutionFees=" +
+                (guaranteedExecutionFees == null ? "null" : guaranteedExecutionFees.toString()) +
             ")";
     }
 }

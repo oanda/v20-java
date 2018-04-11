@@ -22,6 +22,8 @@ public class OrderAdapter implements JsonDeserializer<Order> {
         switch (type) {
         case MARKET:
             return context.deserialize(json, MarketOrder.class);
+        case FIXED_PRICE:
+            return context.deserialize(json, FixedPriceOrder.class);
         case LIMIT:
             return context.deserialize(json, LimitOrder.class);
         case STOP:

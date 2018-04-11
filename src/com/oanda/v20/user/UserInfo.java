@@ -22,7 +22,7 @@ public class UserInfo {
         this.username = other.username;
         if (other.userID != null)
         {
-            this.userID = new Integer(other.userID);
+            this.userID = new Long(other.userID);
         }
         this.country = other.country;
         this.emailAddress = other.emailAddress;
@@ -54,7 +54,7 @@ public class UserInfo {
         return this;
     }
 
-    @SerializedName("userID") private Integer userID;
+    @SerializedName("userID") private Long userID;
 
     /**
      * Get the userID
@@ -63,7 +63,7 @@ public class UserInfo {
      * <p>
      * @return the userID
      */
-    public Integer getUserID() {
+    public Long getUserID() {
         return this.userID;
     }
 
@@ -72,10 +72,10 @@ public class UserInfo {
      * <p>
      * The user's OANDA-assigned user ID.
      * <p>
-     * @param userID the userID as an Integer
+     * @param userID the userID as a Long
      * @return {@link UserInfo UserInfo}
      */
-    public UserInfo setUserID(Integer userID) {
+    public UserInfo setUserID(Long userID) {
         this.userID = userID;
         return this;
     }

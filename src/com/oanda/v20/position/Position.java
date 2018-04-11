@@ -31,7 +31,9 @@ public class Position {
         this.unrealizedPL = other.unrealizedPL;
         this.marginUsed = other.marginUsed;
         this.resettablePL = other.resettablePL;
+        this.financing = other.financing;
         this.commission = other.commission;
+        this.guaranteedExecutionFees = other.guaranteedExecutionFees;
         if (other.longValue != null)
         {
             this.longValue = new PositionSide(other.longValue);
@@ -361,6 +363,78 @@ public class Position {
         return this;
     }
 
+    @SerializedName("financing") private AccountUnits financing;
+
+    /**
+     * Get the Financing
+     * <p>
+     * The total amount of financing paid/collected for this instrument over
+     * the lifetime of the Account.
+     * <p>
+     * @return the Financing
+     * @see AccountUnits
+     */
+    public AccountUnits getFinancing() {
+        return this.financing;
+    }
+
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected for this instrument over
+     * the lifetime of the Account.
+     * <p>
+     * @param financing the Financing as an AccountUnits
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setFinancing(AccountUnits financing) {
+        this.financing = financing;
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected for this instrument over
+     * the lifetime of the Account.
+     * <p>
+     * @param financing the Financing as a String
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setFinancing(String financing) {
+        this.financing = new AccountUnits(financing);
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected for this instrument over
+     * the lifetime of the Account.
+     * <p>
+     * @param financing the Financing as a double
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setFinancing(double financing) {
+        this.financing = new AccountUnits(financing);
+        return this;
+    }
+    /**
+     * Set the Financing
+     * <p>
+     * The total amount of financing paid/collected for this instrument over
+     * the lifetime of the Account.
+     * <p>
+     * @param financing the Financing as a BigDecimal
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setFinancing(BigDecimal financing) {
+        this.financing = new AccountUnits(financing);
+        return this;
+    }
+
     @SerializedName("commission") private AccountUnits commission;
 
     /**
@@ -433,6 +507,80 @@ public class Position {
         return this;
     }
 
+    @SerializedName("guaranteedExecutionFees") private AccountUnits guaranteedExecutionFees;
+
+    /**
+     * Get the Guranteed Execution Fee
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders for this instrument.
+     * <p>
+     * @return the Guranteed Execution Fee
+     * @see AccountUnits
+     */
+    public AccountUnits getGuaranteedExecutionFees() {
+        return this.guaranteedExecutionFees;
+    }
+
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders for this instrument.
+     * <p>
+     * @param guaranteedExecutionFees the Guranteed Execution Fee as an
+     * AccountUnits
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setGuaranteedExecutionFees(AccountUnits guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = guaranteedExecutionFees;
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders for this instrument.
+     * <p>
+     * @param guaranteedExecutionFees the Guranteed Execution Fee as a String
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setGuaranteedExecutionFees(String guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders for this instrument.
+     * <p>
+     * @param guaranteedExecutionFees the Guranteed Execution Fee as a double
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setGuaranteedExecutionFees(double guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
+        return this;
+    }
+    /**
+     * Set the Guranteed Execution Fee
+     * <p>
+     * The total amount of fees charged over the lifetime of the Account for
+     * the execution of guaranteed Stop Loss Orders for this instrument.
+     * <p>
+     * @param guaranteedExecutionFees the Guranteed Execution Fee as a
+     * BigDecimal
+     * @return {@link Position Position}
+     * @see AccountUnits
+     */
+    public Position setGuaranteedExecutionFees(BigDecimal guaranteedExecutionFees) {
+        this.guaranteedExecutionFees = new AccountUnits(guaranteedExecutionFees);
+        return this;
+    }
+
     @SerializedName("long") private PositionSide longValue;
 
     /**
@@ -502,8 +650,12 @@ public class Position {
                 (marginUsed == null ? "null" : marginUsed.toString()) + ", " +
             "resettablePL=" +
                 (resettablePL == null ? "null" : resettablePL.toString()) + ", " +
+            "financing=" +
+                (financing == null ? "null" : financing.toString()) + ", " +
             "commission=" +
                 (commission == null ? "null" : commission.toString()) + ", " +
+            "guaranteedExecutionFees=" +
+                (guaranteedExecutionFees == null ? "null" : guaranteedExecutionFees.toString()) + ", " +
             "long=" +
                 (longValue == null ? "null" : longValue.toString()) + ", " +
             "short=" +
