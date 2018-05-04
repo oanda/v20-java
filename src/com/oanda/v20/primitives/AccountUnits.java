@@ -90,7 +90,7 @@ public class AccountUnits extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, AccountUnits obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

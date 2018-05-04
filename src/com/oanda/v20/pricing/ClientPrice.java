@@ -7,10 +7,14 @@ import java.math.BigDecimal;
 
 import com.google.gson.annotations.SerializedName;
 
+import com.oanda.v20.order.UnitsAvailable;
+import com.oanda.v20.pricing_common.PriceBucket;
+import com.oanda.v20.pricing_common.PriceValue;
 import com.oanda.v20.primitives.DateTime;
+import com.oanda.v20.primitives.InstrumentName;
 
 /**
- * Client price for an Account.
+ * The specification of an Account-specific Price.
  */
 public class ClientPrice {
 
@@ -26,6 +30,14 @@ public class ClientPrice {
      * @param other the ClientPrice to copy
      */
     public ClientPrice(ClientPrice other) {
+        this.type = other.type;
+        this.instrument = other.instrument;
+        this.time = other.time;
+        this.status = other.status;
+        if (other.tradeable != null)
+        {
+            this.tradeable = new Boolean(other.tradeable);
+        }
         if (other.bids != null)
         {
             this.bids = new ArrayList<PriceBucket>(other.bids);
@@ -36,7 +48,178 @@ public class ClientPrice {
         }
         this.closeoutBid = other.closeoutBid;
         this.closeoutAsk = other.closeoutAsk;
-        this.timestamp = other.timestamp;
+        if (other.quoteHomeConversionFactors != null)
+        {
+            this.quoteHomeConversionFactors = new QuoteHomeConversionFactors(other.quoteHomeConversionFactors);
+        }
+        if (other.unitsAvailable != null)
+        {
+            this.unitsAvailable = new UnitsAvailable(other.unitsAvailable);
+        }
+    }
+
+    @SerializedName("type") private String type = "PRICE";
+
+    /**
+     * Get the Type
+     * <p>
+     * The string "PRICE". Used to identify the a Price object when found in a
+     * stream.
+     * <p>
+     * @return the Type
+     */
+    public String getType() {
+        return this.type;
+    }
+
+    /**
+     * Set the Type
+     * <p>
+     * The string "PRICE". Used to identify the a Price object when found in a
+     * stream.
+     * <p>
+     * @param type the Type as a String
+     * @return {@link ClientPrice ClientPrice}
+     */
+    public ClientPrice setType(String type) {
+        this.type = type;
+        return this;
+    }
+
+    @SerializedName("instrument") private InstrumentName instrument;
+
+    /**
+     * Get the Instrument
+     * <p>
+     * The Price's Instrument.
+     * <p>
+     * @return the Instrument
+     * @see InstrumentName
+     */
+    public InstrumentName getInstrument() {
+        return this.instrument;
+    }
+
+    /**
+     * Set the Instrument
+     * <p>
+     * The Price's Instrument.
+     * <p>
+     * @param instrument the Instrument as an InstrumentName
+     * @return {@link ClientPrice ClientPrice}
+     * @see InstrumentName
+     */
+    public ClientPrice setInstrument(InstrumentName instrument) {
+        this.instrument = instrument;
+        return this;
+    }
+    /**
+     * Set the Instrument
+     * <p>
+     * The Price's Instrument.
+     * <p>
+     * @param instrument the Instrument as a String
+     * @return {@link ClientPrice ClientPrice}
+     * @see InstrumentName
+     */
+    public ClientPrice setInstrument(String instrument) {
+        this.instrument = new InstrumentName(instrument);
+        return this;
+    }
+
+    @SerializedName("time") private DateTime time;
+
+    /**
+     * Get the Time
+     * <p>
+     * The date/time when the Price was created
+     * <p>
+     * @return the Time
+     * @see DateTime
+     */
+    public DateTime getTime() {
+        return this.time;
+    }
+
+    /**
+     * Set the Time
+     * <p>
+     * The date/time when the Price was created
+     * <p>
+     * @param time the Time as a DateTime
+     * @return {@link ClientPrice ClientPrice}
+     * @see DateTime
+     */
+    public ClientPrice setTime(DateTime time) {
+        this.time = time;
+        return this;
+    }
+    /**
+     * Set the Time
+     * <p>
+     * The date/time when the Price was created
+     * <p>
+     * @param time the Time as a String
+     * @return {@link ClientPrice ClientPrice}
+     * @see DateTime
+     */
+    public ClientPrice setTime(String time) {
+        this.time = new DateTime(time);
+        return this;
+    }
+
+    @SerializedName("status") private PriceStatus status;
+
+    /**
+     * Get the Status
+     * <p>
+     * The status of the Price.
+     * <p>
+     * @return the Status
+     * @see PriceStatus
+     */
+    public PriceStatus getStatus() {
+        return this.status;
+    }
+
+    /**
+     * Set the Status
+     * <p>
+     * The status of the Price.
+     * <p>
+     * @param status the Status as a PriceStatus
+     * @return {@link ClientPrice ClientPrice}
+     * @see PriceStatus
+     */
+    public ClientPrice setStatus(PriceStatus status) {
+        this.status = status;
+        return this;
+    }
+
+    @SerializedName("tradeable") private Boolean tradeable;
+
+    /**
+     * Get the Is Tradeable
+     * <p>
+     * Flag indicating if the Price is tradeable or not
+     * <p>
+     * @return the Is Tradeable
+     */
+    public Boolean getTradeable() {
+        return this.tradeable;
+    }
+
+    /**
+     * Set the Is Tradeable
+     * <p>
+     * Flag indicating if the Price is tradeable or not
+     * <p>
+     * @param tradeable the Is Tradeable as a Boolean
+     * @return {@link ClientPrice ClientPrice}
+     */
+    public ClientPrice setTradeable(Boolean tradeable) {
+        this.tradeable = tradeable;
+        return this;
     }
 
     @SerializedName("bids") private ArrayList<PriceBucket> bids;
@@ -283,50 +466,84 @@ public class ClientPrice {
         return this;
     }
 
-    @SerializedName("timestamp") private DateTime timestamp;
+    @SerializedName("quoteHomeConversionFactors") private QuoteHomeConversionFactors quoteHomeConversionFactors;
 
     /**
-     * Get the Timestamp
+     * Get the Quote Home Conversions
      * <p>
-     * The date/time when the Price was created.
+     * The factors used to convert quantities of this price's Instrument's
+     * quote currency into a quantity of the Account's home currency. When the
+     * includeHomeConversions is present in the pricing request (regardless of
+     * its value), this field will not be present.
      * <p>
-     * @return the Timestamp
-     * @see DateTime
+     * @return the Quote Home Conversions
+     * @see QuoteHomeConversionFactors
      */
-    public DateTime getTimestamp() {
-        return this.timestamp;
+    public QuoteHomeConversionFactors getQuoteHomeConversionFactors() {
+        return this.quoteHomeConversionFactors;
     }
 
     /**
-     * Set the Timestamp
+     * Set the Quote Home Conversions
      * <p>
-     * The date/time when the Price was created.
+     * The factors used to convert quantities of this price's Instrument's
+     * quote currency into a quantity of the Account's home currency. When the
+     * includeHomeConversions is present in the pricing request (regardless of
+     * its value), this field will not be present.
      * <p>
-     * @param timestamp the Timestamp as a DateTime
+     * @param quoteHomeConversionFactors the Quote Home Conversions as a
+     * QuoteHomeConversionFactors
      * @return {@link ClientPrice ClientPrice}
-     * @see DateTime
+     * @see QuoteHomeConversionFactors
      */
-    public ClientPrice setTimestamp(DateTime timestamp) {
-        this.timestamp = timestamp;
+    public ClientPrice setQuoteHomeConversionFactors(QuoteHomeConversionFactors quoteHomeConversionFactors) {
+        this.quoteHomeConversionFactors = quoteHomeConversionFactors;
         return this;
     }
+
+    @SerializedName("unitsAvailable") private UnitsAvailable unitsAvailable;
+
     /**
-     * Set the Timestamp
+     * Get the Units Available
      * <p>
-     * The date/time when the Price was created.
+     * Representation of how many units of an Instrument are available to be
+     * traded by an Order depending on its postionFill option.
      * <p>
-     * @param timestamp the Timestamp as a String
-     * @return {@link ClientPrice ClientPrice}
-     * @see DateTime
+     * @return the Units Available
+     * @see UnitsAvailable
      */
-    public ClientPrice setTimestamp(String timestamp) {
-        this.timestamp = new DateTime(timestamp);
+    public UnitsAvailable getUnitsAvailable() {
+        return this.unitsAvailable;
+    }
+
+    /**
+     * Set the Units Available
+     * <p>
+     * Representation of how many units of an Instrument are available to be
+     * traded by an Order depending on its postionFill option.
+     * <p>
+     * @param unitsAvailable the Units Available as an UnitsAvailable
+     * @return {@link ClientPrice ClientPrice}
+     * @see UnitsAvailable
+     */
+    public ClientPrice setUnitsAvailable(UnitsAvailable unitsAvailable) {
+        this.unitsAvailable = unitsAvailable;
         return this;
     }
 
     @Override
     public String toString() {
         return "ClientPrice(" +
+            "type=" +
+                (type == null ? "null" : type.toString()) + ", " +
+            "instrument=" +
+                (instrument == null ? "null" : instrument.toString()) + ", " +
+            "time=" +
+                (time == null ? "null" : time.toString()) + ", " +
+            "status=" +
+                (status == null ? "null" : status.toString()) + ", " +
+            "tradeable=" +
+                (tradeable == null ? "null" : tradeable.toString()) + ", " +
             "bids=" +
                 (bids == null ? "null" : bids.toString()) + ", " +
             "asks=" +
@@ -335,8 +552,10 @@ public class ClientPrice {
                 (closeoutBid == null ? "null" : closeoutBid.toString()) + ", " +
             "closeoutAsk=" +
                 (closeoutAsk == null ? "null" : closeoutAsk.toString()) + ", " +
-            "timestamp=" +
-                (timestamp == null ? "null" : timestamp.toString()) +
+            "quoteHomeConversionFactors=" +
+                (quoteHomeConversionFactors == null ? "null" : quoteHomeConversionFactors.toString()) + ", " +
+            "unitsAvailable=" +
+                (unitsAvailable == null ? "null" : unitsAvailable.toString()) +
             ")";
     }
 }

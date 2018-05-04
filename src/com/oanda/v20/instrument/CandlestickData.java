@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.oanda.v20.pricing.PriceValue;
+import com.oanda.v20.pricing_common.PriceValue;
 
 /**
  * The price data (open, high, low, close) for the Candlestick representation.

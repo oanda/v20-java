@@ -68,7 +68,7 @@ public class OrderSpecifier extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, OrderSpecifier obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

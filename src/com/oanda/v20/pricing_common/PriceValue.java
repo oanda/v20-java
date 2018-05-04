@@ -1,4 +1,4 @@
-package com.oanda.v20.pricing;
+package com.oanda.v20.pricing_common;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -11,10 +11,10 @@ import com.google.gson.stream.JsonWriter;
 import com.oanda.v20.primitives.StringPrimitive;
 
 /**
- * The string representation of a Price for an Instrument.
+ * The string representation of a Price for a Bucket.
  * <p>
  * A decimal number encodes as a string. The amount of precision provided
- * depends on the Price's Instrument.
+ * depends on the Instrument.
  */
 @JsonAdapter(PriceValue.JsonAdapter.class)
 public class PriceValue extends StringPrimitive {
@@ -59,7 +59,7 @@ public class PriceValue extends StringPrimitive {
     /**
      * Get the PriceValue
      * <p>
-     * The string representation of a Price for an Instrument.
+     * The string representation of a Price for a Bucket.
      * <p>
      * @return the PriceValue as a double
      * @see PriceValue
@@ -71,7 +71,7 @@ public class PriceValue extends StringPrimitive {
     /**
      * Get the PriceValue
      * <p>
-     * The string representation of a Price for an Instrument.
+     * The string representation of a Price for a Bucket.
      * <p>
      * @return the PriceValue as a BigDecimal
      * @see PriceValue
@@ -92,7 +92,7 @@ public class PriceValue extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, PriceValue obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

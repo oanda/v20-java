@@ -90,7 +90,7 @@ public class DecimalNumber extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, DecimalNumber obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

@@ -52,7 +52,7 @@ public class UserSpecifier extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, UserSpecifier obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

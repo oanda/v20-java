@@ -20,7 +20,7 @@ public class PricingGetResponse {
     private PricingGetResponse() {
     }
 
-    @SerializedName("prices") private ArrayList<Price> prices;
+    @SerializedName("prices") private ArrayList<ClientPrice> prices;
 
     /**
      * Get the prices
@@ -28,9 +28,9 @@ public class PricingGetResponse {
      * The list of Price objects requested.
      * <p>
      * @return the prices
-     * @see Price
+     * @see ClientPrice
      */
-    public List<Price> getPrices() {
+    public List<ClientPrice> getPrices() {
         return this.prices;
     }
 

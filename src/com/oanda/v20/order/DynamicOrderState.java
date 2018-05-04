@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.oanda.v20.pricing.PriceValue;
+import com.oanda.v20.pricing_common.PriceValue;
 
 /**
  * The dynamic state of an Order. This is only relevant to TrailingStopLoss

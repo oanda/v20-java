@@ -35,6 +35,7 @@ import com.oanda.v20.transaction.TransactionAdapter;
 import com.oanda.v20.pricing.PricingContext;
 import com.oanda.v20.trade.TradeContext;
 import com.oanda.v20.instrument.InstrumentContext;
+import com.oanda.v20.primitives.NullableType;
 
 public class Context {
     public AccountContext account;
@@ -65,6 +66,7 @@ public class Context {
             .setPrettyPrinting()
             .registerTypeAdapter(Order.class, new OrderAdapter())
             .registerTypeAdapter(Transaction.class, new TransactionAdapter())
+            .registerTypeAdapterFactory(new NullableType.NullableTypeAdapterFactory())
             .create();
 
         this.account = new AccountContext(this);

@@ -47,7 +47,7 @@ public class Currency extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, Currency obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

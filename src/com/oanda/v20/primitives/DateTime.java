@@ -50,7 +50,7 @@ public class DateTime extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, DateTime obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

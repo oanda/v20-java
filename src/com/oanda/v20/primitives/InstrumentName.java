@@ -46,7 +46,7 @@ public class InstrumentName extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, InstrumentName obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

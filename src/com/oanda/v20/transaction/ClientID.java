@@ -47,7 +47,7 @@ public class ClientID extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, ClientID obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

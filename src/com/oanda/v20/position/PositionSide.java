@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.oanda.v20.pricing.PriceValue;
+import com.oanda.v20.pricing_common.PriceValue;
 import com.oanda.v20.primitives.AccountUnits;
 import com.oanda.v20.primitives.DecimalNumber;
 import com.oanda.v20.trade.TradeID;

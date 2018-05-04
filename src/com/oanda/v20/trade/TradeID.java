@@ -60,7 +60,7 @@ public class TradeID extends StringPrimitive {
 
         @Override
         public void write(JsonWriter out, TradeID obj) throws IOException {
-            out.jsonValue('"' + obj.toString() + '"');
+            out.value(obj.toString());
         }
     }
 }

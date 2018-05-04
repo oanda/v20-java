@@ -4,6 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import com.oanda.v20.Request;
 import com.oanda.v20.account.AccountID;
+import com.oanda.v20.primitives.NullableType;
 import com.oanda.v20.transaction.StopLossDetails;
 import com.oanda.v20.transaction.TakeProfitDetails;
 import com.oanda.v20.transaction.TrailingStopLossDetails;
@@ -14,9 +15,9 @@ import com.oanda.v20.transaction.TrailingStopLossDetails;
 public class TradeSetDependentOrdersRequest extends Request {
 
     private static class Body {
-        @SerializedName("takeProfit") private TakeProfitDetails takeProfit;
-        @SerializedName("stopLoss") private StopLossDetails stopLoss;
-        @SerializedName("trailingStopLoss") private TrailingStopLossDetails trailingStopLoss;
+        @SerializedName("takeProfit") private NullableType<TakeProfitDetails> takeProfit;
+        @SerializedName("stopLoss") private NullableType<StopLossDetails> stopLoss;
+        @SerializedName("trailingStopLoss") private NullableType<TrailingStopLossDetails> trailingStopLoss;
     }
 
     /**
@@ -51,7 +52,7 @@ public class TradeSetDependentOrdersRequest extends Request {
      */
     public TradeSetDependentOrdersRequest setTakeProfit(TakeProfitDetails takeProfit)
     {
-        ((Body) this.body).takeProfit = takeProfit;
+        ((Body) this.body).takeProfit = new NullableType<TakeProfitDetails>(takeProfit);
         return this;
     }
 
@@ -72,7 +73,7 @@ public class TradeSetDependentOrdersRequest extends Request {
      */
     public TradeSetDependentOrdersRequest setStopLoss(StopLossDetails stopLoss)
     {
-        ((Body) this.body).stopLoss = stopLoss;
+        ((Body) this.body).stopLoss = new NullableType<StopLossDetails>(stopLoss);
         return this;
     }
 
@@ -94,7 +95,7 @@ public class TradeSetDependentOrdersRequest extends Request {
      */
     public TradeSetDependentOrdersRequest setTrailingStopLoss(TrailingStopLossDetails trailingStopLoss)
     {
-        ((Body) this.body).trailingStopLoss = trailingStopLoss;
+        ((Body) this.body).trailingStopLoss = new NullableType<TrailingStopLossDetails>(trailingStopLoss);
         return this;
     }
 }
