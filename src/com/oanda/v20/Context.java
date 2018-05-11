@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.HashMap;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -36,6 +37,7 @@ import com.oanda.v20.pricing.PricingContext;
 import com.oanda.v20.trade.TradeContext;
 import com.oanda.v20.instrument.InstrumentContext;
 import com.oanda.v20.primitives.NullableType;
+import com.oanda.v20.primitives.AcceptDatetimeFormat;
 
 public class Context {
     public AccountContext account;
@@ -52,15 +54,53 @@ public class Context {
     private HttpClient httpClient;
     private String uri;
     private String token;
+    private HashMap<String, Object> headers = new HashMap<>();
 
+    /**
+     * Constructs the Context object.
+     *
+     * @param      uri    The uri
+     * @param      token  The token
+     * @deprecated Use ContextBuilder instead.
+     */
+    @Deprecated
     public Context(String uri, String token) {
-        this(uri, token, HttpClients.createDefault());
+        this(uri, token, "", AcceptDatetimeFormat.RFC3339, HttpClients.createDefault());
     }
 
-    public Context(String uri, String token, HttpClient httpClient) {
+    /**
+     * Constructs the Context object.
+     *
+     * @param      uri             The uri
+     * @param      token           The token
+     * @param      application     The application
+     * @param      datetimeFormat  The datetime format
+     * @param      httpClient      The http client
+     */
+    public Context(
+        String uri,
+        String token,
+        String application,
+        AcceptDatetimeFormat datetimeFormat,
+        HttpClient httpClient
+    ) {
         this.uri = uri;
         this.token = token;
         this.httpClient = httpClient;
+
+        String extensions = null;
+
+        if (application.length() != 0) {
+            extensions = new String(" (" + application + ")");
+        }
+
+        String oandaAgent = new String(
+            "v20-java/3.0.24" + extensions
+        );
+
+        this.headers.put("Content-Type", "application/json");
+        this.headers.put("OANDA-Agent", oandaAgent);
+        this.setDatetimeFormat(datetimeFormat);
 
         this.gson = new GsonBuilder()
             .setPrettyPrinting()
@@ -77,6 +117,57 @@ public class Context {
         this.pricing = new PricingContext(this);
         this.trade = new TradeContext(this);
         this.instrument = new InstrumentContext(this);
+    }
+
+    /**
+     * Set the Accept-Datetime-Format header to an acceptable value
+     * <p>
+     * @param  format  the format
+     */
+    public void setDatetimeFormat(AcceptDatetimeFormat format) throws IllegalArgumentException {
+        if (format == AcceptDatetimeFormat.UNIX) {
+            setHeader("Accept-Datetime-Format", "UNIX");
+        } else if (format == AcceptDatetimeFormat.RFC3339) {
+            setHeader("Accept-Datetime-Format", "RFC3339");
+        } else {
+            throw new IllegalArgumentException(
+                "Unexpected format type for Accept-Datetime-Format header"
+            );
+        }
+    }
+
+    /**
+     * Set the datetime format for the context to UNIX
+     */
+    public void setDatetimeFormatUnix() {
+        setDatetimeFormat(AcceptDatetimeFormat.UNIX);
+    }
+
+    /**
+     * Set the datetime format for the context to RFC3339
+     */
+    public void setDatetimeFormatRFC3339() {
+        setDatetimeFormat(AcceptDatetimeFormat.RFC3339);
+    }
+
+    /**
+     * Set an HTTP header for all requests to the v20 API using
+     * this context
+     * <p>
+     * @param key header key to set
+     * @param value header value
+     */
+    public void setHeader(String key, Object value) {
+        headers.put(key, value);
+    }
+
+    /**
+     * Remove an HTTP header from the context
+     * <p>
+     * @param key header key to remove
+     */
+    public void deleteHeader(String key) {
+        headers.remove(key);
     }
 
     public Object execute(
@@ -136,7 +227,9 @@ public class Context {
         if (this.token != null && this.token != "") {
             httpReq.addHeader("Authorization","Bearer " + this.token);
         }
-        httpReq.addHeader("Content-Type", "application/json");
+        this.headers.forEach((key, value) -> {
+            httpReq.addHeader(key, value.toString());
+        });
 
         if (request.getBody() != null) {
             if (httpReq instanceof HttpEntityEnclosingRequestBase)
