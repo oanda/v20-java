@@ -127,7 +127,7 @@ public class Summary {
 
 	public static void main(String[] args) {
 
-	Context ctx = new ContextBuilder("https://api-fxpractice.oanda.com")
+		Context ctx = new ContextBuilder("https://api-fxpractice.oanda.com")
 			.setToken("<TOKEN>")
 			.setApplication("DemoApp")
 			.build();
