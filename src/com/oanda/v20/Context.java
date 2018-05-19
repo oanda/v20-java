@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.Objects;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -84,9 +85,11 @@ public class Context {
         AcceptDatetimeFormat datetimeFormat,
         HttpClient httpClient
     ) {
-        this.uri = uri;
-        this.token = token;
-        this.httpClient = httpClient;
+        this.uri = Objects.requireNonNull(uri, "uri can not be null");
+        this.token = Objects.requireNonNull(token, "token can not be null");
+        this.httpClient = Objects.requireNonNull(httpClient, "httpClient can not be null");
+
+        Objects.requireNonNull(application, "application can not be null");
 
         String extensions = null;
 
