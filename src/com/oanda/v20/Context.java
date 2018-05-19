@@ -90,6 +90,7 @@ public class Context {
         this.httpClient = Objects.requireNonNull(httpClient, "httpClient can not be null");
 
         Objects.requireNonNull(application, "application can not be null");
+        Objects.requireNonNull(datetimeFormat, "datetimeFormat can not be null");
 
         String extensions = null;
 
