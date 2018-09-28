@@ -1,9 +1,9 @@
 package com.oanda.v20.order;
 
-import java.util.List;
-import java.util.Collection;
 import java.util.ArrayList;
 import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class RequestException extends Exception {
 
-    private static final long serialVersionUID = -312816903998781226L;
+    private static final long serialVersionUID = 5034421099988970354L;
 
     protected int status;
 

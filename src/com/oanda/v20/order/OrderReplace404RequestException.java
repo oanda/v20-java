@@ -14,7 +14,7 @@ import com.oanda.v20.transaction.TransactionID;
  */
 public class OrderReplace404RequestException extends RequestException {
 
-    private static final long serialVersionUID = -145487021151223703L;
+    private static final long serialVersionUID = -3059274072633093346L;
 
     /**
      * OrderReplace404RequestException Constructor

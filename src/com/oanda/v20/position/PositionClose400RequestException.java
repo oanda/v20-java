@@ -14,7 +14,7 @@ import com.oanda.v20.transaction.TransactionID;
  */
 public class PositionClose400RequestException extends RequestException {
 
-    private static final long serialVersionUID = -7350041615940123285L;
+    private static final long serialVersionUID = -2529294526320561710L;
 
     /**
      * PositionClose400RequestException Constructor

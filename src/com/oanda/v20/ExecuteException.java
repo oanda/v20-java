@@ -2,7 +2,7 @@ package com.oanda.v20;
 
 public class ExecuteException extends Exception {
 
-    private static final long serialVersionUID = 7594856474065153336L;
+    private static final long serialVersionUID = -9108619579059959148L;
 
     public ExecuteException(Throwable cause) {
         super(cause);

@@ -1,19 +1,5 @@
 package com.oanda.v20.primitives;
 
-import java.io.IOException;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.lang.reflect.ParameterizedType;
-
-import com.google.gson.Gson;
-import com.google.gson.TypeAdapter;
-import com.google.gson.TypeAdapterFactory;
-import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
-
 /**
  * Generic Nullable type
  *
@@ -109,105 +95,6 @@ public class NullableType<T> {
             return "<null>";
         } else {
             return value.toString();
-        }
-    }
-
-    public static class NullableTypeAdapterFactory implements TypeAdapterFactory {
-
-        public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-
-            @SuppressWarnings("unchecked")
-            Class<T> rawType = (Class<T>) type.getRawType();
-            if (!rawType.equals(NullableType.class)) {
-                return null;
-            }
-
-            Class<?> containedClass = getActualClass((ParameterizedType) type.getType());
-            final TypeAdapter<?> delegate  = gson.getAdapter(containedClass);
-            final Method delegateWrite = getDelegateWriter(delegate);
-            final Constructor<?> constructor = getConstructor(rawType, containedClass);
-
-            return new TypeAdapter<T>() {
-                @Override
-                public void write(JsonWriter out, T value) throws IOException {
-                    if (value == null) {
-                        out.nullValue();
-                    }
-                    else if (((NullableType<?>) value).set &&
-                        ((NullableType<?>) value).value == null) {
-                        boolean oldSerializeNulls = out.getSerializeNulls();
-                        out.setSerializeNulls(true);
-                        out.nullValue();
-                        out.setSerializeNulls(oldSerializeNulls);
-                    }
-                    else {
-                        try {
-                            delegateWrite.invoke(
-                                delegate,
-                                out,
-                                ((NullableType<?>) value).value
-                            );
-                        } catch (IllegalAccessException | IllegalArgumentException
-                                    | InvocationTargetException e) {
-                            throw new IOException(e);
-                        }
-                    }
-                }
-
-                @SuppressWarnings("unchecked")
-                @Override
-                public T read(JsonReader in) throws IOException {
-                    try {
-                        if (in.peek() == JsonToken.NULL) {
-                            in.nextNull();
-                            return (T) constructor.newInstance((Object) null);
-                        } else {
-                            return (T) constructor.newInstance(delegate.read(in));
-                        }
-                    } catch (InvocationTargetException | IllegalAccessException
-                                | InstantiationException e) {
-                        throw new IOException(e);
-                    }
-                }
-            };
-        }
-
-        private static Class<?> getActualClass(ParameterizedType type)
-        {
-            try {
-                return Class.forName(
-                    type.getActualTypeArguments()[0]
-                        .getTypeName()
-                );
-            } catch (ClassNotFoundException e) {
-                return null;
-            }
-        }
-
-        private static Method getDelegateWriter(TypeAdapter<?> delegate)
-        {
-            try {
-                for (Method method : delegate.getClass().getMethods())
-                {
-                    if (method.getName().equals("write"))
-                    {
-                        return method;
-                    }
-                }
-                return null;
-            } catch (IllegalArgumentException e) {
-                return null;
-            }
-        }
-
-        private static Constructor<?> getConstructor(Class<?> type, Class<?> containedClass)
-        {
-            try {
-                return type.getDeclaredConstructor(containedClass);
-            } catch (NoSuchMethodException | SecurityException e)
-            {
-                return null;
-            }
         }
     }
 }

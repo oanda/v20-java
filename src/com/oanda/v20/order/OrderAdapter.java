@@ -20,6 +20,12 @@ public class OrderAdapter implements JsonDeserializer<Order> {
         OrderType type = OrderType.valueOf(typestring);
 
         switch (type) {
+        case TAKE_PROFIT:
+            return context.deserialize(json, TakeProfitOrder.class);
+        case STOP_LOSS:
+            return context.deserialize(json, StopLossOrder.class);
+        case TRAILING_STOP_LOSS:
+            return context.deserialize(json, TrailingStopLossOrder.class);
         case MARKET:
             return context.deserialize(json, MarketOrder.class);
         case FIXED_PRICE:
@@ -30,12 +36,6 @@ public class OrderAdapter implements JsonDeserializer<Order> {
             return context.deserialize(json, StopOrder.class);
         case MARKET_IF_TOUCHED:
             return context.deserialize(json, MarketIfTouchedOrder.class);
-        case TAKE_PROFIT:
-            return context.deserialize(json, TakeProfitOrder.class);
-        case STOP_LOSS:
-            return context.deserialize(json, StopLossOrder.class);
-        case TRAILING_STOP_LOSS:
-            return context.deserialize(json, TrailingStopLossOrder.class);
         }
         return null;
     }

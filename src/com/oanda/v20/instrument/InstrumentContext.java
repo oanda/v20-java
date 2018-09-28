@@ -177,4 +177,106 @@ public class InstrumentContext {
             pricesResponseMap
         );
     }
+
+    private HashMap<Integer, Class<?>> orderBookResponseMap;
+
+    /**
+     * Get Order Book
+     * <p>
+     * Fetch an order book for an instrument.
+     * <p>
+     * @param instrument Name of the Instrument
+     * @return {@link InstrumentOrderBookResponse InstrumentOrderBookResponse}
+     * @throws RequestException if the request failed
+     * @throws ExecuteException if the request could not be executed
+     * @see InstrumentName
+     * @see RequestException
+     * @see ExecuteException
+     */
+    public InstrumentOrderBookResponse orderBook(InstrumentName instrument)
+        throws RequestException, ExecuteException
+    {
+        InstrumentOrderBookRequest request = new InstrumentOrderBookRequest(instrument);
+        return orderBook(request);
+    }
+
+    /**
+     * Get Order Book
+     * <p>
+     * Fetch an order book for an instrument.
+     * <p>
+     * @param request the InstrumentOrderBookRequest
+     * @return {@link InstrumentOrderBookResponse InstrumentOrderBookResponse}
+     * @throws RequestException if the request failed
+     * @throws ExecuteException if the request could not be executed
+     * @see RequestException
+     * @see ExecuteException
+     */
+    public InstrumentOrderBookResponse orderBook(InstrumentOrderBookRequest request)
+        throws RequestException, ExecuteException
+    {
+        if (orderBookResponseMap == null) {
+            orderBookResponseMap = new HashMap<>();
+            orderBookResponseMap.put(200, InstrumentOrderBookResponse.class);
+        }
+
+        return (InstrumentOrderBookResponse) ctx.execute(
+            "GET",
+            "/v3/instruments/{instrument}/orderBook",
+            request,
+            orderBookResponseMap
+        );
+    }
+
+    private HashMap<Integer, Class<?>> positionBookResponseMap;
+
+    /**
+     * Get Position Book
+     * <p>
+     * Fetch a position book for an instrument.
+     * <p>
+     * @param instrument Name of the Instrument
+     * @return {@link InstrumentPositionBookResponse
+     *     InstrumentPositionBookResponse}
+     * @throws RequestException if the request failed
+     * @throws ExecuteException if the request could not be executed
+     * @see InstrumentName
+     * @see RequestException
+     * @see ExecuteException
+     */
+    public InstrumentPositionBookResponse positionBook(InstrumentName instrument)
+        throws RequestException, ExecuteException
+    {
+        InstrumentPositionBookRequest request = new InstrumentPositionBookRequest(instrument);
+        return positionBook(request);
+    }
+
+    /**
+     * Get Position Book
+     * <p>
+     * Fetch a position book for an instrument.
+     * <p>
+     * @param request the InstrumentPositionBookRequest
+     * @return {@link InstrumentPositionBookResponse
+     *     InstrumentPositionBookResponse}
+     * @throws RequestException if the request failed
+     * @throws ExecuteException if the request could not be executed
+     * @see RequestException
+     * @see ExecuteException
+     */
+    public InstrumentPositionBookResponse positionBook(InstrumentPositionBookRequest request)
+        throws RequestException, ExecuteException
+    {
+        if (positionBookResponseMap == null) {
+            positionBookResponseMap = new HashMap<>();
+            positionBookResponseMap.put(200, InstrumentPositionBookResponse.class);
+        }
+
+        return (InstrumentPositionBookResponse) ctx.execute(
+            "GET",
+            "/v3/instruments/{instrument}/positionBook",
+            request,
+            positionBookResponseMap
+        );
+    }
 }

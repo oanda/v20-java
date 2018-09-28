@@ -11,7 +11,7 @@ import com.oanda.v20.transaction.TransactionID;
  */
 public class AccountConfigure403RequestException extends RequestException {
 
-    private static final long serialVersionUID = 805928918983216675L;
+    private static final long serialVersionUID = -6940302184740441977L;
 
     /**
      * AccountConfigure403RequestException Constructor

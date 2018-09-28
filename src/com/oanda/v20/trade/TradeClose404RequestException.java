@@ -1,7 +1,7 @@
 package com.oanda.v20.trade;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -14,7 +14,7 @@ import com.oanda.v20.transaction.TransactionID;
  */
 public class TradeClose404RequestException extends RequestException {
 
-    private static final long serialVersionUID = -2804638121531658743L;
+    private static final long serialVersionUID = 8548555341551155126L;
 
     /**
      * TradeClose404RequestException Constructor

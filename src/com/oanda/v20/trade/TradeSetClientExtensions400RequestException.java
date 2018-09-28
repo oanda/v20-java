@@ -14,7 +14,7 @@ import com.oanda.v20.transaction.TransactionID;
  */
 public class TradeSetClientExtensions400RequestException extends RequestException {
 
-    private static final long serialVersionUID = -3508960006083546254L;
+    private static final long serialVersionUID = -5747287785024911209L;
 
     /**
      * TradeSetClientExtensions400RequestException Constructor

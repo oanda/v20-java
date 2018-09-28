@@ -253,5 +253,51 @@ public enum OrderCancelReason {
      * Filling the order would cause the maximum position value allowed for the
      * account to be exceeded. The Order has been cancelled as a result.
      */
-    ACCOUNT_POSITION_VALUE_LIMIT_EXCEEDED
+    ACCOUNT_POSITION_VALUE_LIMIT_EXCEEDED,
+
+    /**
+     * Filling the order would require the creation of a short trade, however
+     * the instrument is configured such that orders being filled using bid
+     * prices can only reduce existing positions. New short positions cannot be
+     * created, but existing long positions may be reduced or closed.
+     */
+    INSTRUMENT_BID_REDUCE_ONLY,
+
+    /**
+     * Filling the order would require the creation of a long trade, however
+     * the instrument is configured such that orders being filled using ask
+     * prices can only reduce existing positions. New long positions cannot be
+     * created, but existing short positions may be reduced or closed.
+     */
+    INSTRUMENT_ASK_REDUCE_ONLY,
+
+    /**
+     * Filling the order would require using the bid, however the instrument is
+     * configured such that the bids are halted, and so no short orders may be
+     * filled.
+     */
+    INSTRUMENT_BID_HALTED,
+
+    /**
+     * Filling the order would require using the ask, however the instrument is
+     * configured such that the asks are halted, and so no long orders may be
+     * filled.
+     */
+    INSTRUMENT_ASK_HALTED,
+
+    /**
+     * Filling the Order would result in the creation of a Guaranteed Stop Loss
+     * Order (GSLO). Since the trade is long the GSLO would be short, however
+     * the bid side is currently halted. GSLOs cannot be created in this
+     * situation.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_BID_HALTED,
+
+    /**
+     * Filling the Order would result in the creation of a Guaranteed Stop Loss
+     * Order (GSLO). Since the trade is short the GSLO would be long, however
+     * the ask side is currently halted. GSLOs cannot be created in this
+     * situation.
+     */
+    STOP_LOSS_ON_FILL_GUARANTEED_ASK_HALTED
 }

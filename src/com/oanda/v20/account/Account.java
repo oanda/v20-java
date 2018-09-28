@@ -1,9 +1,9 @@
 package com.oanda.v20.account;
 
-import java.util.Collection;
-import java.util.List;
-import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.math.BigDecimal;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -75,6 +75,7 @@ public class Account {
         {
             this.hedgingEnabled = new Boolean(other.hedgingEnabled);
         }
+        this.lastOrderFillTimestamp = other.lastOrderFillTimestamp;
         this.unrealizedPL = other.unrealizedPL;
         this.nAV = other.nAV;
         this.marginUsed = other.marginUsed;
@@ -1066,6 +1067,48 @@ public class Account {
      */
     public Account setHedgingEnabled(Boolean hedgingEnabled) {
         this.hedgingEnabled = hedgingEnabled;
+        return this;
+    }
+
+    @SerializedName("lastOrderFillTimestamp") private DateTime lastOrderFillTimestamp;
+
+    /**
+     * Get the Last Order Fill timestamp.
+     * <p>
+     * The date/time of the last order that was filled for this account.
+     * <p>
+     * @return the Last Order Fill timestamp.
+     * @see DateTime
+     */
+    public DateTime getLastOrderFillTimestamp() {
+        return this.lastOrderFillTimestamp;
+    }
+
+    /**
+     * Set the Last Order Fill timestamp.
+     * <p>
+     * The date/time of the last order that was filled for this account.
+     * <p>
+     * @param lastOrderFillTimestamp the Last Order Fill timestamp. as a
+     * DateTime
+     * @return {@link Account Account}
+     * @see DateTime
+     */
+    public Account setLastOrderFillTimestamp(DateTime lastOrderFillTimestamp) {
+        this.lastOrderFillTimestamp = lastOrderFillTimestamp;
+        return this;
+    }
+    /**
+     * Set the Last Order Fill timestamp.
+     * <p>
+     * The date/time of the last order that was filled for this account.
+     * <p>
+     * @param lastOrderFillTimestamp the Last Order Fill timestamp. as a String
+     * @return {@link Account Account}
+     * @see DateTime
+     */
+    public Account setLastOrderFillTimestamp(String lastOrderFillTimestamp) {
+        this.lastOrderFillTimestamp = new DateTime(lastOrderFillTimestamp);
         return this;
     }
 
@@ -2192,6 +2235,8 @@ public class Account {
                 (pendingOrderCount == null ? "null" : pendingOrderCount.toString()) + ", " +
             "hedgingEnabled=" +
                 (hedgingEnabled == null ? "null" : hedgingEnabled.toString()) + ", " +
+            "lastOrderFillTimestamp=" +
+                (lastOrderFillTimestamp == null ? "null" : lastOrderFillTimestamp.toString()) + ", " +
             "unrealizedPL=" +
                 (unrealizedPL == null ? "null" : unrealizedPL.toString()) + ", " +
             "NAV=" +

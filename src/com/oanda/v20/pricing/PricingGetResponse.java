@@ -1,7 +1,7 @@
 package com.oanda.v20.pricing;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,7 +1,7 @@
 package com.oanda.v20.trade;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -17,7 +17,7 @@ import com.oanda.v20.transaction.TransactionID;
  */
 public class TradeSetDependentOrders400RequestException extends RequestException {
 
-    private static final long serialVersionUID = -3474524029164059172L;
+    private static final long serialVersionUID = 379194315785145496L;
 
     /**
      * TradeSetDependentOrders400RequestException Constructor

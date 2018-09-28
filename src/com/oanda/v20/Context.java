@@ -24,30 +24,30 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 
-import com.oanda.v20.account.AccountContext;
-import com.oanda.v20.order.OrderContext;
-import com.oanda.v20.order.Order;
-import com.oanda.v20.order.OrderAdapter;
+import com.oanda.v20.instrument.InstrumentContext;
 import com.oanda.v20.position.PositionContext;
-import com.oanda.v20.user.UserContext;
+import com.oanda.v20.trade.TradeContext;
+import com.oanda.v20.account.AccountContext;
 import com.oanda.v20.transaction.TransactionContext;
 import com.oanda.v20.transaction.Transaction;
 import com.oanda.v20.transaction.TransactionAdapter;
+import com.oanda.v20.user.UserContext;
 import com.oanda.v20.pricing.PricingContext;
-import com.oanda.v20.trade.TradeContext;
-import com.oanda.v20.instrument.InstrumentContext;
-import com.oanda.v20.primitives.NullableType;
+import com.oanda.v20.order.OrderContext;
+import com.oanda.v20.order.Order;
+import com.oanda.v20.order.OrderAdapter;
+import com.oanda.v20.primitives.NullableTypeAdapterFactory;
 import com.oanda.v20.primitives.AcceptDatetimeFormat;
 
 public class Context {
-    public AccountContext account;
-    public OrderContext order;
-    public PositionContext position;
-    public UserContext user;
-    public TransactionContext transaction;
-    public PricingContext pricing;
-    public TradeContext trade;
     public InstrumentContext instrument;
+    public PositionContext position;
+    public TradeContext trade;
+    public AccountContext account;
+    public TransactionContext transaction;
+    public UserContext user;
+    public PricingContext pricing;
+    public OrderContext order;
 
     protected Gson gson;
 
@@ -95,7 +95,7 @@ public class Context {
         }
 
         String oandaAgent = new String(
-            "v20-java/3.0.24" + extensions
+            "v20-java/3.0.25" + extensions
         );
 
         this.headers.put("Content-Type", "application/json");
@@ -104,19 +104,33 @@ public class Context {
 
         this.gson = new GsonBuilder()
             .setPrettyPrinting()
-            .registerTypeAdapter(Order.class, new OrderAdapter())
             .registerTypeAdapter(Transaction.class, new TransactionAdapter())
-            .registerTypeAdapterFactory(new NullableType.NullableTypeAdapterFactory())
+            .registerTypeAdapter(Order.class, new OrderAdapter())
+            .registerTypeAdapterFactory(
+                new NullableTypeAdapterFactory<com.oanda.v20.transaction.TakeProfitDetails>(
+                    com.oanda.v20.transaction.TakeProfitDetails.class
+                )
+            )
+            .registerTypeAdapterFactory(
+                new NullableTypeAdapterFactory<com.oanda.v20.transaction.StopLossDetails>(
+                    com.oanda.v20.transaction.StopLossDetails.class
+                )
+            )
+            .registerTypeAdapterFactory(
+                new NullableTypeAdapterFactory<com.oanda.v20.transaction.TrailingStopLossDetails>(
+                    com.oanda.v20.transaction.TrailingStopLossDetails.class
+                )
+            )
             .create();
 
-        this.account = new AccountContext(this);
-        this.order = new OrderContext(this);
-        this.position = new PositionContext(this);
-        this.user = new UserContext(this);
-        this.transaction = new TransactionContext(this);
-        this.pricing = new PricingContext(this);
-        this.trade = new TradeContext(this);
         this.instrument = new InstrumentContext(this);
+        this.position = new PositionContext(this);
+        this.trade = new TradeContext(this);
+        this.account = new AccountContext(this);
+        this.transaction = new TransactionContext(this);
+        this.user = new UserContext(this);
+        this.pricing = new PricingContext(this);
+        this.order = new OrderContext(this);
     }
 
     /**

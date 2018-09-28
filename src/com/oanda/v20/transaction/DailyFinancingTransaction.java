@@ -1,9 +1,9 @@
 package com.oanda.v20.transaction;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.math.BigDecimal;
+import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
 

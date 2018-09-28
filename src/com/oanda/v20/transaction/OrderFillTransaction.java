@@ -53,6 +53,7 @@ public class OrderFillTransaction implements Transaction {
         this.gainQuoteHomeConversionFactor = other.gainQuoteHomeConversionFactor;
         this.lossQuoteHomeConversionFactor = other.lossQuoteHomeConversionFactor;
         this.price = other.price;
+        this.fullVWAP = other.fullVWAP;
         if (other.fullPrice != null)
         {
             this.fullPrice = new ClientPrice(other.fullPrice);
@@ -473,7 +474,7 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Get the Fill Units
      * <p>
-     * The number of units filled by the Order.
+     * The number of units filled by the OrderFill.
      * <p>
      * @return the Fill Units
      * @see DecimalNumber
@@ -485,7 +486,7 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Set the Fill Units
      * <p>
-     * The number of units filled by the Order.
+     * The number of units filled by the OrderFill.
      * <p>
      * @param units the Fill Units as a DecimalNumber
      * @return {@link OrderFillTransaction OrderFillTransaction}
@@ -498,7 +499,7 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Set the Fill Units
      * <p>
-     * The number of units filled by the Order.
+     * The number of units filled by the OrderFill.
      * <p>
      * @param units the Fill Units as a String
      * @return {@link OrderFillTransaction OrderFillTransaction}
@@ -511,7 +512,7 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Set the Fill Units
      * <p>
-     * The number of units filled by the Order.
+     * The number of units filled by the OrderFill.
      * <p>
      * @param units the Fill Units as a double
      * @return {@link OrderFillTransaction OrderFillTransaction}
@@ -524,7 +525,7 @@ public class OrderFillTransaction implements Transaction {
     /**
      * Set the Fill Units
      * <p>
-     * The number of units filled by the Order.
+     * The number of units filled by the OrderFill.
      * <p>
      * @param units the Fill Units as a BigDecimal
      * @return {@link OrderFillTransaction OrderFillTransaction}
@@ -771,6 +772,103 @@ public class OrderFillTransaction implements Transaction {
      */
     public OrderFillTransaction setPrice(BigDecimal price) {
         this.price = new PriceValue(price);
+        return this;
+    }
+
+    @SerializedName("fullVWAP") private PriceValue fullVWAP;
+
+    /**
+     * Get the Full VWAP
+     * <p>
+     * The price that all of the units of the OrderFill should have been filled
+     * at, in the absence of guaranteed price execution. This factors in the
+     * Account's current ClientPrice, used liquidity and the units of the
+     * OrderFill only. If no Trades were closed with their price clamped for
+     * guaranteed stop loss enforcement, then this value will match the price
+     * fields of each Trade opened, closed, and reduced, and they will all be
+     * the exact same.
+     * <p>
+     * @return the Full VWAP
+     * @see PriceValue
+     */
+    public PriceValue getFullVWAP() {
+        return this.fullVWAP;
+    }
+
+    /**
+     * Set the Full VWAP
+     * <p>
+     * The price that all of the units of the OrderFill should have been filled
+     * at, in the absence of guaranteed price execution. This factors in the
+     * Account's current ClientPrice, used liquidity and the units of the
+     * OrderFill only. If no Trades were closed with their price clamped for
+     * guaranteed stop loss enforcement, then this value will match the price
+     * fields of each Trade opened, closed, and reduced, and they will all be
+     * the exact same.
+     * <p>
+     * @param fullVWAP the Full VWAP as a PriceValue
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see PriceValue
+     */
+    public OrderFillTransaction setFullVWAP(PriceValue fullVWAP) {
+        this.fullVWAP = fullVWAP;
+        return this;
+    }
+    /**
+     * Set the Full VWAP
+     * <p>
+     * The price that all of the units of the OrderFill should have been filled
+     * at, in the absence of guaranteed price execution. This factors in the
+     * Account's current ClientPrice, used liquidity and the units of the
+     * OrderFill only. If no Trades were closed with their price clamped for
+     * guaranteed stop loss enforcement, then this value will match the price
+     * fields of each Trade opened, closed, and reduced, and they will all be
+     * the exact same.
+     * <p>
+     * @param fullVWAP the Full VWAP as a String
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see PriceValue
+     */
+    public OrderFillTransaction setFullVWAP(String fullVWAP) {
+        this.fullVWAP = new PriceValue(fullVWAP);
+        return this;
+    }
+    /**
+     * Set the Full VWAP
+     * <p>
+     * The price that all of the units of the OrderFill should have been filled
+     * at, in the absence of guaranteed price execution. This factors in the
+     * Account's current ClientPrice, used liquidity and the units of the
+     * OrderFill only. If no Trades were closed with their price clamped for
+     * guaranteed stop loss enforcement, then this value will match the price
+     * fields of each Trade opened, closed, and reduced, and they will all be
+     * the exact same.
+     * <p>
+     * @param fullVWAP the Full VWAP as a double
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see PriceValue
+     */
+    public OrderFillTransaction setFullVWAP(double fullVWAP) {
+        this.fullVWAP = new PriceValue(fullVWAP);
+        return this;
+    }
+    /**
+     * Set the Full VWAP
+     * <p>
+     * The price that all of the units of the OrderFill should have been filled
+     * at, in the absence of guaranteed price execution. This factors in the
+     * Account's current ClientPrice, used liquidity and the units of the
+     * OrderFill only. If no Trades were closed with their price clamped for
+     * guaranteed stop loss enforcement, then this value will match the price
+     * fields of each Trade opened, closed, and reduced, and they will all be
+     * the exact same.
+     * <p>
+     * @param fullVWAP the Full VWAP as a BigDecimal
+     * @return {@link OrderFillTransaction OrderFillTransaction}
+     * @see PriceValue
+     */
+    public OrderFillTransaction setFullVWAP(BigDecimal fullVWAP) {
+        this.fullVWAP = new PriceValue(fullVWAP);
         return this;
     }
 
@@ -1403,6 +1501,8 @@ public class OrderFillTransaction implements Transaction {
                 (lossQuoteHomeConversionFactor == null ? "null" : lossQuoteHomeConversionFactor.toString()) + ", " +
             "price=" +
                 (price == null ? "null" : price.toString()) + ", " +
+            "fullVWAP=" +
+                (fullVWAP == null ? "null" : fullVWAP.toString()) + ", " +
             "fullPrice=" +
                 (fullPrice == null ? "null" : fullPrice.toString()) + ", " +
             "reason=" +

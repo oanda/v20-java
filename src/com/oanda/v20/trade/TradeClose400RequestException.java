@@ -10,7 +10,7 @@ import com.oanda.v20.transaction.MarketOrderRejectTransaction;
  */
 public class TradeClose400RequestException extends RequestException {
 
-    private static final long serialVersionUID = 6013430296876850573L;
+    private static final long serialVersionUID = 3016742317200802070L;
 
     /**
      * TradeClose400RequestException Constructor
