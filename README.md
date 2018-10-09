@@ -119,15 +119,18 @@ Edit the Summary.java file to contain the following:
 
 ```
 import com.oanda.v20.Context;
+import com.oanda.v20.ContextBuilder;
 import com.oanda.v20.account.AccountID;
 import com.oanda.v20.account.AccountSummary;
 
 public class Summary {
 
 	public static void main(String[] args) {
-		Context ctx = new Context(
-				"https://api-fxpractice.oanda.com",
-				"<TOKEN>");
+
+		Context ctx = new ContextBuilder("https://api-fxpractice.oanda.com")
+			.setToken("<TOKEN>")
+			.setApplication("DemoApp")
+			.build();
 
 		try {
 			AccountSummary summary = ctx.account.summary(
