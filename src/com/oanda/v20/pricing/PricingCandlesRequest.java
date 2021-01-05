@@ -3,6 +3,7 @@ package com.oanda.v20.pricing;
 import java.math.BigDecimal;
 
 import com.oanda.v20.Request;
+import com.oanda.v20.account.AccountID;
 import com.oanda.v20.instrument.CandlestickGranularity;
 import com.oanda.v20.instrument.WeeklyAlignment;
 import com.oanda.v20.primitives.DateTime;
@@ -21,7 +22,8 @@ public class PricingCandlesRequest extends Request {
      * <p>
      * @param instrument Name of the Instrument
      */
-    public PricingCandlesRequest(InstrumentName instrument) {
+    public PricingCandlesRequest(AccountID accountID, InstrumentName instrument) {
+        this.setPathParam("accountID", accountID);
         this.setPathParam("instrument", instrument);
 
     }

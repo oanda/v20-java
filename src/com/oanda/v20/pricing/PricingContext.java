@@ -199,10 +199,11 @@ public class PricingContext {
      * @see RequestException
      * @see ExecuteException
      */
-    public PricingCandlesResponse candles(InstrumentName instrument)
+
+    public PricingCandlesResponse candles(AccountID accountID, InstrumentName instrument)
         throws RequestException, ExecuteException
     {
-        PricingCandlesRequest request = new PricingCandlesRequest(instrument);
+        PricingCandlesRequest request = new PricingCandlesRequest(accountID, instrument);
         return candles(request);
     }
 

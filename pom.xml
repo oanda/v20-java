@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.oanda.v20</groupId>
   <artifactId>v20</artifactId>
-  <version>3.0.25</version>
+  <version>3.0.26</version>
 
   <packaging>jar</packaging>
 
