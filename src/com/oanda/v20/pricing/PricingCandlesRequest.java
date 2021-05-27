@@ -21,7 +21,7 @@ public class PricingCandlesRequest extends Request {
      * <p>
      * @param instrument Name of the Instrument
      */
-    public PricingCandlesRequest(AccountID accountID,InstrumentName instrument) {
+    public PricingCandlesRequest(AccountID accountID, InstrumentName instrument) {
         this.setPathParam("instrument", instrument);
         this.setPathParam("accountID", accountID);
 
